@@ -1,0 +1,612 @@
+<!-- wp:group {"metadata":{"categories":["featured","banner"],"patternName":"setitrighttheme/hero-home","name":"Hero Home (Set It Right)"},"align":"full","className":"sir-hero","style":{"spacing":{"padding":{"top":"var:preset|spacing|sm","right":"var:preset|spacing|lg","bottom":"var:preset|spacing|sm","left":"var:preset|spacing|lg"},"margin":{"top":"0","bottom":"0"},"blockGap":"0"},"dimensions":{"minHeight":""},"border":{"width":"0px","style":"none"}},"backgroundColor":"black","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"stretch","orientation":"vertical","verticalAlignment":"center"}} -->
+<div class="wp-block-group alignfull sir-hero has-black-background-color has-background" style="border-style:none;border-width:0px;margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--sm);padding-right:var(--wp--preset--spacing--lg);padding-bottom:var(--wp--preset--spacing--sm);padding-left:var(--wp--preset--spacing--lg)"><!-- wp:group {"className":"sir-hero-content","style":{"dimensions":{"minHeight":""}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group sir-hero-content"><!-- wp:paragraph {"style":{"typography":{"textAlign":"left"}}} -->
+<p class="has-text-align-left"><span style="color: #00000000;" class="stk-highlight">supporto IT e marketing per aziende</span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":117,"width":"775px","height":"auto","aspectRatio":"7.963500622148486","sizeSlug":"large","linkDestination":"none","align":"center","style":{"spacing":{"margin":{"top":"0px","bottom":"20px"}}}} -->
+<figure class="wp-block-image aligncenter size-large is-resized" style="margin-top:0px;margin-bottom:20px"><img src="https://www.setitright.it/wp-content/uploads/2026/03/LOGO-SET-IT-RIGHT-IT-semplicifcata-per-svg.svg" alt="" class="wp-image-117" style="aspect-ratio:7.963500622148486;width:775px;height:auto"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"className":"has-white-color has-text-color","style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|xl"}},"typography":{"fontSize":"clamp(18px,3vw,36px)","lineHeight":"1.2","letterSpacing":"0.43px","textAlign":"center"}},"textColor":"white"} -->
+<p class="has-text-align-center has-white-color has-text-color" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--xl);font-size:clamp(18px,3vw,36px);letter-spacing:0.43px;line-height:1.2">Communication &amp; IT Management</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":5,"className":"sir-reveal-tilt","style":{"spacing":{"margin":{"top":"var:preset|spacing|sm","bottom":"var:preset|spacing|sm"}},"typography":{"textAlign":"center"}}} -->
+<h5 class="wp-block-heading has-text-align-center sir-reveal-tilt" style="margin-top:var(--wp--preset--spacing--sm);margin-bottom:var(--wp--preset--spacing--sm)"><span style="color: #fffffe;" class="stk-highlight">Set it Right. Say it Right.</span></h5>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"has-white-60-color has-text-color","style":{"spacing":{"margin":{"top":"16px"}},"typography":{"textAlign":"center"}},"textColor":"white-60"} -->
+<p class="has-text-align-center has-white-60-color has-text-color" style="margin-top:16px">Quando IT e marketing non parlano tra loro, la tua azienda paga il conto. Noi siamo il punto di regia che mancava.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"32px"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons" style="margin-top:32px"><!-- wp:button {"backgroundColor":"white","textColor":"black","className":"sir-btn sir-btn-outline is-style-fill","style":{"elements":{"link":{"color":{"text":"var:preset|color|black"}}}}} -->
+<div class="wp-block-button sir-btn sir-btn-outline is-style-fill"><a class="wp-block-button__link has-black-color has-white-background-color has-text-color has-background has-link-color wp-element-button" href="https://www.setitright.it/i-nostri-progetti/">Portfolio</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"textColor":"white","className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="https://www.setitright.it/contatti/">Contattaci</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"sir-hero-bg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group sir-hero-bg"></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"categories":["setitrighttheme"],"patternName":"setitrighttheme/il-problema","name":"Il Problema"},"align":"full","style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"},"blockGap":"48px","margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"1140px"}} -->
+<section class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"constrained","contentSize":"900px"}} -->
+<div class="wp-block-group"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}},"fontFamily":"ibm-plex-sans"} -->
+<h2 class="wp-block-heading has-text-align-center has-ibm-plex-sans-font-family">Quando il digitale è frammentato,<br>l’azienda rallenta.</h2>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"sir-reveal-left sir-delay-1","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"color":{"background":"#f9fafb"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group sir-reveal-left sir-delay-1 has-background" style="border-left-color:var(--wp--preset--color--gray-500);border-left-width:4px;background-color:#f9fafb;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":330,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Fornitore-IT-1.svg" alt="" class="wp-image-330"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Fornitore IT</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Gestisce i sistemi.<br>Non parla con il marketing.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"sir-reveal-left sir-delay-2","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"color":{"background":"#f9fafb"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group sir-reveal-left sir-delay-2 has-background" style="border-left-color:var(--wp--preset--color--gray-500);border-left-width:4px;background-color:#f9fafb;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:image {"id":329,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Agenzia-marketing.svg" alt="" class="wp-image-329"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Agenzia marketing</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Fa campagne.<br>Non conosce la parte tecnica.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"sir-reveal-left sir-delay-3","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"color":{"background":"#f9fafb"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group sir-reveal-left sir-delay-3 has-background" style="border-left-color:var(--wp--preset--color--gray-500);border-left-width:4px;background-color:#f9fafb;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:image {"id":331,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Freelance-sito-web.svg" alt="" class="wp-image-331"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Freelance website</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Lavora sul sito.<br>Non segue il resto.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"className":"sir-reveal-left sir-delay-4","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"color":{"background":"#f9fafb"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group sir-reveal-left sir-delay-4 has-background" style="border-left-color:var(--wp--preset--color--gray-500);border-left-width:4px;background-color:#f9fafb;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:image {"id":332,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/social-gestiti.svg" alt="" class="wp-image-332"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Social gestiti a metà</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Contenuti e post.<br>Scollegati da tutto il resto.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:group {"style":{"color":{"background":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dblack)"},"spacing":{"padding":{"top":"48px","bottom":"48px","left":"24px","right":"24px"},"margin":{"top":"var:preset|spacing|xl"}}},"layout":{"type":"constrained","contentSize":"1140px"}} -->
+<div class="wp-block-group has-background" style="background-color:var(--wp--preset--color--black);margin-top:var(--wp--preset--spacing--xl);padding-top:48px;padding-right:24px;padding-bottom:48px;padding-left:24px"><!-- wp:image {"id":838,"sizeSlug":"large","linkDestination":"none","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/04/Icon.svg" alt="" class="wp-image-838"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3,"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dwhite)"},"typography":{"textAlign":"center"}}} -->
+<h3 class="wp-block-heading has-text-align-center has-text-color" style="color:var(--wp--preset--color--white)">Risultato: nessuna regia</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dwhite-60)"},"typography":{"fontSize":"20px","lineHeight":"1.6","textAlign":"center"}}} -->
+<p class="has-text-align-center has-text-color" style="color:var(--wp--preset--color--white-60);font-size:20px;line-height:1.6">decisioni lente, attività scollegate, spreco di tempo.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"categories":["setitrighttheme"],"patternName":"setitrighttheme/la-funzione-v2","name":"La funzione"},"align":"full","style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"},"blockGap":"48px","margin":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|xl"}}},"backgroundColor":"gray-50","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-gray-50-background-color has-background" style="margin-top:var(--wp--preset--spacing--xl);margin-bottom:var(--wp--preset--spacing--xl);padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
+<h2 class="wp-block-heading has-text-align-center">Come lavoriamo davvero</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+<p class="has-text-align-center">Un metodo per gestire marketing e IT in modo coordinato e continuo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:columns {"className":"sir-reveal","style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
+<div class="wp-block-columns sir-reveal"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|black","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"dimensions":{"minHeight":"199px"}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;min-height:199px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":346,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Coordinamento-.svg" alt="" class="wp-image-346"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Coordinamento</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"xs"} -->
+<p class="has-text-color has-xs-font-size" style="color:var(--wp--preset--color--gray-500)">Allineiamo persone, strumenti e fornitori.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|black","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"dimensions":{"minHeight":"199px"}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;min-height:199px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":347,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/gestione-IT.svg" alt="" class="wp-image-347"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Connessione</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Facciamo lavorare insieme e supportiamo sistemi IT e marketing che oggi non comunicano.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|black","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"dimensions":{"minHeight":"199px"}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;min-height:199px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":348,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Supervisione.svg" alt="" class="wp-image-348"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Decisione</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Prendiamo decisioni operative.<br>Niente rimbalzi.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:columns {"className":"sir-reveal","style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
+<div class="wp-block-columns sir-reveal"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|black","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"dimensions":{"minHeight":"199px"}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;min-height:199px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":349,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Controllo-coerenza.svg" alt="" class="wp-image-349"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Continuità</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Restiamo operativi nel tempo.                                     La relazione non finisce con la consegna.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|black","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"dimensions":{"minHeight":"199px"}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;min-height:199px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":350,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/Presenza-continuativa.svg" alt="" class="wp-image-350"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Controllo</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Monitoriamo tutto.<br>E interveniamo subito.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:group {"style":{"border":{"left":{"color":"var:preset|color|black","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"},"dimensions":{"minHeight":"199px"}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;min-height:199px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:image {"id":351,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://www.setitright.it/wp-content/uploads/2026/03/responsabilita.svg" alt="" class="wp-image-351"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Responsabilità</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Ci prendiamo carico dei risultati.<br>Non solo della consulenza.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|0"}}},"backgroundColor":"black","layout":{"type":"constrained","justifyContent":"center"}} -->
+<div class="wp-block-group alignfull has-black-background-color has-background" style="margin-bottom:var(--wp--preset--spacing--0)"><!-- wp:group {"align":"full","style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"constrained","contentSize":"900px","justifyContent":"center"}} -->
+<div class="wp-block-group alignfull"><!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"},"typography":{"textAlign":"center"}},"fontSize":"lead"} -->
+<p class="has-text-align-center has-text-color has-lead-font-size" style="color:var(--wp--preset--color--gray-500)"><span style="color: #fffefe;" class="stk-highlight">Cosa gestiamo</span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"wide","style":{"typography":{"textAlign":"center"}}} -->
+<h2 class="wp-block-heading has-text-align-center alignwide"><span style="color: #ffffff;" class="stk-highlight">Due mondi, un unico ecosistema</span></h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+<p class="has-text-align-center"><span style="color: #ffffff;" class="stk-highlight">Marketing e IT, coordinati in un unico sistema operativo per la tua azienda.</span></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|xl"}}},"backgroundColor":"black","layout":{"type":"constrained","justifyContent":"center"}} -->
+<div class="wp-block-group alignfull has-black-background-color has-background" style="margin-bottom:var(--wp--preset--spacing--xl)"><!-- wp:html {"metadata":{"categories":["setitrighttheme","featured"],"patternName":"setitrighttheme/payoff-setitright","name":"Payoff Set It Right"}} -->
+<div class="sir-payoff-wrap">
+
+  <div class="sir-payoff-invite" id="sirPayoffInvite">
+    <span class="sir-payoff-invite__text">Seleziona un'area per scoprire cosa gestiamo</span>
+    <span class="sir-payoff-invite__arrow">↓</span>
+  </div>
+
+  <div class="sir-payoff-tabs">
+
+    <!-- SET IT RIGHT — IT -->
+    <div class="sir-payoff-tab sir-payoff-tab--default" data-tab="it">
+
+      <!-- Teaser default (50/50) -->
+      <div class="sir-payoff-tab__teaser-default">
+        <span class="sir-payoff-td__tag">IT management</span>
+        <div class="sir-payoff-td__divider"></div>
+        <span class="sir-payoff-td__name">Set It<br>Right</span>
+        <div class="sir-payoff-td__divider"></div>
+        <span class="sir-payoff-td__evocative">Sistemi che<br>funzionano, sempre</span>
+        <div class="sir-payoff-td__cta">
+          <div class="sir-payoff-td__cta-line"></div>
+          <span class="sir-payoff-td__cta-text">Esplora</span>
+          <span class="sir-payoff-td__cta-arrow">→</span>
+          <div class="sir-payoff-td__cta-line"></div>
+        </div>
+      </div>
+
+      <!-- Teaser compact (1/4 quando l'altra è aperta) -->
+      <div class="sir-payoff-tab__teaser-compact">
+        <span class="sir-payoff-tc__tag">IT management</span>
+        <div class="sir-payoff-tc__divider"></div>
+        <span class="sir-payoff-tc__name">Set It<br>Right</span>
+        <div class="sir-payoff-tc__divider"></div>
+        <span class="sir-payoff-tc__evocative">Sistemi che<br>funzionano</span>
+        <div class="sir-payoff-tc__cta">
+          <span class="sir-payoff-tc__cta-arrow">↓</span>
+          <span class="sir-payoff-tc__cta-text">Esplora</span>
+        </div>
+      </div>
+
+      <!-- Contenuto espanso -->
+      <div class="sir-payoff-tab__content">
+        <div class="sir-payoff-tab__header">
+          <div class="sir-payoff-tab__titles">
+            <span class="sir-payoff-tab__tag">Gestione IT e infrastruttura</span>
+            <span class="sir-payoff-tab__name">Set It Right</span>
+            <span class="sir-payoff-tab__subtitle">Infrastruttura digitale</span>
+          </div>
+          <span class="sir-payoff-tab__icon">⬡</span>
+        </div>
+        <div class="sir-payoff-tab__body">
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Infrastrutture</h4>
+            </div>
+            <p>Server, cloud, networking, sicurezza, backup e disaster recovery. Coordiniamo fornitori IT e garantiamo continuità operativa.</p>
+          </div>
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Sistemi e Applicazioni</h4>
+            </div>
+            <p>CRM, ERP, gestionali, piattaforme e-commerce. Integriamo e gestiamo l'ecosistema applicativo aziendale.</p>
+          </div>
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Siti Web e Piattaforme</h4>
+            </div>
+            <p>Sviluppo, manutenzione, hosting e performance. Supervisioniamo l'intera stack tecnologica digitale.</p>
+          </div>
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Sicurezza e Conformità</h4>
+            </div>
+            <p>GDPR, cybersecurity, accessi, audit. Coordiniamo gli aspetti di sicurezza e compliance normativa.</p>
+          </div>
+        </div>
+        <div class="sir-payoff-tab__footer">
+          <div class="sir-payoff-tab__footer-dot"></div>
+          <span class="sir-payoff-tab__footer-text">Attivo — esplora anche Say It Right →</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SAY IT RIGHT — MARKETING -->
+    <div class="sir-payoff-tab sir-payoff-tab--default" data-tab="marketing">
+
+      <!-- Teaser default -->
+      <div class="sir-payoff-tab__teaser-default">
+        <span class="sir-payoff-td__tag">Marketing</span>
+        <div class="sir-payoff-td__divider"></div>
+        <span class="sir-payoff-td__name">Say It<br>Right</span>
+        <div class="sir-payoff-td__divider"></div>
+        <span class="sir-payoff-td__evocative">Comunicazione<br>che converte</span>
+        <div class="sir-payoff-td__cta">
+          <div class="sir-payoff-td__cta-line"></div>
+          <span class="sir-payoff-td__cta-text">Esplora</span>
+          <span class="sir-payoff-td__cta-arrow">→</span>
+          <div class="sir-payoff-td__cta-line"></div>
+        </div>
+      </div>
+
+      <!-- Teaser compact -->
+      <div class="sir-payoff-tab__teaser-compact">
+        <span class="sir-payoff-tc__tag">Marketing</span>
+        <div class="sir-payoff-tc__divider"></div>
+        <span class="sir-payoff-tc__name">Say It<br>Right</span>
+        <div class="sir-payoff-tc__divider"></div>
+        <span class="sir-payoff-tc__evocative">Comunicazione<br>che converte</span>
+        <div class="sir-payoff-tc__cta">
+          <span class="sir-payoff-tc__cta-arrow">↓</span>
+          <span class="sir-payoff-tc__cta-text">Esplora</span>
+        </div>
+      </div>
+
+      <!-- Contenuto espanso -->
+      <div class="sir-payoff-tab__content">
+        <div class="sir-payoff-tab__header">
+          <div class="sir-payoff-tab__titles">
+            <span class="sir-payoff-tab__tag">Gestione marketing e comunicazione</span>
+            <span class="sir-payoff-tab__name">Say It Right</span>
+            <span class="sir-payoff-tab__subtitle">Comunicazione digitale</span>
+          </div>
+          <span class="sir-payoff-tab__icon">◈</span>
+        </div>
+        <div class="sir-payoff-tab__body">
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Strategia e Pianificazione</h4>
+            </div>
+            <p>Obiettivi, target, posizionamento e piano editoriale. Coordiniamo la visione comunicativa complessiva.</p>
+          </div>
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Digital Marketing</h4>
+            </div>
+            <p>SEO, SEM, social media, email marketing, advertising. Gestiamo campagne e fornitori per risultati misurabili.</p>
+          </div>
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Contenuti e Branding</h4>
+            </div>
+            <p>Copywriting, visual design, video, storytelling. Coordiniamo creativi e agenzie per una comunicazione coerente.</p>
+          </div>
+          <div class="sir-payoff-item">
+            <div class="sir-payoff-item__row">
+              <div class="sir-payoff-item__bullet"></div>
+              <h4>Analytics e Reportistica</h4>
+            </div>
+            <p>KPI, analisi performance, ottimizzazione. Traduciamo i dati in decisioni operative concrete.</p>
+          </div>
+        </div>
+        <div class="sir-payoff-tab__footer">
+          <div class="sir-payoff-tab__footer-dot"></div>
+          <span class="sir-payoff-tab__footer-text">Attivo — esplora anche Set It Right →</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Reset -->
+  <div class="sir-payoff-reset" id="sirPayoffReset" style="display:none;">
+    <button class="sir-payoff-reset__btn" id="sirPayoffResetBtn">← Torna alla vista iniziale</button>
+  </div>
+
+  <!-- Nav mobile -->
+  <div class="sir-payoff-mobile-nav">
+    <button class="sir-payoff-mobile-btn" data-target="it">Set It Right</button>
+    <button class="sir-payoff-mobile-btn" data-target="marketing">Say It Right</button>
+    <button class="sir-payoff-mobile-btn sir-payoff-mobile-btn--reset" id="sirMobileReset" style="display:none;">↩ Reset</button>
+  </div>
+
+</div>
+<!-- /wp:html --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"categories":["setitrighttheme"],"patternName":"setitrighttheme/chi-siamo","name":"Chi Siamo"},"style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"},"blockGap":"48px","margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained","contentSize":"1140px"}} -->
+<section class="wp-block-group" style="margin-top:0;margin-bottom:0;padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"constrained","contentSize":"900px"}} -->
+<div class="wp-block-group"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
+<h2 class="wp-block-heading has-text-align-center">Chi siamo</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"},"typography":{"textAlign":"center"}},"fontSize":"lead"} -->
+<p class="has-text-align-center has-text-color has-lead-font-size" style="color:var(--wp--preset--color--gray-500)">Siamo la regia operativa tra IT e comunicazione: coordiniamo, gestiamo e rendiamo coerente il digitale nel tempo.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"48px"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"width":"55%"} -->
+<div class="wp-block-column" style="flex-basis:55%"><!-- wp:group {"style":{"spacing":{"blockGap":"24px"}}} -->
+<div class="wp-block-group"><!-- wp:group {"className":"sir-reveal-tilt","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dblack)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"}},"backgroundColor":"gray-50"} -->
+<div class="wp-block-group sir-reveal-tilt has-gray-50-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Unico referente</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Una sola direzione, una sola responsabilità.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"sir-reveal-tilt","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dblack)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"}},"backgroundColor":"gray-50"} -->
+<div class="wp-block-group sir-reveal-tilt has-gray-50-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Zero rimbalzi</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Niente “non è di mia competenza”: coordiniamo noi.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"sir-reveal-tilt","style":{"border":{"left":{"color":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dblack)","width":"4px"}},"spacing":{"padding":{"top":"24px","bottom":"24px","left":"24px","right":"24px"},"blockGap":"8px"}},"backgroundColor":"gray-50"} -->
+<div class="wp-block-group sir-reveal-tilt has-gray-50-background-color has-background" style="border-left-color:var(--wp--preset--color--black);border-left-width:4px;padding-top:24px;padding-right:24px;padding-bottom:24px;padding-left:24px"><!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
+<p style="font-weight:600">Presenza continuativa</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"}},"fontSize":"small"} -->
+<p class="has-text-color has-small-font-size" style="color:var(--wp--preset--color--gray-500)">Non un progetto “una tantum”: una regia stabile nel tempo.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"45%"} -->
+<div class="wp-block-column" style="flex-basis:45%"><!-- wp:group {"style":{"spacing":{"blockGap":"16px"}}} -->
+<div class="wp-block-group"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Un unico referente, zero rimbalzi</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"},"typography":{"lineHeight":"1.7"}}} -->
+<p class="has-text-color" style="color:var(--wp--preset--color--gray-500);line-height:1.7">Quando fornitori e team lavorano “a silos”, l’azienda rallenta.<br>Noi entriamo come figura stabile: traduciamo esigenze, allineiamo le priorità e coordiniamo l’operatività.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"},"typography":{"lineHeight":"1.7"}}} -->
+<p class="has-text-color" style="color:var(--wp--preset--color--gray-500);line-height:1.7"><strong>Il risultato è semplice:</strong> meno dispersione, più controllo, decisioni più rapide.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline sir-btn ","style":{"typography":{"textAlign":"center"}}} -->
+<div class="wp-block-button is-style-outline sir-btn"><a class="wp-block-button__link has-text-align-center wp-element-button" href="https://www.setitright.it/come-lavoriamo/">Scopri il metodo</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"categories":["setitrighttheme"],"patternName":"setitrighttheme/progetti-gestiti","name":"Progetti gestiti"},"style":{"spacing":{"padding":{"top":"96px","bottom":"96px","left":"24px","right":"24px"},"blockGap":"48px"}},"layout":{"type":"constrained","wideSize":"1488px"},"anchor":"progetti"} -->
+<section id="progetti" class="wp-block-group" style="padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"style":{"spacing":{"blockGap":"12px"}},"layout":{"type":"constrained","contentSize":"900px"}} -->
+<div class="wp-block-group"><!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
+<h2 class="wp-block-heading has-text-align-center">Progetti gestiti</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dgray-500)"},"typography":{"textAlign":"center"}},"fontSize":"lead"} -->
+<p class="has-text-align-center has-text-color has-lead-font-size" style="color:var(--wp--preset--color--gray-500)">
+			Realtà che seguiamo con continuità, coordinando ogni aspetto della loro presenza digitale.
+		</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:stackable/feature-grid {"uniqueId":"30c364a","blockMargin":{"bottom":10},"align":"wide","contentAlign":"left","innerBlockContentAlign":"alignwide","className":"is-style-default"} -->
+<div class="wp-block-stackable-feature-grid alignwide stk-block-feature-grid stk-block-columns stk-block stk-30c364a is-style-default" data-block-id="30c364a"><style>.stk-30c364a {margin-bottom:10px !important;}</style><div class="stk-row stk-inner-blocks has-text-align-left stk-block-content stk-content-align stk-30c364a-column alignwide"><!-- wp:stackable/column {"uniqueId":"dc8ddf6","blockBorderType":"solid","blockBorderWidth":{"top":0,"right":0,"bottom":0,"left":0},"hasContainer":true} -->
+<div class="wp-block-stackable-column stk-block-column stk-column stk-block stk-dc8ddf6" data-v="4" data-block-id="dc8ddf6"><style>.stk-dc8ddf6 {border-style:solid !important;border-top-width:0px !important;border-right-width:0px !important;border-bottom-width:0px !important;border-left-width:0px !important;}</style><div class="stk-column-wrapper stk-block-column__content stk-container stk-dc8ddf6-container stk-hover-parent"><div class="stk-block-content stk-inner-blocks stk-dc8ddf6-inner-blocks"><!-- wp:stackable/image {"uniqueId":"2a26138","blockMargin":{"bottom":""},"imageUrl":"https://www.setitright.it/wp-content/uploads/2026/04/prefabbricati-moioli-set-it-right.webp","imageId":584,"imageWidthAttribute":1492,"imageHeightAttribute":862,"imageHeight":326,"imageWidth":100,"align":"left"} -->
+<div class="wp-block-stackable-image alignleft stk-block-image stk-block stk-2a26138" data-block-id="2a26138"><style>.stk-2a26138 .stk-img-wrapper{width:100% !important;height:326px !important;}</style><figure><span class="stk-img-wrapper stk-image--shape-stretch"><img class="stk-img wp-image-584" src="https://www.setitright.it/wp-content/uploads/2026/04/prefabbricati-moioli-set-it-right.webp" width="1492" height="862"/></span></figure></div>
+<!-- /wp:stackable/image -->
+
+<!-- wp:paragraph -->
+<p>Settore B2B</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"align":"wide","style":{"typography":{"textAlign":"left"}}} -->
+<h3 class="wp-block-heading has-text-align-left alignwide"><strong>Direzione marketing esterna <a href="https://prefabbricatimoioli.it/" type="link" id="https://prefabbricatimoioli.it/">Prefabbricati Moioli</a></strong></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Analisi, strategia e attivazione operativa per trasformare un’azienda senza comunicazione in un brand strutturato, coerente e riconoscibile.</p>
+<!-- /wp:paragraph --></div><a class="stk-link stk-block-link stk--transparent-overlay" href="https://www.setitright.it/progetto/una-direzione-marketing-esterna-non-un-semplice-intervento/" aria-hidden="true" tabindex="-1"></a></div></div>
+<!-- /wp:stackable/column -->
+
+<!-- wp:stackable/column {"uniqueId":"26f80aa","blockBorderType":"solid","blockBorderWidth":{"top":0,"right":0,"bottom":0,"left":0},"blockBorderRadius2":{"top":"var(\u002d\u002dstk\u002d\u002dpreset\u002d\u002dborder-radius\u002d\u002dnone, 0px)","right":"var(\u002d\u002dstk\u002d\u002dpreset\u002d\u002dborder-radius\u002d\u002dnone, 0px)","bottom":"var(\u002d\u002dstk\u002d\u002dpreset\u002d\u002dborder-radius\u002d\u002dnone, 0px)","left":"var(\u002d\u002dstk\u002d\u002dpreset\u002d\u002dborder-radius\u002d\u002dnone, 0px)"},"blockShadow":"none","hasContainer":true} -->
+<div class="wp-block-stackable-column stk-block-column stk-column stk-block stk-26f80aa" data-v="4" data-block-id="26f80aa"><style>.stk-26f80aa {border-top-left-radius:var(--stk--preset--border-radius--none, 0px) !important;border-top-right-radius:var(--stk--preset--border-radius--none, 0px) !important;border-bottom-right-radius:var(--stk--preset--border-radius--none, 0px) !important;border-bottom-left-radius:var(--stk--preset--border-radius--none, 0px) !important;overflow:hidden !important;box-shadow:none !important;border-style:solid !important;border-top-width:0px !important;border-right-width:0px !important;border-bottom-width:0px !important;border-left-width:0px !important;}</style><div class="stk-column-wrapper stk-block-column__content stk-container stk-26f80aa-container stk-hover-parent"><div class="stk-block-content stk-inner-blocks stk-26f80aa-inner-blocks"><!-- wp:stackable/image {"uniqueId":"631368c","blockMargin":{"bottom":0},"imageUrl":"https://www.setitright.it/wp-content/uploads/2026/03/Screenshot-2026-03-31-180038.png","imageId":400,"imageWidthAttribute":1351,"imageHeightAttribute":976,"imageHeight":299,"imageWidth":100} -->
+<div class="wp-block-stackable-image stk-block-image stk-block stk-631368c" data-block-id="631368c"><style>.stk-631368c {margin-bottom:0px !important;}.stk-631368c .stk-img-wrapper{width:100% !important;height:299px !important;}</style><figure><span class="stk-img-wrapper stk-image--shape-stretch"><img class="stk-img wp-image-400" src="https://www.setitright.it/wp-content/uploads/2026/03/Screenshot-2026-03-31-180038.png" width="1351" height="976"/></span></figure></div>
+<!-- /wp:stackable/image -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Settore B2B</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"align":"wide","style":{"typography":{"textAlign":"left"}}} -->
+<h3 class="wp-block-heading has-text-align-left alignwide"><strong>Sviluppo Web App Custom</strong> - <a href="https://www.zigolietosato.it/" type="link" id="https://www.zigolietosato.it/">Zigoli&amp;Tosato </a>vendita registratori di cassa e assistenza tecnica</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Gestione scadenze, assistenza tecnica e presenza digitale per una rete di oltre 1.100 dispositivi sul territorio.</p>
+<!-- /wp:paragraph --></div><a class="stk-link stk-block-link stk--transparent-overlay" href="https://www.setitright.it/progetto/scadenziario-app/" aria-hidden="true" tabindex="-1"></a></div></div>
+<!-- /wp:stackable/column --></div></div>
+<!-- /wp:stackable/feature-grid -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://www.setitright.it/i-nostri-progetti/">Vedi tutti i progetti</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"48px","bottom":"48px","left":"24px","right":"24px"},"blockGap":"16px","margin":{"top":"var:preset|spacing|md","bottom":"var:preset|spacing|md"}},"elements":{"link":{"color":{"text":"var:preset|color|black"}}}},"backgroundColor":"gray-50","textColor":"black","layout":{"type":"constrained","contentSize":"1140px"}} -->
+<div class="wp-block-group alignfull has-black-color has-gray-50-background-color has-text-color has-background has-link-color" style="margin-top:var(--wp--preset--spacing--md);margin-bottom:var(--wp--preset--spacing--md);padding-top:48px;padding-right:24px;padding-bottom:48px;padding-left:24px"><!-- wp:heading {"align":"full","style":{"typography":{"textAlign":"center"}},"textColor":"black"} -->
+<h2 class="wp-block-heading has-text-align-center alignfull has-black-color has-text-color"><span style="color: #0f0e17;" class="stk-highlight">Parliamone</span></h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dwhite-60)"},"typography":{"fontSize":"20px","lineHeight":"1.6","textAlign":"center"}}} -->
+<p class="has-text-align-center has-text-color" style="color:var(--wp--preset--color--white-60);font-size:20px;line-height:1.6"><span style="color: #000000;" class="stk-highlight">Se il tuo digitale è frammentato, è il momento di rimettere ordine. Gestiamo marketing e IT come un sistema unico </span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dwhite-60)"},"typography":{"fontSize":"20px","lineHeight":"1.6","textAlign":"center"}}} -->
+<p class="has-text-align-center has-text-color" style="color:var(--wp--preset--color--white-60);font-size:20px;line-height:1.6"><span style="color: #000000;" class="stk-highlight">con un solo interlocutore.</span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"has-text-color","style":{"color":{"text":"var(\u002d\u002dwp\u002d\u002dpreset\u002d\u002dcolor\u002d\u002dwhite-60)"},"typography":{"fontSize":"20px","lineHeight":"1.6","textAlign":"center"}}} -->
+<p class="has-text-align-center has-text-color" style="color:var(--wp--preset--color--white-60);font-size:20px;line-height:1.6"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"backgroundColor":"gray-50","layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons has-gray-50-background-color has-background"><!-- wp:button {"backgroundColor":"black","textColor":"gray-50","style":{"elements":{"link":{"color":{"text":"var:preset|color|gray-50"}}},"typography":{"textAlign":"center"}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-gray-50-color has-black-background-color has-text-color has-background has-link-color has-text-align-center wp-element-button" href="https://www.setitright.it/contatti/"><span style="color: #fffffe;" class="stk-highlight">Richiedi un incontro</span></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

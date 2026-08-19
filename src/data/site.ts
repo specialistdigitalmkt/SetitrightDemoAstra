@@ -7,6 +7,7 @@ export const site = {
   url: 'https://www.setitright.it',
   logo: '/img/LOGO-SET-IT-RIGHT-IT-semplicifcata-per-svg.svg',
   email: 'info@setitright.it',
+  linkedin: 'https://www.linkedin.com/company/setitright',
   locale: 'it_IT',
 };
 

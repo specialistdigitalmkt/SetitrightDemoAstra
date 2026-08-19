@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Cta from '../../components/Cta.astro';
 import { progetti } from '../../data/progetti';
 import type { GetStaticPaths } from 'astro';
 
@@ -11,63 +10,218 @@ export const getStaticPaths = (() =>
   }))) satisfies GetStaticPaths;
 
 const { progetto } = Astro.props;
+const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
 ---
 
 <Base title={progetto.titolo} description={progetto.abstract}>
-  <section class="sir-section sir-on-dark">
-    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
-      <p class="sir-eyebrow">{progetto.settore}</p>
-      <h1>{progetto.titolo}</h1>
-      {
-        progetto.cliente && (
-          <p class="sir-lead">
-            <a href={progetto.cliente.url} rel="noopener noreferrer" target="_blank">
-              {progetto.cliente.nome}
-            </a>
-          </p>
-        )
-      }
+  <section class="sir-hero-progetto">
+    <div class="sir-container sir-hero-progetto__inner">
+      <div class="sir-stack sir-stack--xs">
+        <span class="sir-eyebrow">{progetto.categoriaLabel}</span>
+        <h1>{progetto.titolo}</h1>
+        <p class="sir-lead">
+          {
+            progetto.cliente.url ? (
+              <a href={progetto.cliente.url} rel="noopener noreferrer" target="_blank">
+                {progetto.cliente.nome}
+              </a>
+            ) : (
+              progetto.cliente.nome
+            )
+          }
+        </p>
+      </div>
+      <img class="sir-hero-progetto__logo" src={progetto.logo} alt={progetto.cliente.nome} loading="eager" />
     </div>
   </section>
 
-  <section class="sir-section">
+  <figure class="sir-progetto-figura">
+    <img src={progetto.immagine} alt={`Progetto ${progetto.titolo}`} width="1024" height="576" />
+  </figure>
+
+  <section class="sir-section" aria-labelledby="panoramica-title">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--sm">
+      <h2 id="panoramica-title">Panoramica progetto</h2>
+      {progetto.panoramica.map((par) => <p class="sir-muted sir-testo">{par}</p>)}
+    </div>
+  </section>
+
+  <section class="sir-section sir-on-gray" aria-labelledby="sfide-title">
     <div class="sir-container sir-stack sir-stack--md">
-      <img class="sir-progetto__hero" src={progetto.immagine} alt="" width="1400" height="800" />
-
-      <p class="sir-lead sir-container--narrow" style="margin-inline:auto">{progetto.abstract}</p>
-
-      <div class="sir-grid sir-grid--2">
-        <div class="sir-card sir-card--strong sir-reveal">
-          <p class="sir-card__title">Cosa abbiamo fatto</p>
-          <ul class="sir-list">
-            {progetto.attivita.map((voce) => <li>{voce}</li>)}
-          </ul>
-        </div>
-        <div class="sir-card sir-card--strong sir-reveal sir-delay-2">
-          <p class="sir-card__title">Risultati</p>
-          <ul class="sir-list">
-            {progetto.risultati.map((voce) => <li>{voce}</li>)}
-          </ul>
-        </div>
-      </div>
-
-      <div class="sir-btns">
-        <a class="sir-btn sir-btn--outline" href="/i-nostri-progetti/">← Tutti i progetti</a>
+      <h2 id="sfide-title" class="sir-center">Le sfide</h2>
+      <div class="sir-grid sir-grid--3">
+        {
+          progetto.sfide.map((s, i) => (
+            <article class:list={['sir-card', 'sir-card--strong', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+              <p class="sir-card__title">{s.titolo}</p>
+              <p class="sir-card__text">{s.testo}</p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <Cta />
+  <section class="sir-section" aria-labelledby="soluzione-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <h2 id="soluzione-title" class="sir-center">La soluzione</h2>
+      <div class="sir-grid sir-grid--3">
+        {
+          progetto.soluzione.map((s, i) => (
+            <article class:list={['sir-card', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+              <p class="sir-card__title">{s.titolo}</p>
+              <p class="sir-card__text">{s.testo}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="sir-stack sir-stack--xs sir-center sir-tecnologie">
+        <h3>Tecnologie e strumenti</h3>
+        <div class="sir-tecnologie__lista">
+          {progetto.tecnologie.map((t) => <span class="sir-tag">{t}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    progetto.risultati.length > 0 && (
+      <section class="sir-risultati" aria-labelledby="risultati-title">
+        <div class="sir-container sir-stack sir-stack--md">
+          <h2 id="risultati-title" class="sir-center">
+            I risultati
+          </h2>
+          <div class="sir-grid sir-grid--4">
+            {progetto.risultati.map((r) => (
+              <div class="sir-risultato sir-reveal">
+                {r.valore && <span class="sir-risultato__valore">{r.valore}</span>}
+                <span class="sir-risultato__etichetta">{r.etichetta}</span>
+                {r.descrizione && <span class="sir-risultato__desc">{r.descrizione}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="sir-section" aria-labelledby="altri-title">
+    <div class="sir-container sir-stack sir-stack--sm">
+      <h2 id="altri-title" class="sir-center">Altri progetti</h2>
+      <ul class="sir-altri">
+        {
+          altri.map((p) => (
+            <li>
+              <a href={`/progetto/${p.slug}/`}>
+                <span class="sir-eyebrow">{p.categoriaLabel}</span>
+                <span>{p.titolo}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="sir-btns">
+        <a class="sir-btn sir-btn--outline" href="/i-nostri-progetti/">Vedi tutti i progetti</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sir-section sir-portfolio-cta">
+    <div class="sir-portfolio-cta__box">
+      <h3>Vuoi costruire un progetto simile?</h3>
+      <p>
+        Possiamo aiutarti a coordinare comunicazione, presenza digitale e infrastruttura operativa in
+        modo più ordinato.
+      </p>
+      <div class="sir-btns">
+        <a class="sir-btn sir-btn--fill" href="/contatti/">Parliamone</a>
+      </div>
+    </div>
+  </section>
 </Base>
 
 <style>
-  .sir-progetto__hero { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-  .sir-card--strong { border-left-color: var(--sir-black); background: var(--sir-gray-50); }
-  .sir-list {
-    margin: 0;
-    padding-left: 18px;
-    color: var(--sir-gray-500);
-    font-size: var(--sir-fs-small);
-    line-height: 1.7;
+  .sir-hero-progetto {
+    padding: var(--sir-space-lg) var(--sir-space-sm);
+    background: var(--sir-black);
+    color: var(--sir-white);
+  }
+  .sir-hero-progetto__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sir-space-md);
+  }
+  .sir-hero-progetto .sir-eyebrow,
+  .sir-hero-progetto .sir-lead { color: var(--sir-white-60); }
+  .sir-hero-progetto__logo {
+    flex: none;
+    width: clamp(80px, 12vw, 120px);
+    height: auto;
+    background: var(--sir-white);
+    padding: 12px;
+  }
+
+  .sir-progetto-figura { margin: 0; }
+  .sir-progetto-figura img { width: 100%; max-height: 620px; object-fit: cover; }
+
+  .sir-testo { line-height: 1.75; }
+
+  .sir-tecnologie { margin-top: var(--sir-space-sm); }
+  .sir-tecnologie__lista { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+  .sir-risultati {
+    padding: var(--sir-space-xl) var(--sir-space-sm);
+    background: var(--sir-ink);
+    color: var(--sir-white);
+  }
+  .sir-risultato { display: flex; flex-direction: column; gap: 8px; text-align: center; }
+  .sir-risultato__valore {
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+  .sir-risultato__etichetta {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .sir-risultato__desc { font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.58); }
+
+  .sir-altri { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--sir-gray-300); }
+  .sir-altri a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px var(--sir-space-sm);
+    background: var(--sir-white);
+    text-decoration: none;
+    transition: background-color 0.2s var(--sir-ease);
+  }
+  .sir-altri a:hover { background: var(--sir-gray-50); }
+
+  .sir-portfolio-cta { padding-top: 32px; }
+  .sir-portfolio-cta__box {
+    max-width: 800px;
+    margin-inline: auto;
+    padding: 48px 24px;
+    background: var(--sir-ink);
+    color: var(--sir-white);
+    text-align: center;
+  }
+  .sir-portfolio-cta__box h3 { margin-bottom: 16px; }
+  .sir-portfolio-cta__box p {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 700px) {
+    .sir-hero-progetto__inner { flex-direction: column; align-items: flex-start; }
   }
 </style>

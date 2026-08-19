@@ -1,70 +1,252 @@
 ---
 import Base from '../layouts/Base.astro';
-import Metodo from '../components/home/Metodo.astro';
+import Icon from '../components/Icon.astro';
 import Cta from '../components/Cta.astro';
 
-const fasi = [
+const frammentazione = [
+  {
+    icona: 'sistemi-scollegati',
+    titolo: 'Sistemi scollegati',
+    testo: 'Troppi strumenti, nessuna visione. I dati non parlano tra loro e il lavoro rallenta.',
+  },
+  {
+    icona: 'fornitori-disallineati',
+    titolo: 'Fornitori disallineati',
+    testo: 'IT, marketing, web, social: ognuno lavora per conto suo, senza una visione comune.',
+  },
+  {
+    icona: 'nessuna-responsabilita',
+    titolo: 'Nessuna responsabilità',
+    testo: 'Nessuno ha la responsabilità complessiva. Ogni progetto è un’emergenza separata.',
+  },
+];
+
+const metodo = [
   {
     numero: '01',
     titolo: 'Analisi',
     testo:
-      'Mappiamo fornitori, strumenti, contratti e attività in corso. Emergono sovrapposizioni, buchi e costi che nessuno stava presidiando.',
+      'Mappiamo l’esistente e compariamo con i competitor principali: fornitori, strumenti, processi, criticità.',
   },
   {
     numero: '02',
-    titolo: 'Regia',
+    titolo: 'Coordinamento',
     testo:
-      'Definiamo priorità, responsabilità e tempi. Diventiamo il punto di contatto unico tra azienda, IT e marketing.',
+      'Definiamo ruoli chiari, processi comuni e una governance operativa tra tutti i soggetti coinvolti.',
   },
   {
     numero: '03',
-    titolo: 'Operatività',
-    testo:
-      'Coordiniamo l’esecuzione: interveniamo dove serve, deleghiamo dove ha senso, verifichiamo sempre il risultato.',
+    titolo: 'Implementazione',
+    testo: 'Attiviamo i progetti necessari, coordiniamo gli interventi e monitoriamo l’esecuzione.',
   },
   {
     numero: '04',
-    titolo: 'Continuità',
+    titolo: 'Gestione continua',
     testo:
-      'Restiamo dentro nel tempo, con monitoraggio e revisioni periodiche. La relazione non finisce con la consegna.',
+      'Restiamo operativi nel tempo. Non siamo un progetto, siamo un punto di riferimento stabile.',
+  },
+];
+
+const collaborazione = [
+  {
+    titolo: 'Primo contatto',
+    testo:
+      'Un incontro conoscitivo per capire la vostra realtà, le esigenze e le criticità attuali. Nessun impegno, solo ascolto e chiarezza.',
+  },
+  {
+    titolo: 'Analisi e proposta',
+    testo:
+      'Analizziamo l’ecosistema digitale esistente e vi presentiamo un piano operativo chiaro: cosa fare, come e con quali priorità.',
+  },
+  {
+    titolo: 'Setup operativo',
+    testo:
+      'Attiviamo la collaborazione: definiamo ruoli, processi, strumenti e mettiamo ordine nell’esistente prima di costruire il nuovo.',
+  },
+];
+
+const continuita = [
+  {
+    icona: 'presenza-continua',
+    titolo: 'Presenza continua',
+    testo:
+      'Non siamo un progetto a termine. Restiamo operativi nel tempo come punto di riferimento stabile per la vostra operatività digitale.',
+  },
+  {
+    icona: 'supervisione-attiva',
+    titolo: 'Supervisione attiva',
+    testo:
+      'Monitoriamo costantemente IT e comunicazione, coordiniamo i fornitori e garantiamo che tutto funzioni in modo coerente.',
+  },
+  {
+    icona: 'responsabilita-diretta',
+    titolo: 'Responsabilità diretta',
+    testo:
+      'Prendiamo in carico la gestione complessiva. Non solo consulenza, ma responsabilità operativa sui risultati.',
   },
 ];
 ---
 
 <Base
-  title="Come lavoriamo"
-  description="Il metodo Set It Right: analisi, regia, operatività e continuità per gestire IT e marketing come un sistema unico."
+  title="Come lavoriamo: il nostro metodo"
+  description="Il metodo Set It Right per una gestione integrata di marketing e IT: analisi, coordinamento, implementazione e gestione continua. Un unico referente, una sola direzione."
 >
-  <section class="sir-section sir-on-dark">
+  <section class="sir-section">
     <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
-      <p class="sir-eyebrow">Il metodo</p>
-      <h1>Come lavoriamo</h1>
+      <h1>Come lavoriamo: il nostro metodo</h1>
+      <h3 class="sir-intro">
+        Il nostro metodo nasce per offrire una <strong>gestione integrata di marketing e IT per
+        aziende</strong>, eliminando la frammentazione tra fornitori
+      </h3>
+      <p class="sir-reveal-soft">Un unico metodo, un unico referente, una sola direzione.</p>
+    </div>
+  </section>
+
+  <section class="sir-section" aria-labelledby="frammentazione-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <h2 id="frammentazione-title" class="sir-center">
+        Il vero problema non è la tecnologia.<br />È la non direzione unica.
+      </h2>
+
+      <div class="sir-grid sir-grid--3">
+        {
+          frammentazione.map((item, i) => (
+            <article class:list={['sir-card', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+              <Icon name={item.icona} />
+              <p class="sir-card__title">{item.titolo}</p>
+              <p class="sir-card__text">{item.testo}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="sir-statement sir-on-dark">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
+      <Icon name="regia-unica" size={48} class="sir-statement__icon" />
+      <h3>Entriamo dove tutto è frammentato<br />e lo trasformiamo in un sistema che funziona.</h3>
       <p class="sir-lead">
-        Non vendiamo un progetto: prendiamo in carico la regia del digitale aziendale, e la teniamo
-        nel tempo.
+        Coordiniamo persone, strumenti e processi.<br />E soprattutto: ci prendiamo la responsabilità.
       </p>
     </div>
   </section>
 
-  <section class="sir-section">
-    <div class="sir-container sir-grid sir-grid--2">
-      {
-        fasi.map((fase) => (
-          <article class="sir-card sir-card--black-rule sir-reveal">
-            <span class="sir-eyebrow">{fase.numero}</span>
-            <p class="sir-card__title">{fase.titolo}</p>
-            <p class="sir-card__text">{fase.testo}</p>
-          </article>
-        ))
-      }
+  <section class="sir-section sir-on-gray" aria-labelledby="metodo-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <h2 id="metodo-title" class="sir-center">Il Metodo</h2>
+
+      <div class="sir-grid sir-grid--4">
+        {
+          metodo.map((fase, i) => (
+            <article class:list={['sir-card', 'sir-card--strong', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+              <span class="sir-card__numero">{fase.numero}</span>
+              <p class="sir-card__title">{fase.titolo}</p>
+              <p class="sir-card__text">{fase.testo}</p>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 
-  <Metodo titolo="I sei pilastri" sottotitolo="Cosa garantiamo, in concreto, ogni mese." />
+  <section class="sir-section sir-on-gray sir-collab" aria-labelledby="collaborazione-title">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--md">
+      <h2 id="collaborazione-title" class="sir-center sir-collab__title">
+        Come inizia la collaborazione
+      </h2>
 
-  <Cta />
+      <ol class="sir-steps">
+        {
+          collaborazione.map((step, i) => (
+            <li class="sir-step sir-reveal-soft">
+              <span class="sir-step__num" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div class="sir-step__body">
+                <h3>{step.titolo}</h3>
+                <p>{step.testo}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="sir-section" aria-labelledby="continuita-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <h2 id="continuita-title" class="sir-center">Non finisce qui</h2>
+
+      <div class="sir-grid sir-grid--3">
+        {
+          continuita.map((item, i) => (
+            <article class:list={['sir-card', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+              <Icon name={item.icona} />
+              <p class="sir-card__title">{item.titolo}</p>
+              <p class="sir-card__text">{item.testo}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Cta testo="Se il vostro ecosistema digitale è frammentato e volete un metodo di gestione unico di marketing e IT per la vostra azienda." />
 </Base>
 
 <style>
-  .sir-card--black-rule { border-left-color: var(--sir-black); }
+  .sir-intro {
+    font-weight: 400;
+    line-height: 1.35;
+  }
+  .sir-intro strong { font-weight: 600; }
+
+  .sir-statement {
+    padding: var(--sir-space-md) var(--sir-space-sm);
+  }
+  .sir-statement__icon { margin-inline: auto; }
+
+  .sir-card__numero {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--sir-black);
+  }
+
+  .sir-collab { padding-top: 0; }
+  .sir-collab__title {
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--sir-ink);
+  }
+
+  .sir-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sir-space-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sir-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sir-space-sm);
+  }
+  .sir-step__num {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    background: var(--sir-black);
+    color: var(--sir-white);
+    font-weight: 500;
+  }
+  .sir-step__body { display: flex; flex-direction: column; gap: var(--sir-space-xs); }
+  .sir-step__body h3 { font-weight: 500; line-height: 1.25; color: var(--sir-ink); }
+  .sir-step__body p { color: var(--sir-gray-700); line-height: 1.65; }
 </style>

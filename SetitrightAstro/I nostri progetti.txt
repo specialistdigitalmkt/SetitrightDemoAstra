@@ -1,0 +1,49 @@
+<!-- wp:group {"align":"wide","className":"sir-projects-header","style":{"spacing":{"padding":{"top":"80px","bottom":"64px","left":"20px","right":"20px"},"margin":{"top":"var:preset|spacing|3xl","bottom":"var:preset|spacing|3xl"}}},"backgroundColor":"gray-50","layout":{"type":"constrained","contentSize":"1400px"}} -->
+<div class="wp-block-group alignwide sir-projects-header has-gray-50-background-color has-background" style="margin-top:var(--wp--preset--spacing--3-xl);margin-bottom:var(--wp--preset--spacing--3-xl);padding-top:80px;padding-right:20px;padding-bottom:64px;padding-left:20px"><!-- wp:heading {"textAlign":"center","level":1,"className":"sir-projects-title"} -->
+<h1 class="wp-block-heading has-text-align-center sir-projects-title">I Nostri Progetti</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","className":"sir-projects-subtitle","style":{"typography":{"fontSize":"16px"}},"textColor":"gray-700"} -->
+<p class="has-text-align-center sir-projects-subtitle has-gray-700-color has-text-color" style="font-size:16px">Dove comunicazione e tecnologia si incontrano per creare valore. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"align":"center","className":"sir-projects-subtitle","style":{"typography":{"fontSize":"16px"}},"textColor":"gray-700"} -->
+<p class="has-text-align-center sir-projects-subtitle has-gray-700-color has-text-color" style="font-size:16px">Una selezione di progetti di marketing e IT per aziende, in cui abbiamo coordinato siti web, sistemi digitali IT e comunicazione per ottenere risultati concreti.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:shortcode -->
+[projects_filters]
+<!-- /wp:shortcode -->
+
+<!-- wp:query {"queryId":16,"query":{"perPage":10,"pages":0,"offset":0,"postType":"progetto","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-grid-posts","name":"Griglia"}} -->
+<div class="wp-block-query"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:post-terms {"term":"categoria_progetto"} /-->
+
+<!-- wp:group {"className":"sir-project-card sir-reveal-left sir-delay-1","style":{"spacing":{"padding":{"top":"30px","right":"30px","bottom":"30px","left":"30px"}}},"layout":{"inherit":false}} -->
+<div class="wp-block-group sir-project-card sir-reveal-left sir-delay-1" style="padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px"><!-- wp:post-title {"isLink":true} /-->
+
+<!-- wp:post-excerpt {"moreText":""} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:post-terms {"term":"tecnologia_progetto"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query -->
+
+<!-- wp:group {"tagName":"section","metadata":{"categories":["setitrighttheme"],"patternName":"setitrighttheme/portfolio-cta","name":"Portfolio CTA"},"style":{"spacing":{"padding":{"top":"32px","bottom":"96px","left":"24px","right":"24px"}}},"layout":{"type":"constrained","contentSize":"1140px"}} -->
+<section class="wp-block-group" style="padding-top:32px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"style":{"color":{"background":"#0a0a0a"},"spacing":{"padding":{"top":"48px","bottom":"48px","left":"24px","right":"24px"},"blockGap":"16px"},"border":{"radius":"0px"}},"layout":{"type":"constrained","contentSize":"800px"}} -->
+<div class="wp-block-group has-background" style="border-radius:0px;background-color:#0a0a0a;padding-top:48px;padding-right:24px;padding-bottom:48px;padding-left:24px"><!-- wp:heading {"textAlign":"center","level":3,"style":{"color":{"text":"#ffffff"}}} -->
+<h3 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff">Hai un progetto da costruire bene, non da improvvisare?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","style":{"color":{"text":"rgba(255,255,255,0.72)"},"typography":{"fontSize":"18px","lineHeight":"1.6"}}} -->
+<p class="has-text-align-center has-text-color" style="color:rgba(255,255,255,0.72);font-size:18px;line-height:1.6">Possiamo aiutarti a coordinare comunicazione, presenza digitale e infrastruttura operativa in modo più ordinato.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"white","textColor":"black","style":{"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-black-color has-white-background-color has-text-color has-background wp-element-button" href="/contatti/" style="padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">Parliamone</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->

@@ -8,18 +8,22 @@ interface Props {
 const { progetto, loading = 'lazy' } = Astro.props;
 ---
 
-<article class="sir-progetto sir-reveal">
+<article class="sir-progetto sir-reveal-left" data-categoria={progetto.categoria}>
   <a class="sir-progetto__link" href={`/progetto/${progetto.slug}/`}>
     <span class="sir-progetto__media">
-      <img src={progetto.immagine} alt="" loading={loading} width="1200" height="700" />
+      <img src={progetto.immagine} alt="" loading={loading} width="1024" height="576" />
     </span>
+
     <span class="sir-progetto__body">
-      <span class="sir-eyebrow">{progetto.settore}</span>
-      <span class="sir-progetto__title">
-        {progetto.titolo}
-        {progetto.cliente && <span class="sir-progetto__cliente"> — {progetto.cliente.nome}</span>}
-      </span>
+      <span class="sir-progetto__cat">{progetto.categoriaLabel}</span>
+      <span class="sir-progetto__title">{progetto.titolo}</span>
       <span class="sir-progetto__abstract">{progetto.abstract}</span>
+
+      <span class="sir-progetto__tech">
+        {progetto.tecnologie.slice(0, 4).map((t) => <span class="sir-tag">{t}</span>)}
+        {progetto.tecnologie.length > 4 && <span class="sir-tag">+{progetto.tecnologie.length - 4}</span>}
+      </span>
+
       <span class="sir-progetto__cta">Vedi il progetto →</span>
     </span>
   </a>
@@ -27,13 +31,8 @@ const { progetto, loading = 'lazy' } = Astro.props;
 
 <style>
   .sir-progetto { border: 1px solid var(--sir-gray-300); background: var(--sir-white); }
-  .sir-progetto__link {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-decoration: none;
-  }
-  .sir-progetto__media { display: block; overflow: hidden; aspect-ratio: 16 / 9; }
+  .sir-progetto__link { display: flex; flex-direction: column; height: 100%; text-decoration: none; }
+  .sir-progetto__media { display: block; overflow: hidden; aspect-ratio: 16 / 9; background: var(--sir-gray-50); }
   .sir-progetto__media img {
     width: 100%;
     height: 100%;
@@ -41,19 +40,27 @@ const { progetto, loading = 'lazy' } = Astro.props;
     transition: transform 0.6s var(--sir-ease);
   }
   .sir-progetto__link:hover .sir-progetto__media img { transform: scale(1.04); }
-  .sir-progetto__body {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: var(--sir-space-sm);
+
+  .sir-progetto__body { display: flex; flex-direction: column; gap: 10px; padding: var(--sir-space-sm); }
+  .sir-progetto__cat {
+    font-size: var(--sir-fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sir-gray-500);
   }
-  .sir-progetto__title { font-size: var(--sir-fs-h3); font-weight: 600; line-height: 1.2; }
-  .sir-progetto__cliente { font-weight: 400; color: var(--sir-gray-500); }
-  .sir-progetto__abstract { color: var(--sir-gray-500); font-size: var(--sir-fs-small); }
-  .sir-progetto__cta {
-    margin-top: auto;
-    padding-top: 12px;
+  .sir-progetto__title { font-size: 1.1rem; font-weight: 600; line-height: 1.25; }
+  .sir-progetto__abstract {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--sir-gray-500);
     font-size: var(--sir-fs-small);
-    font-weight: 600;
+  }
+  .sir-progetto__tech { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sir-progetto__cta { margin-top: auto; padding-top: 12px; font-size: var(--sir-fs-small); font-weight: 600; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sir-progetto__link:hover .sir-progetto__media img { transform: none; }
   }
 </style>

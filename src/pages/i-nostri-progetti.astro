@@ -1,29 +1,145 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProgettoCard from '../components/ProgettoCard.astro';
-import Cta from '../components/Cta.astro';
-import { progetti } from '../data/progetti';
+import { filtri, progetti } from '../data/progetti';
 ---
 
 <Base
   title="I nostri progetti"
-  description="Realtà che seguiamo con continuità: direzione marketing esterna, web app su misura, gestione IT e comunicazione coordinate."
+  description="Una selezione di progetti di marketing e IT per aziende, in cui abbiamo coordinato siti web, sistemi digitali IT e comunicazione per ottenere risultati concreti."
 >
-  <section class="sir-section sir-on-dark">
+  <section class="sir-projects-header">
     <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
-      <p class="sir-eyebrow">Portfolio</p>
-      <h1>Progetti gestiti</h1>
-      <p class="sir-lead">
-        Realtà che seguiamo con continuità, coordinando ogni aspetto della loro presenza digitale.
+      <h1>I Nostri Progetti</h1>
+      <p class="sir-projects-subtitle">
+        Dove comunicazione e tecnologia si incontrano per creare valore.
+      </p>
+      <p class="sir-projects-subtitle">
+        Una selezione di progetti di marketing e IT per aziende, in cui abbiamo coordinato siti web,
+        sistemi digitali IT e comunicazione per ottenere risultati concreti.
       </p>
     </div>
   </section>
 
-  <section class="sir-section">
-    <div class="sir-container sir-container--full sir-grid sir-grid--2">
-      {progetti.map((progetto, i) => <ProgettoCard progetto={progetto} loading={i === 0 ? 'eager' : 'lazy'} />)}
+  <section class="sir-section" aria-label="Elenco progetti">
+    <div class="sir-container sir-container--full sir-stack sir-stack--sm">
+      <div class="sir-filtri" role="group" aria-label="Filtra i progetti" data-filtri>
+        {
+          filtri.map((f, i) => (
+            <button
+              class:list={['sir-filtro', i === 0 && 'is-active']}
+              type="button"
+              data-filter={f.id}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+            >
+              {f.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <p class="sir-small sir-muted" data-conteggio aria-live="polite">
+        {progetti.length} progetti
+      </p>
+
+      <div class="sir-grid sir-grid--3" data-griglia>
+        {progetti.map((progetto, i) => <ProgettoCard progetto={progetto} loading={i < 3 ? 'eager' : 'lazy'} />)}
+      </div>
     </div>
   </section>
 
-  <Cta />
+  <section class="sir-section sir-portfolio-cta">
+    <div class="sir-portfolio-cta__box">
+      <h3>Hai un progetto da costruire bene, non da improvvisare?</h3>
+      <p>
+        Possiamo aiutarti a coordinare comunicazione, presenza digitale e infrastruttura operativa in
+        modo più ordinato.
+      </p>
+      <div class="sir-btns">
+        <a class="sir-btn sir-btn--fill" href="/contatti/">Parliamone</a>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .sir-projects-header {
+    padding: 80px 20px 64px;
+    background: var(--sir-gray-50);
+  }
+  .sir-projects-subtitle { font-size: 16px; color: var(--sir-gray-700); }
+
+  .sir-filtri { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .sir-filtro {
+    padding: 10px 20px;
+    background: none;
+    border: 1px solid var(--sir-gray-300);
+    color: var(--sir-gray-700);
+    font: inherit;
+    font-size: var(--sir-fs-small);
+    cursor: pointer;
+    transition: background-color 0.2s var(--sir-ease), color 0.2s var(--sir-ease),
+      border-color 0.2s var(--sir-ease);
+  }
+  .sir-filtro:hover { border-color: var(--sir-black); color: var(--sir-black); }
+  .sir-filtro.is-active {
+    background: var(--sir-black);
+    border-color: var(--sir-black);
+    color: var(--sir-white);
+  }
+
+  [data-conteggio] { text-align: center; }
+
+  .sir-portfolio-cta { padding-top: 32px; }
+  .sir-portfolio-cta__box {
+    max-width: 800px;
+    margin-inline: auto;
+    padding: 48px 24px;
+    background: var(--sir-ink);
+    color: var(--sir-white);
+    text-align: center;
+  }
+  .sir-portfolio-cta__box h3 { margin-bottom: 16px; }
+  .sir-portfolio-cta__box p {
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+</style>
+
+<script>
+  // Sostituisce lo shortcode [projects_filters] del tema: filtro client-side
+  // sulla categoria del progetto (marketing / it / hybrid).
+  const gruppo = document.querySelector<HTMLElement>('[data-filtri]');
+  const griglia = document.querySelector<HTMLElement>('[data-griglia]');
+  const conteggio = document.querySelector<HTMLElement>('[data-conteggio]');
+
+  if (gruppo && griglia) {
+    const schede = Array.from(griglia.querySelectorAll<HTMLElement>('[data-categoria]'));
+
+    const applica = (filtro: string) => {
+      let visibili = 0;
+      schede.forEach((scheda) => {
+        const mostra = filtro === 'all' || scheda.dataset.categoria === filtro;
+        scheda.hidden = !mostra;
+        if (mostra) visibili += 1;
+      });
+
+      gruppo.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach((btn) => {
+        const attivo = btn.dataset.filter === filtro;
+        btn.classList.toggle('is-active', attivo);
+        btn.setAttribute('aria-pressed', String(attivo));
+      });
+
+      if (conteggio) {
+        conteggio.textContent = visibili === 1 ? '1 progetto' : `${visibili} progetti`;
+      }
+    };
+
+    gruppo.addEventListener('click', (event) => {
+      const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
+      if (btn?.dataset.filter) applica(btn.dataset.filter);
+    });
+  }
+</script>

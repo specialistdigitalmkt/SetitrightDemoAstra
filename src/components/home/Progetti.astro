@@ -1,6 +1,6 @@
 ---
 import ProgettoCard from '../ProgettoCard.astro';
-import { progetti } from '../../data/progetti';
+import { progettiInEvidenza } from '../../data/progetti';
 ---
 
 <section id="progetti" class="sir-section" aria-labelledby="progetti-title">
@@ -13,7 +13,7 @@ import { progetti } from '../../data/progetti';
     </div>
 
     <div class="sir-grid sir-grid--2">
-      {progetti.map((progetto) => <ProgettoCard progetto={progetto} />)}
+      {progettiInEvidenza.map((progetto) => <ProgettoCard progetto={progetto} />)}
     </div>
 
     <div class="sir-btns">
