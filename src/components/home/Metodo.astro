@@ -1,0 +1,68 @@
+---
+interface Props {
+  titolo?: string;
+  sottotitolo?: string;
+}
+const {
+  titolo = 'Come lavoriamo davvero',
+  sottotitolo = 'Un metodo per gestire marketing e IT in modo coordinato e continuo.',
+} = Astro.props;
+
+const pilastri = [
+  {
+    icona: '/img/Coordinamento-.svg',
+    titolo: 'Coordinamento',
+    testo: 'Allineiamo persone, strumenti e fornitori.',
+  },
+  {
+    icona: '/img/gestione-IT.svg',
+    titolo: 'Connessione',
+    testo: 'Facciamo lavorare insieme e supportiamo sistemi IT e marketing che oggi non comunicano.',
+  },
+  {
+    icona: '/img/Supervisione.svg',
+    titolo: 'Decisione',
+    testo: 'Prendiamo decisioni operative. Niente rimbalzi.',
+  },
+  {
+    icona: '/img/Controllo-coerenza.svg',
+    titolo: 'Continuità',
+    testo: 'Restiamo operativi nel tempo. La relazione non finisce con la consegna.',
+  },
+  {
+    icona: '/img/Presenza-continuativa.svg',
+    titolo: 'Controllo',
+    testo: 'Monitoriamo tutto. E interveniamo subito.',
+  },
+  {
+    icona: '/img/responsabilita.svg',
+    titolo: 'Responsabilità',
+    testo: 'Ci prendiamo carico dei risultati. Non solo della consulenza.',
+  },
+];
+---
+
+<section class="sir-section sir-on-gray" aria-labelledby="metodo-title">
+  <div class="sir-container sir-stack sir-stack--md">
+    <div class="sir-stack sir-stack--xs sir-center">
+      <h2 id="metodo-title">{titolo}</h2>
+      <p>{sottotitolo}</p>
+    </div>
+
+    <div class="sir-grid sir-grid--3">
+      {
+        pilastri.map((p, i) => (
+          <article class:list={['sir-card', 'sir-card--strong', 'sir-metodo__card', 'sir-reveal', `sir-delay-${(i % 3) + 1}`]}>
+            <img class="sir-card__icon" src={p.icona} alt="" width="40" height="40" />
+            <p class="sir-card__title">{p.titolo}</p>
+            <p class="sir-card__text">{p.testo}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .sir-metodo__card { min-height: 199px; }
+</style>

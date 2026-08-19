@@ -1,0 +1,23 @@
+---
+import ProgettoCard from '../ProgettoCard.astro';
+import { progetti } from '../../data/progetti';
+---
+
+<section id="progetti" class="sir-section" aria-labelledby="progetti-title">
+  <div class="sir-container--full sir-container sir-stack sir-stack--md">
+    <div class="sir-container--narrow sir-stack sir-stack--xs sir-center">
+      <h2 id="progetti-title">Progetti gestiti</h2>
+      <p class="sir-lead">
+        Realtà che seguiamo con continuità, coordinando ogni aspetto della loro presenza digitale.
+      </p>
+    </div>
+
+    <div class="sir-grid sir-grid--2">
+      {progetti.map((progetto) => <ProgettoCard progetto={progetto} />)}
+    </div>
+
+    <div class="sir-btns">
+      <a class="sir-btn sir-btn--outline" href="/i-nostri-progetti/">Vedi tutti i progetti</a>
+    </div>
+  </div>
+</section>

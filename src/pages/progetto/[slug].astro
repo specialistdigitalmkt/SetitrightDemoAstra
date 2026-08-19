@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cta from '../../components/Cta.astro';
+import { progetti } from '../../data/progetti';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() =>
+  progetti.map((progetto) => ({
+    params: { slug: progetto.slug },
+    props: { progetto },
+  }))) satisfies GetStaticPaths;
+
+const { progetto } = Astro.props;
+---
+
+<Base title={progetto.titolo} description={progetto.abstract}>
+  <section class="sir-section sir-on-dark">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
+      <p class="sir-eyebrow">{progetto.settore}</p>
+      <h1>{progetto.titolo}</h1>
+      {
+        progetto.cliente && (
+          <p class="sir-lead">
+            <a href={progetto.cliente.url} rel="noopener noreferrer" target="_blank">
+              {progetto.cliente.nome}
+            </a>
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="sir-section">
+    <div class="sir-container sir-stack sir-stack--md">
+      <img class="sir-progetto__hero" src={progetto.immagine} alt="" width="1400" height="800" />
+
+      <p class="sir-lead sir-container--narrow" style="margin-inline:auto">{progetto.abstract}</p>
+
+      <div class="sir-grid sir-grid--2">
+        <div class="sir-card sir-card--strong sir-reveal">
+          <p class="sir-card__title">Cosa abbiamo fatto</p>
+          <ul class="sir-list">
+            {progetto.attivita.map((voce) => <li>{voce}</li>)}
+          </ul>
+        </div>
+        <div class="sir-card sir-card--strong sir-reveal sir-delay-2">
+          <p class="sir-card__title">Risultati</p>
+          <ul class="sir-list">
+            {progetto.risultati.map((voce) => <li>{voce}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div class="sir-btns">
+        <a class="sir-btn sir-btn--outline" href="/i-nostri-progetti/">← Tutti i progetti</a>
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .sir-progetto__hero { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .sir-card--strong { border-left-color: var(--sir-black); background: var(--sir-gray-50); }
+  .sir-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--sir-gray-500);
+    font-size: var(--sir-fs-small);
+    line-height: 1.7;
+  }
+</style>

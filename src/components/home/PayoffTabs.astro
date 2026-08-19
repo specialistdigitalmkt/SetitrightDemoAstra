@@ -1,0 +1,417 @@
+---
+type Area = {
+  id: string;
+  tag: string;
+  tagLungo: string;
+  nome: [string, string];
+  evocativo: [string, string];
+  evocativoBreve: [string, string];
+  sottotitolo: string;
+  icona: string;
+  voci: { titolo: string; testo: string }[];
+  altro: string;
+};
+
+const aree: Area[] = [
+  {
+    id: 'it',
+    tag: 'IT management',
+    tagLungo: 'Gestione IT e infrastruttura',
+    nome: ['Set It', 'Right'],
+    evocativo: ['Sistemi che', 'funzionano, sempre'],
+    evocativoBreve: ['Sistemi che', 'funzionano'],
+    sottotitolo: 'Infrastruttura digitale',
+    icona: '⬡',
+    altro: 'Say It Right',
+    voci: [
+      {
+        titolo: 'Infrastrutture',
+        testo:
+          'Server, cloud, networking, sicurezza, backup e disaster recovery. Coordiniamo fornitori IT e garantiamo continuità operativa.',
+      },
+      {
+        titolo: 'Sistemi e Applicazioni',
+        testo:
+          'CRM, ERP, gestionali, piattaforme e-commerce. Integriamo e gestiamo l’ecosistema applicativo aziendale.',
+      },
+      {
+        titolo: 'Siti Web e Piattaforme',
+        testo:
+          'Sviluppo, manutenzione, hosting e performance. Supervisioniamo l’intera stack tecnologica digitale.',
+      },
+      {
+        titolo: 'Sicurezza e Conformità',
+        testo:
+          'GDPR, cybersecurity, accessi, audit. Coordiniamo gli aspetti di sicurezza e compliance normativa.',
+      },
+    ],
+  },
+  {
+    id: 'marketing',
+    tag: 'Marketing',
+    tagLungo: 'Gestione marketing e comunicazione',
+    nome: ['Say It', 'Right'],
+    evocativo: ['Comunicazione', 'che converte'],
+    evocativoBreve: ['Comunicazione', 'che converte'],
+    sottotitolo: 'Comunicazione digitale',
+    icona: '◈',
+    altro: 'Set It Right',
+    voci: [
+      {
+        titolo: 'Strategia e Pianificazione',
+        testo:
+          'Obiettivi, target, posizionamento e piano editoriale. Coordiniamo la visione comunicativa complessiva.',
+      },
+      {
+        titolo: 'Digital Marketing',
+        testo:
+          'SEO, SEM, social media, email marketing, advertising. Gestiamo campagne e fornitori per risultati misurabili.',
+      },
+      {
+        titolo: 'Contenuti e Branding',
+        testo:
+          'Copywriting, visual design, video, storytelling. Coordiniamo creativi e agenzie per una comunicazione coerente.',
+      },
+      {
+        titolo: 'Analytics e Reportistica',
+        testo:
+          'KPI, analisi performance, ottimizzazione. Traduciamo i dati in decisioni operative concrete.',
+      },
+    ],
+  },
+];
+---
+
+<section class="sir-payoff-section" aria-labelledby="payoff-title">
+  <div class="sir-container sir-stack sir-stack--xs sir-center sir-payoff-section__intro">
+    <p class="sir-eyebrow">Cosa gestiamo</p>
+    <h2 id="payoff-title">Due mondi, un unico ecosistema</h2>
+    <p>Marketing e IT, coordinati in un unico sistema operativo per la tua azienda.</p>
+  </div>
+
+  <div class="sir-payoff" data-payoff>
+    <p class="sir-payoff__invite" data-payoff-invite>
+      <span>Seleziona un’area per scoprire cosa gestiamo</span>
+      <span class="sir-payoff__invite-arrow" aria-hidden="true">↓</span>
+    </p>
+
+    <div class="sir-payoff__tabs" data-payoff-tabs>
+      {
+        aree.map((area) => (
+          <div class="sir-payoff__tab" data-tab={area.id}>
+            <button
+              class="sir-payoff__teaser"
+              type="button"
+              data-payoff-open={area.id}
+              aria-expanded="false"
+              aria-controls={`payoff-panel-${area.id}`}
+            >
+              <span class="sir-payoff__tag">{area.tag}</span>
+              <span class="sir-payoff__divider" aria-hidden="true" />
+              <span class="sir-payoff__name">
+                {area.nome[0]}
+                <br />
+                {area.nome[1]}
+              </span>
+              <span class="sir-payoff__divider" aria-hidden="true" />
+              <span class="sir-payoff__evocative">
+                <span class="sir-payoff__evocative-full">
+                  {area.evocativo[0]}
+                  <br />
+                  {area.evocativo[1]}
+                </span>
+                <span class="sir-payoff__evocative-short">
+                  {area.evocativoBreve[0]}
+                  <br />
+                  {area.evocativoBreve[1]}
+                </span>
+              </span>
+              <span class="sir-payoff__cta">
+                <span class="sir-payoff__cta-line" aria-hidden="true" />
+                <span class="sir-payoff__cta-text">Esplora</span>
+                <span class="sir-payoff__cta-arrow" aria-hidden="true">→</span>
+                <span class="sir-payoff__cta-line" aria-hidden="true" />
+              </span>
+            </button>
+
+            <div class="sir-payoff__content" id={`payoff-panel-${area.id}`} role="region" aria-label={area.tagLungo}>
+              <div class="sir-payoff__header">
+                <div class="sir-payoff__titles">
+                  <span class="sir-payoff__tag">{area.tagLungo}</span>
+                  <span class="sir-payoff__title">
+                    {area.nome[0]} {area.nome[1]}
+                  </span>
+                  <span class="sir-payoff__subtitle">{area.sottotitolo}</span>
+                </div>
+                <span class="sir-payoff__icon" aria-hidden="true">
+                  {area.icona}
+                </span>
+              </div>
+
+              <div class="sir-payoff__body">
+                {area.voci.map((voce) => (
+                  <div class="sir-payoff__item">
+                    <div class="sir-payoff__item-row">
+                      <span class="sir-payoff__bullet" aria-hidden="true" />
+                      <h4>{voce.titolo}</h4>
+                    </div>
+                    <p>{voce.testo}</p>
+                  </div>
+                ))}
+              </div>
+
+              <button class="sir-payoff__footer" type="button" data-payoff-open={area.id === 'it' ? 'marketing' : 'it'}>
+                <span class="sir-payoff__footer-dot" aria-hidden="true" />
+                <span>Attivo — esplora anche {area.altro} →</span>
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="sir-payoff__reset" data-payoff-reset hidden>
+      <button class="sir-payoff__reset-btn" type="button" data-payoff-close>← Torna alla vista iniziale</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sir-payoff-section {
+    background: var(--sir-black);
+    color: var(--sir-white);
+    padding: var(--sir-space-xl) var(--sir-space-sm);
+  }
+  .sir-payoff-section__intro { margin-bottom: var(--sir-space-md); }
+
+  .sir-payoff { max-width: var(--sir-full); margin-inline: auto; }
+
+  .sir-payoff__invite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: var(--sir-space-sm);
+    color: var(--sir-white-60);
+    font-size: var(--sir-fs-small);
+    transition: opacity 0.3s var(--sir-ease);
+  }
+  .sir-payoff__invite-arrow { animation: sir-bob 1.8s ease-in-out infinite; }
+  @keyframes sir-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+  .sir-payoff[data-active] .sir-payoff__invite { opacity: 0; pointer-events: none; }
+
+  .sir-payoff__tabs {
+    display: flex;
+    gap: 2px;
+    min-height: 460px;
+  }
+
+  .sir-payoff__tab {
+    position: relative;
+    flex: 1 1 0;
+    display: flex;
+    border: 1px solid var(--sir-white-12);
+    background: rgba(255, 255, 254, 0.02);
+    transition: flex-grow 0.5s var(--sir-ease), background-color 0.35s var(--sir-ease);
+  }
+
+  /* Teaser */
+  .sir-payoff__teaser {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: var(--sir-space-md) var(--sir-space-sm);
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s var(--sir-ease);
+  }
+  .sir-payoff__teaser:hover { background: rgba(255, 255, 254, 0.05); }
+
+  .sir-payoff__tag {
+    font-size: var(--sir-fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sir-white-60);
+  }
+  .sir-payoff__divider { width: 40px; height: 1px; background: var(--sir-white-12); }
+  .sir-payoff__name {
+    font-size: clamp(1.9rem, 3.6vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .sir-payoff__evocative { color: var(--sir-white-60); font-size: var(--sir-fs-small); }
+  .sir-payoff__evocative-short { display: none; }
+
+  .sir-payoff__cta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 220px;
+    font-size: var(--sir-fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .sir-payoff__cta-line { flex: 1; height: 1px; background: var(--sir-white-12); }
+  .sir-payoff__cta-arrow { transition: transform 0.25s var(--sir-ease); }
+  .sir-payoff__teaser:hover .sir-payoff__cta-arrow { transform: translateX(4px); }
+
+  /* Contenuto espanso */
+  .sir-payoff__content {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--sir-space-md) var(--sir-space-sm);
+  }
+  .sir-payoff__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sir-space-sm);
+    padding-bottom: var(--sir-space-sm);
+    border-bottom: 1px solid var(--sir-white-12);
+  }
+  .sir-payoff__titles { display: flex; flex-direction: column; gap: 6px; }
+  .sir-payoff__title { font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 600; line-height: 1.1; }
+  .sir-payoff__subtitle { color: var(--sir-white-60); font-size: var(--sir-fs-small); }
+  .sir-payoff__icon { font-size: 2rem; color: var(--sir-white-60); }
+
+  .sir-payoff__body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sir-space-sm);
+    padding: var(--sir-space-sm) 0;
+  }
+  .sir-payoff__item { display: flex; flex-direction: column; gap: 8px; }
+  .sir-payoff__item-row { display: flex; align-items: center; gap: 10px; }
+  .sir-payoff__bullet {
+    width: 8px;
+    height: 8px;
+    flex: none;
+    background: var(--sir-white);
+    transform: rotate(45deg);
+  }
+  .sir-payoff__item p { color: var(--sir-white-60); font-size: var(--sir-fs-small); }
+
+  .sir-payoff__footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: var(--sir-space-sm);
+    border-top: 1px solid var(--sir-white-12);
+    background: none;
+    border-left: 0; border-right: 0; border-bottom: 0;
+    color: var(--sir-white-60);
+    font: inherit;
+    font-size: var(--sir-fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.25s var(--sir-ease);
+  }
+  .sir-payoff__footer:hover { color: var(--sir-white); }
+  .sir-payoff__footer-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sir-white);
+    animation: sir-pulse 2s ease-in-out infinite;
+  }
+  @keyframes sir-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  /* Stati */
+  .sir-payoff__tab[data-state='active'] { flex-grow: 3; background: rgba(255, 255, 254, 0.05); }
+  .sir-payoff__tab[data-state='active'] .sir-payoff__teaser { display: none; }
+  .sir-payoff__tab[data-state='active'] .sir-payoff__content { display: flex; }
+
+  .sir-payoff__tab[data-state='compact'] .sir-payoff__evocative-full { display: none; }
+  .sir-payoff__tab[data-state='compact'] .sir-payoff__evocative-short { display: block; }
+  .sir-payoff__tab[data-state='compact'] .sir-payoff__name { font-size: clamp(1.4rem, 2vw, 2rem); }
+  .sir-payoff__tab[data-state='compact'] .sir-payoff__cta-line { display: none; }
+  .sir-payoff__tab[data-state='compact'] .sir-payoff__cta-arrow { transform: rotate(90deg); }
+
+  /* Reset */
+  .sir-payoff__reset { display: flex; justify-content: center; margin-top: var(--sir-space-sm); }
+  .sir-payoff__reset-btn {
+    padding: 12px 24px;
+    background: none;
+    border: 1px solid var(--sir-white-12);
+    color: var(--sir-white-60);
+    font: inherit;
+    font-size: var(--sir-fs-small);
+    cursor: pointer;
+    transition: color 0.25s var(--sir-ease), border-color 0.25s var(--sir-ease);
+  }
+  .sir-payoff__reset-btn:hover { color: var(--sir-white); border-color: var(--sir-white); }
+
+  /* Mobile: accordion verticale */
+  @media (max-width: 900px) {
+    .sir-payoff__tabs { flex-direction: column; min-height: 0; gap: 12px; }
+    .sir-payoff__tab { flex-direction: column; }
+    .sir-payoff__tab[data-state='active'] .sir-payoff__teaser { display: flex; }
+    .sir-payoff__tab[data-state='active'] .sir-payoff__cta-arrow { transform: rotate(90deg); }
+    .sir-payoff__teaser { padding: var(--sir-space-sm); gap: 12px; }
+    .sir-payoff__body { grid-template-columns: minmax(0, 1fr); }
+    .sir-payoff__content { padding: 0 var(--sir-space-sm) var(--sir-space-sm); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sir-payoff__invite-arrow,
+    .sir-payoff__footer-dot { animation: none; }
+    .sir-payoff__tab { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-payoff]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLElement>('.sir-payoff__tab'));
+    const reset = root.querySelector<HTMLElement>('[data-payoff-reset]');
+
+    const render = (active: string | null) => {
+      if (active) root.dataset.active = active;
+      else delete root.dataset.active;
+
+      tabs.forEach((tab) => {
+        const id = tab.dataset.tab;
+        const state = !active ? 'default' : id === active ? 'active' : 'compact';
+        tab.dataset.state = state;
+        tab
+          .querySelector<HTMLButtonElement>('[data-payoff-open]')
+          ?.setAttribute('aria-expanded', String(state === 'active'));
+      });
+
+      if (reset) reset.hidden = !active;
+    };
+
+    root.querySelectorAll<HTMLButtonElement>('[data-payoff-open]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.payoffOpen ?? null;
+        // Un secondo click sulla stessa area la richiude.
+        render(root.dataset.active === target ? null : target);
+      });
+    });
+
+    root.querySelector<HTMLButtonElement>('[data-payoff-close]')?.addEventListener('click', () => render(null));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && root.dataset.active) render(null);
+    });
+
+    render(null);
+  });
+</script>

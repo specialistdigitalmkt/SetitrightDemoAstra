@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Contatti"
+  description="Parliamone: raccontaci come è organizzato oggi il tuo digitale e ti diciamo da dove ripartire."
+>
+  <section class="sir-section sir-on-dark">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
+      <p class="sir-eyebrow">Contatti</p>
+      <h1>Parliamone</h1>
+      <p class="sir-lead">
+        Raccontaci com’è organizzato oggi il tuo digitale: ti diciamo dove si perde tempo e da dove
+        ripartire.
+      </p>
+    </div>
+  </section>
+
+  <section class="sir-section">
+    <div class="sir-container sir-contatti">
+      <form
+        class="sir-form"
+        method="post"
+        action={`mailto:${site.email}`}
+        aria-labelledby="form-title"
+        data-contact-form
+      >
+        <h2 id="form-title" class="sir-form__title">Scrivici</h2>
+
+        <label class="sir-field">
+          <span>Nome e cognome *</span>
+          <input type="text" name="nome" required autocomplete="name" />
+        </label>
+
+        <label class="sir-field">
+          <span>Azienda</span>
+          <input type="text" name="azienda" autocomplete="organization" />
+        </label>
+
+        <label class="sir-field">
+          <span>Email *</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+
+        <label class="sir-field">
+          <span>Di cosa hai bisogno? *</span>
+          <textarea name="messaggio" rows="5" required></textarea>
+        </label>
+
+        <label class="sir-check">
+          <input type="checkbox" name="privacy" required />
+          <span class="sir-small sir-muted">
+            Ho letto l’informativa privacy e acconsento al trattamento dei dati.
+          </span>
+        </label>
+
+        <button class="sir-btn sir-btn--dark" type="submit">Invia richiesta</button>
+
+        <p class="sir-small sir-muted sir-form__note" data-form-note>
+          Di default il form apre il tuo client di posta. Per l’invio via server (Formspree, API
+          route, SMTP) vedi il README.
+        </p>
+      </form>
+
+      <aside class="sir-stack sir-stack--sm">
+        <div class="sir-card sir-card--black-rule">
+          <p class="sir-card__title">Email</p>
+          <p class="sir-card__text"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+        <div class="sir-card sir-card--black-rule">
+          <p class="sir-card__title">Come rispondiamo</p>
+          <p class="sir-card__text">
+            Ti ricontattiamo entro un giorno lavorativo con una prima lettura della situazione.
+          </p>
+        </div>
+        <div class="sir-card sir-card--black-rule">
+          <p class="sir-card__title">Cosa ci serve sapere</p>
+          <p class="sir-card__text">
+            Chi gestisce oggi IT, sito e comunicazione, e cosa ti sta rallentando di più.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <script>
+    // Fallback statico: comporre una mail precompilata invece di postare su un endpoint.
+    // Sostituibile con un endpoint reale (vedi README).
+    const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+    const destinatario = form?.getAttribute('action')?.replace('mailto:', '') ?? '';
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const dati = new FormData(form);
+      const valore = (chiave: string) => String(dati.get(chiave) ?? '').trim();
+
+      const corpo = [
+        `Nome: ${valore('nome')}`,
+        `Azienda: ${valore('azienda') || '—'}`,
+        `Email: ${valore('email')}`,
+        '',
+        valore('messaggio'),
+      ].join('\n');
+
+      const oggetto = `Richiesta dal sito — ${valore('nome')}`;
+      window.location.href =
+        `mailto:${destinatario}?subject=${encodeURIComponent(oggetto)}&body=${encodeURIComponent(corpo)}`;
+    });
+  </script>
+</Base>
+
+<style>
+  .sir-contatti {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--sir-space-md);
+    align-items: start;
+  }
+  .sir-form { display: flex; flex-direction: column; gap: 18px; }
+  .sir-form__title { font-size: var(--sir-fs-h3); }
+  .sir-field { display: flex; flex-direction: column; gap: 6px; font-size: var(--sir-fs-small); font-weight: 600; }
+  .sir-field input,
+  .sir-field textarea {
+    padding: 12px 14px;
+    border: 1px solid var(--sir-gray-300);
+    background: var(--sir-white);
+    color: inherit;
+    font: inherit;
+    font-weight: 400;
+  }
+  .sir-field input:focus,
+  .sir-field textarea:focus { outline: 2px solid var(--sir-black); outline-offset: 0; }
+  .sir-check { display: flex; align-items: flex-start; gap: 10px; }
+  .sir-form button { align-self: flex-start; }
+  .sir-form__note { margin-top: -4px; }
+  .sir-card--black-rule { border-left-color: var(--sir-black); }
+  @media (max-width: 860px) {
+    .sir-contatti { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

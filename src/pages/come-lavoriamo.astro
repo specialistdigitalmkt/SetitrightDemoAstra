@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Metodo from '../components/home/Metodo.astro';
+import Cta from '../components/Cta.astro';
+
+const fasi = [
+  {
+    numero: '01',
+    titolo: 'Analisi',
+    testo:
+      'Mappiamo fornitori, strumenti, contratti e attività in corso. Emergono sovrapposizioni, buchi e costi che nessuno stava presidiando.',
+  },
+  {
+    numero: '02',
+    titolo: 'Regia',
+    testo:
+      'Definiamo priorità, responsabilità e tempi. Diventiamo il punto di contatto unico tra azienda, IT e marketing.',
+  },
+  {
+    numero: '03',
+    titolo: 'Operatività',
+    testo:
+      'Coordiniamo l’esecuzione: interveniamo dove serve, deleghiamo dove ha senso, verifichiamo sempre il risultato.',
+  },
+  {
+    numero: '04',
+    titolo: 'Continuità',
+    testo:
+      'Restiamo dentro nel tempo, con monitoraggio e revisioni periodiche. La relazione non finisce con la consegna.',
+  },
+];
+---
+
+<Base
+  title="Come lavoriamo"
+  description="Il metodo Set It Right: analisi, regia, operatività e continuità per gestire IT e marketing come un sistema unico."
+>
+  <section class="sir-section sir-on-dark">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
+      <p class="sir-eyebrow">Il metodo</p>
+      <h1>Come lavoriamo</h1>
+      <p class="sir-lead">
+        Non vendiamo un progetto: prendiamo in carico la regia del digitale aziendale, e la teniamo
+        nel tempo.
+      </p>
+    </div>
+  </section>
+
+  <section class="sir-section">
+    <div class="sir-container sir-grid sir-grid--2">
+      {
+        fasi.map((fase) => (
+          <article class="sir-card sir-card--black-rule sir-reveal">
+            <span class="sir-eyebrow">{fase.numero}</span>
+            <p class="sir-card__title">{fase.titolo}</p>
+            <p class="sir-card__text">{fase.testo}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <Metodo titolo="I sei pilastri" sottotitolo="Cosa garantiamo, in concreto, ogni mese." />
+
+  <Cta />
+</Base>
+
+<style>
+  .sir-card--black-rule { border-left-color: var(--sir-black); }
+</style>

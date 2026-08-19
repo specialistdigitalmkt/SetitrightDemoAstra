@@ -1,0 +1,114 @@
+---
+import { nav, site } from '../data/site';
+
+const current = Astro.url.pathname;
+---
+
+<header class="sir-header">
+  <div class="sir-header__inner">
+    <a class="sir-header__logo" href="/" aria-label={`${site.name} — home`}>
+      <img src={site.logo} alt={site.name} width="220" height="28" />
+    </a>
+
+    <input class="sir-header__toggle" type="checkbox" id="sir-nav-toggle" hidden />
+    <label class="sir-header__burger" for="sir-nav-toggle" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="sir-header__nav" aria-label="Navigazione principale">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['sir-header__link', current.startsWith(item.href) && 'is-current']}
+            aria-current={current.startsWith(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="sir-btn sir-btn--fill sir-header__cta" href="/contatti/">Richiedi un incontro</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .sir-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--sir-black);
+    color: var(--sir-white);
+    border-bottom: 1px solid var(--sir-white-12);
+  }
+  .sir-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sir-space-sm);
+    max-width: var(--sir-full);
+    margin-inline: auto;
+    padding: 14px var(--sir-space-sm);
+  }
+  .sir-header__logo img {
+    width: clamp(150px, 20vw, 220px);
+    height: auto;
+  }
+  .sir-header__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.4vw, 32px);
+  }
+  .sir-header__link {
+    font-size: var(--sir-fs-small);
+    text-decoration: none;
+    color: var(--sir-white-60);
+    transition: color 0.2s var(--sir-ease);
+  }
+  .sir-header__link:hover,
+  .sir-header__link.is-current { color: var(--sir-white); }
+  .sir-header__cta { padding: 10px 20px; }
+
+  .sir-header__burger { display: none; }
+
+  @media (max-width: 900px) {
+    .sir-header__burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .sir-header__burger span {
+      display: block;
+      height: 2px;
+      background: var(--sir-white);
+      transition: transform 0.25s var(--sir-ease), opacity 0.2s var(--sir-ease);
+    }
+    .sir-header__nav {
+      position: absolute;
+      inset: 100% 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--sir-black);
+      border-bottom: 1px solid var(--sir-white-12);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s var(--sir-ease);
+    }
+    .sir-header__toggle:checked ~ .sir-header__nav { max-height: 380px; }
+    .sir-header__toggle:checked ~ .sir-header__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .sir-header__toggle:checked ~ .sir-header__burger span:nth-child(2) { opacity: 0; }
+    .sir-header__toggle:checked ~ .sir-header__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .sir-header__link {
+      padding: 16px var(--sir-space-sm);
+      border-top: 1px solid var(--sir-white-12);
+      font-size: var(--sir-fs-base);
+    }
+    .sir-header__cta { margin: 16px var(--sir-space-sm) 24px; }
+  }
+</style>

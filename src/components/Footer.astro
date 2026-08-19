@@ -1,0 +1,83 @@
+---
+import { nav, site } from '../data/site';
+const anno = new Date().getFullYear();
+---
+
+<footer class="sir-footer">
+  <div class="sir-footer__inner">
+    <div class="sir-footer__brand">
+      <img src={site.logo} alt={site.name} width="200" height="26" />
+      <p class="sir-small">{site.tagline}</p>
+      <p class="sir-small sir-footer__payoff">{site.payoff}</p>
+    </div>
+
+    <nav class="sir-footer__nav" aria-label="Navigazione footer">
+      <span class="sir-eyebrow">Naviga</span>
+      <a href="/">Home</a>
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="sir-footer__contact">
+      <span class="sir-eyebrow">Contatti</span>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a class="sir-btn sir-btn--outline sir-footer__cta" href="/contatti/">Parliamone</a>
+    </div>
+  </div>
+
+  <div class="sir-footer__legal">
+    <p class="sir-small">© {anno} {site.name}. Tutti i diritti riservati.</p>
+    <p class="sir-small">P.IVA — da completare</p>
+  </div>
+</footer>
+
+<style>
+  .sir-footer {
+    background: var(--sir-black);
+    color: var(--sir-white);
+    padding: var(--sir-space-lg) var(--sir-space-sm) var(--sir-space-sm);
+  }
+  .sir-footer__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: var(--sir-space-md);
+    max-width: var(--sir-wide);
+    margin-inline: auto;
+  }
+  .sir-footer__brand img { width: min(220px, 60vw); margin-bottom: 16px; }
+  .sir-footer__brand p { color: var(--sir-white-60); }
+  .sir-footer__payoff { margin-top: 8px; color: var(--sir-white) !important; font-weight: 600; }
+
+  .sir-footer__nav,
+  .sir-footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .sir-footer__nav a,
+  .sir-footer__contact a {
+    color: var(--sir-white-60);
+    text-decoration: none;
+    font-size: var(--sir-fs-small);
+    transition: color 0.2s var(--sir-ease);
+  }
+  .sir-footer__nav a:hover,
+  .sir-footer__contact a:hover { color: var(--sir-white); }
+  .sir-footer__cta { margin-top: 8px; color: var(--sir-white); }
+
+  .sir-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: var(--sir-wide);
+    margin: var(--sir-space-md) auto 0;
+    padding-top: var(--sir-space-sm);
+    border-top: 1px solid var(--sir-white-12);
+    color: var(--sir-white-60);
+  }
+
+  @media (max-width: 800px) {
+    .sir-footer__inner { grid-template-columns: 1fr; gap: var(--sir-space-sm); }
+  }
+</style>

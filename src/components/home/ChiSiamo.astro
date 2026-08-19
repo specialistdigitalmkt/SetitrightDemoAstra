@@ -1,0 +1,62 @@
+---
+const punti = [
+  { titolo: 'Unico referente', testo: 'Una sola direzione, una sola responsabilità.' },
+  { titolo: 'Zero rimbalzi', testo: 'Niente “non è di mia competenza”: coordiniamo noi.' },
+  { titolo: 'Presenza continuativa', testo: 'Non un progetto “una tantum”: una regia stabile nel tempo.' },
+];
+---
+
+<section class="sir-section" aria-labelledby="chi-siamo-title">
+  <div class="sir-container sir-stack sir-stack--md">
+    <div class="sir-container--narrow sir-stack sir-stack--xs sir-center">
+      <h2 id="chi-siamo-title">Chi siamo</h2>
+      <p class="sir-lead">
+        Siamo la regia operativa tra IT e comunicazione: coordiniamo, gestiamo e rendiamo coerente
+        il digitale nel tempo.
+      </p>
+    </div>
+
+    <div class="sir-chisiamo">
+      <div class="sir-stack sir-stack--sm">
+        {
+          punti.map((punto) => (
+            <article class="sir-card sir-card--black-rule sir-reveal-tilt">
+              <p class="sir-card__title">{punto.titolo}</p>
+              <p class="sir-card__text">{punto.testo}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="sir-stack" style="gap:16px">
+        <h3>Un unico referente, zero rimbalzi</h3>
+        <p class="sir-muted sir-chisiamo__text">
+          Quando fornitori e team lavorano “a silos”, l’azienda rallenta.<br />
+          Noi entriamo come figura stabile: traduciamo esigenze, allineiamo le priorità e
+          coordiniamo l’operatività.
+        </p>
+        <p class="sir-muted sir-chisiamo__text">
+          <strong>Il risultato è semplice:</strong> meno dispersione, più controllo, decisioni più rapide.
+        </p>
+        <div class="sir-btns sir-chisiamo__actions">
+          <a class="sir-btn sir-btn--outline" href="/come-lavoriamo/">Scopri il metodo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sir-chisiamo {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    gap: var(--sir-space-md);
+    align-items: start;
+  }
+  .sir-card--black-rule { border-left-color: var(--sir-black); }
+  .sir-chisiamo__text { line-height: 1.7; }
+  .sir-chisiamo__actions { justify-content: flex-start; margin-top: 8px; }
+  @media (max-width: 860px) {
+    .sir-chisiamo { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
