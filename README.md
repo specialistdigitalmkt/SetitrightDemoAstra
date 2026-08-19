@@ -36,7 +36,7 @@ npm run build
 public/img/              asset scaricati dal sito WordPress (loghi, icone SVG, immagini progetti)
 src/data/site.ts         nome, payoff, email, voci di menu
 src/data/progetti.ts     schede progetto (generano /progetto/<slug>/)
-src/styles/tokens.css    design token portati dai preset di theme.json (colori, spaziature, font)
+src/styles/tokens.css    colori e font presi 1:1 dai preset di theme.json, più la scala di spaziature
 src/styles/base.css      reset, layout helper, card, bottoni, animazioni di reveal
 src/layouts/Base.astro   <head>, SEO/OG, header, footer, observer per le animazioni
 src/components/          Header, Footer, Cta, ProgettoCard
@@ -51,8 +51,12 @@ src/pages/               index, come-lavoriamo, i-nostri-progetti, contatti, 404
 - **Progetti**: aggiungi un oggetto a `src/data/progetti.ts`; la pagina di dettaglio
   `/progetto/<slug>/` viene generata da sola e la scheda compare in home e in portfolio.
 - **Menu, email, payoff**: `src/data/site.ts`.
-- **Colori e spaziature**: `src/styles/tokens.css` — sono gli stessi preset che il tema WordPress
-  esponeva come `var(--wp--preset--color--*)`.
+- **Colori**: `src/styles/tokens.css` — sono gli stessi valori che il tema WordPress esponeva come
+  `var(--wp--preset--color--*)`: nero `#000000`, bianco `#ffffff`, `white-60` `rgba(255,255,255,.6)`,
+  `gray-50` `#f9fafb`, `gray-300` `#d1d5dc`, `gray-500` `#6f6f6f`.
+- **Spaziature**: sempre in `tokens.css`, ma la scala `sm/md/lg/xl` è ricavata dai padding usati nei
+  pattern (sezioni a 96px), non dai preset `--wp--preset--spacing--*` che nel tema valgono
+  12/16/24/32/48px.
 
 ## Corrispondenza con i blocchi WordPress
 
