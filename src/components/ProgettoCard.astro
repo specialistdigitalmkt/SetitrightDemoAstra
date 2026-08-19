@@ -1,0 +1,59 @@
+---
+import type { Progetto } from '../data/progetti';
+
+interface Props {
+  progetto: Progetto;
+  loading?: 'lazy' | 'eager';
+}
+const { progetto, loading = 'lazy' } = Astro.props;
+---
+
+<article class="sir-progetto sir-reveal">
+  <a class="sir-progetto__link" href={`/progetto/${progetto.slug}/`}>
+    <span class="sir-progetto__media">
+      <img src={progetto.immagine} alt="" loading={loading} width="1200" height="700" />
+    </span>
+    <span class="sir-progetto__body">
+      <span class="sir-eyebrow">{progetto.settore}</span>
+      <span class="sir-progetto__title">
+        {progetto.titolo}
+        {progetto.cliente && <span class="sir-progetto__cliente"> — {progetto.cliente.nome}</span>}
+      </span>
+      <span class="sir-progetto__abstract">{progetto.abstract}</span>
+      <span class="sir-progetto__cta">Vedi il progetto →</span>
+    </span>
+  </a>
+</article>
+
+<style>
+  .sir-progetto { border: 1px solid var(--sir-gray-300); background: var(--sir-white); }
+  .sir-progetto__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+  }
+  .sir-progetto__media { display: block; overflow: hidden; aspect-ratio: 16 / 9; }
+  .sir-progetto__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--sir-ease);
+  }
+  .sir-progetto__link:hover .sir-progetto__media img { transform: scale(1.04); }
+  .sir-progetto__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: var(--sir-space-sm);
+  }
+  .sir-progetto__title { font-size: var(--sir-fs-h3); font-weight: 600; line-height: 1.2; }
+  .sir-progetto__cliente { font-weight: 400; color: var(--sir-gray-500); }
+  .sir-progetto__abstract { color: var(--sir-gray-500); font-size: var(--sir-fs-small); }
+  .sir-progetto__cta {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: var(--sir-fs-small);
+    font-weight: 600;
+  }
+</style>

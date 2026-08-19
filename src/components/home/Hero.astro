@@ -1,0 +1,99 @@
+---
+import { site } from '../../data/site';
+---
+
+<section class="sir-hero">
+  <div class="sir-hero__bg" aria-hidden="true"></div>
+
+  <div class="sir-hero__content">
+    <!-- Nel tema WordPress questo testo era reso invisibile (colore trasparente):
+         qui resta a disposizione di SEO e screen reader come H1 della pagina. -->
+    <h1 class="sir-hero__h1">Supporto IT e marketing per aziende</h1>
+
+    <img
+      class="sir-hero__logo"
+      src={site.logo}
+      alt={site.name}
+      width="775"
+      height="97"
+      fetchpriority="high"
+    />
+
+    <p class="sir-hero__tagline">{site.tagline}</p>
+
+    <p class="sir-hero__payoff sir-reveal-tilt">{site.payoff}</p>
+
+    <p class="sir-hero__text">
+      Quando IT e marketing non parlano tra loro, la tua azienda paga il conto.
+      Noi siamo il punto di regia che mancava.
+    </p>
+
+    <div class="sir-btns sir-hero__actions">
+      <a class="sir-btn sir-btn--fill" href="/i-nostri-progetti/">Portfolio</a>
+      <a class="sir-btn sir-btn--outline" href="/contatti/">Contattaci</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sir-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: min(78vh, 760px);
+    padding: var(--sir-space-lg) var(--sir-space-md);
+    background: var(--sir-black);
+    color: var(--sir-white);
+    overflow: hidden;
+  }
+  .sir-hero__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 55% at 50% 12%, rgba(255, 255, 254, 0.1), transparent 70%),
+      linear-gradient(180deg, transparent 60%, rgba(255, 255, 254, 0.05));
+    pointer-events: none;
+  }
+  .sir-hero__content {
+    position: relative;
+    width: 100%;
+    max-width: var(--sir-content);
+    text-align: center;
+  }
+  .sir-hero__h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .sir-hero__logo {
+    width: min(775px, 100%);
+    margin: 0 auto 20px;
+  }
+  .sir-hero__tagline {
+    margin-bottom: var(--sir-space-md);
+    font-size: clamp(18px, 3vw, 36px);
+    line-height: 1.2;
+    letter-spacing: 0.43px;
+  }
+  .sir-hero__payoff {
+    margin: var(--sir-space-sm) 0;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 600;
+  }
+  .sir-hero__text {
+    max-width: 620px;
+    margin: 16px auto 0;
+    color: var(--sir-white-60);
+  }
+  .sir-hero__actions { margin-top: 32px; }
+
+  @media (max-width: 700px) {
+    .sir-hero { padding: var(--sir-space-md) var(--sir-space-sm); min-height: auto; }
+  }
+</style>

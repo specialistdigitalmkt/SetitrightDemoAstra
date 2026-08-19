@@ -1,0 +1,39 @@
+---
+interface Props {
+  titolo?: string;
+  testo?: string;
+  etichetta?: string;
+  href?: string;
+}
+const {
+  titolo = 'Parliamone',
+  testo = 'Se il tuo digitale è frammentato, è il momento di rimettere ordine. Gestiamo marketing e IT come un sistema unico, con un solo interlocutore.',
+  etichetta = 'Richiedi un incontro',
+  href = '/contatti/',
+} = Astro.props;
+---
+
+<section class="sir-cta">
+  <div class="sir-container sir-stack sir-stack--sm sir-center">
+    <h2>{titolo}</h2>
+    <p class="sir-cta__text">{testo}</p>
+    <div class="sir-btns">
+      <a class="sir-btn sir-btn--dark" href={href}>{etichetta}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sir-cta {
+    margin: var(--sir-space-md) 0;
+    padding: var(--sir-space-md) var(--sir-space-sm);
+    background: var(--sir-gray-50);
+    color: var(--sir-black);
+  }
+  .sir-cta__text {
+    max-width: 680px;
+    margin-inline: auto;
+    font-size: var(--sir-fs-lead);
+    line-height: 1.6;
+  }
+</style>

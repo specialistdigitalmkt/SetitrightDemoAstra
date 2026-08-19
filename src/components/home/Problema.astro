@@ -1,0 +1,67 @@
+---
+const silos = [
+  {
+    icona: '/img/Fornitore-IT-1.svg',
+    titolo: 'Fornitore IT',
+    testo: ['Gestisce i sistemi.', 'Non parla con il marketing.'],
+  },
+  {
+    icona: '/img/Agenzia-marketing.svg',
+    titolo: 'Agenzia marketing',
+    testo: ['Fa campagne.', 'Non conosce la parte tecnica.'],
+  },
+  {
+    icona: '/img/Freelance-sito-web.svg',
+    titolo: 'Freelance website',
+    testo: ['Lavora sul sito.', 'Non segue il resto.'],
+  },
+  {
+    icona: '/img/social-gestiti.svg',
+    titolo: 'Social gestiti a metà',
+    testo: ['Contenuti e post.', 'Scollegati da tutto il resto.'],
+  },
+];
+---
+
+<section class="sir-section" aria-labelledby="problema-title">
+  <div class="sir-container sir-stack sir-stack--md">
+    <h2 id="problema-title" class="sir-center">
+      Quando il digitale è frammentato,<br />l’azienda rallenta.
+    </h2>
+
+    <div class="sir-grid sir-grid--4">
+      {
+        silos.map((item, i) => (
+          <article class:list={['sir-card', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+            <img class="sir-card__icon" src={item.icona} alt="" width="40" height="40" />
+            <p class="sir-card__title">{item.titolo}</p>
+            <p class="sir-card__text">
+              {item.testo[0]}
+              <br />
+              {item.testo[1]}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="sir-problema__esito sir-on-dark">
+      <img src="/img/Icon.svg" alt="" width="48" height="48" />
+      <h3>Risultato: nessuna regia</h3>
+      <p class="sir-lead">decisioni lente, attività scollegate, spreco di tempo.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sir-problema__esito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: var(--sir-space-md);
+    padding: var(--sir-space-md) var(--sir-space-sm);
+    text-align: center;
+  }
+  .sir-problema__esito img { width: 48px; }
+</style>

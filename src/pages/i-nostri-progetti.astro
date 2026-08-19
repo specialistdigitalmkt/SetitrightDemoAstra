@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import ProgettoCard from '../components/ProgettoCard.astro';
+import Cta from '../components/Cta.astro';
+import { progetti } from '../data/progetti';
+---
+
+<Base
+  title="I nostri progetti"
+  description="Realtà che seguiamo con continuità: direzione marketing esterna, web app su misura, gestione IT e comunicazione coordinate."
+>
+  <section class="sir-section sir-on-dark">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
+      <p class="sir-eyebrow">Portfolio</p>
+      <h1>Progetti gestiti</h1>
+      <p class="sir-lead">
+        Realtà che seguiamo con continuità, coordinando ogni aspetto della loro presenza digitale.
+      </p>
+    </div>
+  </section>
+
+  <section class="sir-section">
+    <div class="sir-container sir-container--full sir-grid sir-grid--2">
+      {progetti.map((progetto, i) => <ProgettoCard progetto={progetto} loading={i === 0 ? 'eager' : 'lazy'} />)}
+    </div>
+  </section>
+
+  <Cta />
+</Base>
