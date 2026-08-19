@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const oggetto = encodeURIComponent('Richiesta informazioni SET IT RIGHT');
+---
+
+<Base
+  title="Stiamo mettendo tutto al posto giusto"
+  description="SET IT RIGHT è online in versione riservata mentre completiamo struttura, contenuti e dettagli finali."
+  chrome={false}
+  noindex
+>
+  <section class="sir-manutenzione">
+    <div class="sir-manutenzione__inner">
+      <img class="sir-manutenzione__logo" src={site.logo} alt={site.name} width="520" height="65" />
+
+      <p class="sir-manutenzione__tagline">{site.tagline}</p>
+      <p class="sir-manutenzione__claim">Un unico referente per IT e comunicazione.</p>
+
+      <hr class="sir-manutenzione__rule" />
+
+      <h1>Stiamo mettendo tutto al posto giusto.</h1>
+
+      <p class="sir-manutenzione__testo">
+        SET IT RIGHT è online in versione riservata mentre completiamo struttura, contenuti e
+        dettagli finali.
+      </p>
+      <p class="sir-manutenzione__testo">Per informazioni o richieste, puoi contattarci direttamente.</p>
+
+      <p class="sir-manutenzione__mail">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <div class="sir-btns">
+        <a class="sir-btn sir-btn--fill" href={`mailto:${site.email}?subject=${oggetto}`}>Contattaci</a>
+        <a class="sir-btn sir-btn--outline" href={site.linkedin} rel="noopener noreferrer" target="_blank">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sir-manutenzione {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--sir-space-lg) var(--sir-space-sm);
+    background: var(--sir-black);
+    color: var(--sir-white);
+  }
+  .sir-manutenzione__inner { max-width: 640px; text-align: center; }
+  .sir-manutenzione__logo { width: min(520px, 100%); margin: 0 auto var(--sir-space-sm); }
+  .sir-manutenzione__tagline { font-size: var(--sir-fs-lead); }
+  .sir-manutenzione__claim { margin-top: 6px; color: var(--sir-white-60); }
+  .sir-manutenzione__rule {
+    width: 60px;
+    margin: var(--sir-space-md) auto;
+    border: 0;
+    border-top: 1px solid var(--sir-white-12);
+  }
+  .sir-manutenzione h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); margin-bottom: var(--sir-space-sm); }
+  .sir-manutenzione__testo { color: var(--sir-white-60); margin-bottom: 12px; }
+  .sir-manutenzione__mail { margin: var(--sir-space-sm) 0; font-size: 1.1rem; font-weight: 600; }
+  .sir-manutenzione .sir-btns { margin-top: var(--sir-space-sm); }
+</style>

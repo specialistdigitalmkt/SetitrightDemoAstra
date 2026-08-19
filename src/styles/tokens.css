@@ -5,9 +5,11 @@
   --sir-white: #ffffff;
   --sir-white-60: rgba(255, 255, 255, 0.6);
   --sir-white-12: rgba(255, 255, 255, 0.12);
+  --sir-ink: #0a0a0a;
   --sir-gray-50: #f9fafb;
   --sir-gray-300: #d1d5dc;
   --sir-gray-500: #6f6f6f;
+  --sir-gray-700: #4a5565;
 
   /* Spaziature */
   --sir-space-0: 0px;

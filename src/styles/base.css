@@ -91,6 +91,16 @@ p { margin: 0; }
 .sir-card__title { font-weight: 600; }
 .sir-card__text { font-size: var(--sir-fs-small); color: var(--sir-gray-500); }
 
+/* ---------- Tag (tecnologie, tassonomie) ---------- */
+.sir-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid var(--sir-gray-300);
+  color: var(--sir-gray-700);
+  font-size: var(--sir-fs-xs);
+  line-height: 1.4;
+}
+
 /* ---------- Bottoni ---------- */
 .sir-btn {
   display: inline-flex;
@@ -116,7 +126,7 @@ p { margin: 0; }
 .sir-btns { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
 
 /* ---------- Animazioni di reveal (sostituiscono gli effetti del tema) ---------- */
-.sir-reveal, .sir-reveal-left, .sir-reveal-tilt {
+.sir-reveal, .sir-reveal-left, .sir-reveal-tilt, .sir-reveal-soft {
   opacity: 0;
   transition: opacity var(--sir-dur) var(--sir-ease), transform var(--sir-dur) var(--sir-ease);
   transition-delay: var(--sir-reveal-delay, 0ms);
@@ -125,6 +135,7 @@ p { margin: 0; }
 .sir-reveal { transform: translateY(24px); }
 .sir-reveal-left { transform: translateX(-28px); }
 .sir-reveal-tilt { transform: translateY(20px) rotate(-1.2deg); }
+.sir-reveal-soft { transform: translateY(12px); }
 .is-visible { opacity: 1 !important; transform: none !important; }
 
 .sir-delay-1 { --sir-reveal-delay: 80ms; }
@@ -134,7 +145,7 @@ p { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .sir-reveal, .sir-reveal-left, .sir-reveal-tilt { opacity: 1; transform: none; transition: none; }
+  .sir-reveal, .sir-reveal-left, .sir-reveal-tilt, .sir-reveal-soft { opacity: 1; transform: none; transition: none; }
   .sir-btn:hover { transform: none; }
 }
 

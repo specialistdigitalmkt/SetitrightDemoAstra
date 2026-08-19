@@ -8,4 +8,10 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  // Il progetto Moioli è stato rinominato su WordPress: il vecchio slug risponde
+  // 301 sul sito live, quindi lo conserviamo anche qui.
+  redirects: {
+    '/progetto/una-direzione-marketing-esterna-non-un-semplice-intervento/':
+      '/progetto/una-direzione-marketing-esterna-prefabbricati-moioli/',
+  },
 });

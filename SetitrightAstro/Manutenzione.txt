@@ -1,0 +1,51 @@
+<!-- wp:group {"metadata":{"categories":["featured","banner"],"patternName":"setitrighttheme/hero-home","name":"Hero Home (Set It Right)"},"align":"full","style":{"spacing":{"padding":{"top":"96px","right":"24px","bottom":"96px","left":"24px"}},"color":{"background":"#000000"}},"layout":{"type":"constrained","contentSize":"1140px"}} -->
+<div class="wp-block-group alignfull has-background" style="background-color:#000000;padding-top:96px;padding-right:24px;padding-bottom:96px;padding-left:24px"><!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontSize":"clamp(64px,8vw,140px)","fontWeight":"700","lineHeight":"1"}},"textColor":"white"} -->
+<h1 class="wp-block-heading has-text-align-center has-white-color has-text-color" style="font-size:clamp(64px,8vw,140px);font-weight:700;line-height:1">SET IT RIGHT</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","style":{"spacing":{"margin":{"top":"16px"}},"typography":{"fontSize":"clamp(18px,3vw,36px)","lineHeight":"1.2","letterSpacing":"0.43px"}},"textColor":"white"} -->
+<p class="has-text-align-center has-white-color has-text-color" style="margin-top:16px;font-size:clamp(18px,3vw,36px);letter-spacing:0.43px;line-height:1.2">Communication &amp; IT Management</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"align":"center","style":{"spacing":{"margin":{"top":"16px"}}},"textColor":"white-60"} -->
+<p class="has-text-align-center has-white-60-color has-text-color" style="margin-top:16px">Un unico referente per IT e comunicazione.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading {"textAlign":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+<h2 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color">Stiamo mettendo tutto al posto giusto.</h2>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">SET IT RIGHT è online in versione riservata mentre completiamo struttura, contenuti e dettagli finali.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center"><strong>Per informazioni o richieste, puoi contattarci direttamente.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"center","level":4,"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+<h4 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color">info@setitright.it </h4>
+<!-- /wp:heading -->
+
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"32px"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons" style="margin-top:32px"><!-- wp:button {"backgroundColor":"white","textColor":"black"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-black-color has-white-background-color has-text-color has-background wp-element-button" href="mailto:info@setitright.it?subject=Richiesta informazioni SET IT RIGHT">
+  Contattaci
+</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"textColor":"white","className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="https://www.linkedin.com/company/setitright">Linkedin</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
