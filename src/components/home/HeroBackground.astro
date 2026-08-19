@@ -1,0 +1,416 @@
+---
+import { heroAnimation as cfg } from '../../data/heroAnimation';
+
+// Porting di assets/js/hero-concept-animation.js + hero-concept-animation.css.
+// Nel tema il DOM veniva costruito a runtime dopo un fetch del JSON di config:
+// qui viene generato a build time, quindi l'animazione è puro CSS e la pagina
+// non spedisce un solo byte di JavaScript per l'hero.
+
+/** PRNG deterministico: le posizioni cambiano solo se cambia il seed. */
+function creaRandom(seed: number) {
+  let s = seed;
+  return () => {
+    s = (s * 1664525 + 1013904223) % 4294967296;
+    return s / 4294967296;
+  };
+}
+
+const rand = creaRandom(20260419);
+const tra = (min: number, max: number) => rand() * (max - min) + min;
+
+// Zone verticali consentite: sopra e sotto il contenuto dell'hero.
+const zone = [
+  [14, 30],
+  [62, 86],
+];
+
+type Parola = { testo: string; x: number; y: number; rot: number; delay: number; durata: number };
+
+function disponi(parole: string[]): Parola[] {
+  const messe: { x: number; y: number }[] = [];
+  return parole.map((testo) => {
+    let x = 0;
+    let y = 0;
+    let tentativi = 0;
+    do {
+      const z = zone[Math.floor(rand() * zone.length)];
+      y = tra(z[0], z[1]);
+      x = tra(8, 24);
+      tentativi += 1;
+    } while (messe.some((p) => Math.abs(p.x - x) < 8 && Math.abs(p.y - y) < 8) && tentativi < 30);
+
+    messe.push({ x, y });
+    return { testo, x, y, rot: tra(-6, 6), delay: tra(0, 9), durata: tra(11, 16) };
+  });
+}
+
+const paroleMarketing = disponi(cfg.words.marketing);
+const paroleIt = disponi(cfg.words.it);
+const particelle = Array.from({ length: cfg.orbits.particlesPerOrbit });
+
+const stile = [
+  `--bg-color:${cfg.theme.backgroundColor}`,
+  `--element-color:${cfg.theme.elementColor}`,
+  `--grid-size:${cfg.grid.size}`,
+  `--grid-opacity:${cfg.grid.opacity}`,
+  `--grid-pulse-speed:${cfg.grid.pulseSpeed}`,
+  `--wave-speed:${cfg.waves.speed}`,
+  `--wave-opacity:${cfg.waves.opacity}`,
+  `--orbit-speed:${cfg.orbits.speed}`,
+  `--particle-size:${cfg.orbits.particleSize}`,
+  `--fusion-pulse-speed:${cfg.fusion.pulseSpeed}`,
+  `--fusion-ring-speed:${cfg.fusion.ringSpeed}`,
+].join(';');
+---
+
+<div class="sir-hero-bg" style={stile} aria-hidden="true">
+  <div class="hero-animated-bg">
+    <div class="wave-marketing"></div>
+    <div class="wave-it"></div>
+    <div class="scan-line-horizontal"></div>
+
+    {
+      paroleMarketing.map((p) => (
+        <div
+          class="floating-word floating-word--marketing"
+          style={`top:${p.y}%;left:${p.x}%;transform:rotate(${p.rot}deg);animation-delay:${p.delay}s;animation-duration:${p.durata}s`}
+        >
+          {p.testo}
+        </div>
+      ))
+    }
+    {
+      paroleIt.map((p) => (
+        <div
+          class="floating-word floating-word--it"
+          style={`top:${p.y}%;right:${p.x}%;transform:rotate(${p.rot}deg);animation-delay:${p.delay}s;animation-duration:${p.durata}s`}
+        >
+          {p.testo}
+        </div>
+      ))
+    }
+
+    <div class="intersection-container">
+      <div class="flow-marketing"></div>
+      <div class="flow-marketing is-top"></div>
+      <div class="flow-marketing is-bottom"></div>
+      <div class="flow-it"></div>
+      <div class="flow-it is-top"></div>
+      <div class="flow-it is-bottom"></div>
+
+      <div class="fusion-center"></div>
+      <div class="fusion-ring"></div>
+      <div class="fusion-ring delay-1"></div>
+      <div class="fusion-ring delay-2"></div>
+
+      <div class="flow-particle-marketing"></div>
+      <div class="flow-particle-marketing is-top"></div>
+      <div class="flow-particle-marketing is-bottom"></div>
+      <div class="flow-particle-it"></div>
+      <div class="flow-particle-it is-top"></div>
+      <div class="flow-particle-it is-bottom"></div>
+    </div>
+
+    <div class="orbit orbit-marketing">{particelle.map(() => <div class="orbit-particle" />)}</div>
+    <div class="orbit orbit-it">{particelle.map(() => <div class="orbit-particle" />)}</div>
+  </div>
+</div>
+
+<style>
+  .sir-hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-animated-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-color);
+    overflow: hidden;
+  }
+
+  /* griglia */
+  .hero-animated-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent calc(var(--grid-size) - 1px),
+        var(--element-color) calc(var(--grid-size) - 1px),
+        var(--element-color) var(--grid-size)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent calc(var(--grid-size) - 1px),
+        var(--element-color) calc(var(--grid-size) - 1px),
+        var(--element-color) var(--grid-size)
+      );
+    opacity: var(--grid-opacity);
+    animation: grid-pulse var(--grid-pulse-speed) ease-in-out infinite;
+  }
+
+  @keyframes grid-pulse {
+    0%, 100% { opacity: var(--grid-opacity); }
+    50% { opacity: calc(var(--grid-opacity) * 1.8); }
+  }
+
+  /* vignettatura */
+  .hero-animated-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 52%, rgba(0, 0, 0, 0.48) 100%);
+  }
+
+  /* onde */
+  .wave-marketing,
+  .wave-it {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: var(--wave-opacity);
+  }
+  .wave-marketing {
+    left: -50%;
+    background: radial-gradient(ellipse at left, rgba(255, 255, 255, 0.16) 0%, transparent 52%);
+    transform-origin: left center;
+    animation: wave-left var(--wave-speed) ease-in-out infinite;
+  }
+  .wave-it {
+    right: -50%;
+    background: radial-gradient(ellipse at right, rgba(255, 255, 255, 0.16) 0%, transparent 52%);
+    transform-origin: right center;
+    animation: wave-right var(--wave-speed) ease-in-out infinite;
+    animation-delay: calc(var(--wave-speed) / 2);
+  }
+
+  @keyframes wave-left {
+    0%, 100% { transform: translateX(0) scaleX(1); opacity: 0.06; }
+    50% { transform: translateX(24%) scaleX(1.35); opacity: var(--wave-opacity); }
+  }
+  @keyframes wave-right {
+    0%, 100% { transform: translateX(0) scaleX(1); opacity: 0.06; }
+    50% { transform: translateX(-24%) scaleX(1.35); opacity: var(--wave-opacity); }
+  }
+
+  .scan-line-horizontal {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* orbite */
+  .orbit {
+    position: absolute;
+    top: 50%;
+    width: 280px;
+    height: 280px;
+    margin-top: -140px;
+    border-radius: 50%;
+  }
+  .orbit-marketing {
+    left: 25%;
+    margin-left: -140px;
+    animation: orbit-rotate var(--orbit-speed) linear infinite;
+  }
+  .orbit-it {
+    right: 25%;
+    margin-right: -140px;
+    animation: orbit-rotate var(--orbit-speed) linear infinite reverse;
+  }
+  @keyframes orbit-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .orbit-particle {
+    position: absolute;
+    width: var(--particle-size);
+    height: var(--particle-size);
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    animation: particle-pulse 2.2s ease-in-out infinite;
+  }
+  .orbit-particle:nth-child(1) { left: 50%; top: 0; transform: translateX(-50%); }
+  .orbit-particle:nth-child(2) { right: 0; top: 50%; transform: translateY(-50%); animation-delay: 0.5s; }
+  .orbit-particle:nth-child(3) { left: 50%; bottom: 0; transform: translateX(-50%); animation-delay: 1s; }
+  .orbit-particle:nth-child(4) { left: 0; top: 50%; transform: translateY(-50%); animation-delay: 1.5s; }
+
+  @keyframes particle-pulse {
+    0%, 100% { opacity: 0.5; scale: 1; }
+    50% { opacity: 1; scale: 1.6; }
+  }
+
+  /* parole fluttuanti */
+  .floating-word {
+    position: absolute;
+    font-family: var(--sir-font);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.56);
+    opacity: 0;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .floating-word--marketing { text-align: left; animation-name: word-float-marketing; }
+  .floating-word--it { text-align: right; animation-name: word-float-it; }
+  .floating-word {
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes word-float-marketing {
+    0%, 100% { opacity: 0; transform: translateX(-18px) translateY(0); }
+    12%, 36% { opacity: 0.52; transform: translateX(0) translateY(-6px); }
+    48% { opacity: 0; transform: translateX(18px) translateY(-14px); }
+  }
+  @keyframes word-float-it {
+    0%, 100% { opacity: 0; transform: translateX(18px) translateY(0); }
+    12%, 36% { opacity: 0.52; transform: translateX(0) translateY(-6px); }
+    48% { opacity: 0; transform: translateX(-18px) translateY(-14px); }
+  }
+
+  /* centro: i due flussi che si incontrano */
+  .intersection-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 560px;
+    height: 280px;
+    margin-left: -280px;
+    margin-top: -140px;
+  }
+
+  .flow-marketing,
+  .flow-it {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+    animation: flow-expand 3s ease-in-out infinite;
+  }
+  .flow-marketing {
+    left: 0;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.8) 100%);
+    transform-origin: left center;
+  }
+  .flow-it {
+    right: 0;
+    background: linear-gradient(to left, transparent 0%, rgba(255, 255, 255, 0.8) 100%);
+    transform-origin: right center;
+  }
+  .flow-marketing.is-top,
+  .flow-it.is-top { margin-top: -30px; opacity: 0.65; animation-delay: 0.3s; }
+  .flow-marketing.is-bottom,
+  .flow-it.is-bottom { margin-top: 30px; opacity: 0.65; animation-delay: 0.6s; }
+
+  @keyframes flow-expand {
+    0%, 100% { transform: scaleX(0.5); opacity: 0.25; }
+    50% { transform: scaleX(1); opacity: 0.95; }
+  }
+
+  .fusion-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    margin-left: -14px;
+    margin-top: -14px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 42px rgba(255, 255, 255, 0.38);
+    animation: fusion-pulse var(--fusion-pulse-speed) ease-in-out infinite;
+  }
+  @keyframes fusion-pulse {
+    0%, 100% { transform: scale(0.84); opacity: 0.62; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+
+  .fusion-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    margin-left: -14px;
+    margin-top: -14px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ring-expand var(--fusion-ring-speed) ease-out infinite;
+  }
+  .fusion-ring.delay-1 { animation-delay: 1s; }
+  .fusion-ring.delay-2 { animation-delay: 2s; }
+
+  @keyframes ring-expand {
+    0% { transform: scale(1); opacity: 0.65; }
+    100% { transform: scale(5); opacity: 0; }
+  }
+
+  .flow-particle-marketing,
+  .flow-particle-it {
+    position: absolute;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.8);
+  }
+  .flow-particle-marketing { left: 0; animation: particle-marketing 2.5s ease-in-out infinite; }
+  .flow-particle-it { right: 0; animation: particle-it 2.5s ease-in-out infinite; }
+  .flow-particle-marketing.is-top,
+  .flow-particle-it.is-top { margin-top: -30px; animation-delay: 0.8s; }
+  .flow-particle-marketing.is-bottom,
+  .flow-particle-it.is-bottom { margin-top: 30px; animation-delay: 1.6s; }
+
+  @keyframes particle-marketing {
+    0% { left: 0; opacity: 0; transform: scale(0.5); }
+    10% { opacity: 1; }
+    50% { transform: scale(1.15); }
+    90% { opacity: 1; }
+    100% { left: 50%; opacity: 0; transform: scale(0); }
+  }
+  @keyframes particle-it {
+    0% { right: 0; opacity: 0; transform: scale(0.5); }
+    10% { opacity: 1; }
+    50% { transform: scale(1.15); }
+    90% { opacity: 1; }
+    100% { right: 50%; opacity: 0; transform: scale(0); }
+  }
+
+  @media (max-width: 768px) {
+    .sir-hero-bg { --grid-size: 30px; --particle-size: 5px; }
+    .orbit { width: 180px; height: 180px; margin-top: -90px; }
+    .orbit-marketing { margin-left: -90px; }
+    .orbit-it { margin-right: -90px; }
+    .intersection-container {
+      width: 360px;
+      height: 220px;
+      margin-left: -180px;
+      margin-top: -110px;
+    }
+    .floating-word { font-size: 11px; }
+  }
+
+  /* Aggiunta rispetto al tema: chi ha ridotto le animazioni vede la scena ferma. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-animated-bg *,
+    .hero-animated-bg::before { animation: none !important; }
+    .floating-word { opacity: 0.4; }
+  }
+</style>

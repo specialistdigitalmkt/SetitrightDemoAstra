@@ -94,8 +94,12 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
           </h2>
           <div class="sir-grid sir-grid--4">
             {progetto.risultati.map((r) => (
-              <div class="sir-risultato sir-reveal">
-                {r.valore && <span class="sir-risultato__valore">{r.valore}</span>}
+              <div class="sir-risultato sir-reveal-up">
+                {r.valore && (
+                  <span class="sir-risultato__valore" data-conta={r.valore}>
+                    {r.valore}
+                  </span>
+                )}
                 <span class="sir-risultato__etichetta">{r.etichetta}</span>
                 {r.descrizione && <span class="sir-risultato__desc">{r.descrizione}</span>}
               </div>
@@ -139,6 +143,57 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
       </div>
     </div>
   </section>
+  <script>
+    // I numeri dei risultati salgono da zero quando la sezione entra in vista.
+    // Il valore è testo libero (1.135, +78%, 300GB+, SEO): si anima solo la parte
+    // numerica, conservando prefisso e suffisso; se non ce n'è, resta com'è.
+    const valori = document.querySelectorAll<HTMLElement>('[data-conta]');
+    const ridotto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (valori.length && !ridotto && 'IntersectionObserver' in window) {
+      const anima = (el: HTMLElement) => {
+        const testo = el.dataset.conta ?? '';
+        const match = testo.match(/^(\D*)([\d.,]+)(.*)$/);
+        if (!match) return;
+
+        const [, prefisso, numero, suffisso] = match;
+        const separatore = numero.includes('.') && !numero.includes(',');
+        const finale = Number(numero.replace(/\./g, '').replace(',', '.'));
+        if (!Number.isFinite(finale)) return;
+
+        const decimali = numero.includes(',') ? 1 : 0;
+        const durata = 1100;
+        const avvio = performance.now();
+
+        const passo = (ora: number) => {
+          const t = Math.min((ora - avvio) / durata, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const corrente = finale * eased;
+          const formattato = separatore
+            ? Math.round(corrente).toLocaleString('it-IT')
+            : corrente.toFixed(decimali).replace('.', ',');
+          el.textContent = `${prefisso}${formattato}${suffisso}`;
+          if (t < 1) requestAnimationFrame(passo);
+          else el.textContent = testo;
+        };
+
+        requestAnimationFrame(passo);
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            anima(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      valori.forEach((el) => observer.observe(el));
+    }
+  </script>
 </Base>
 
 <style>

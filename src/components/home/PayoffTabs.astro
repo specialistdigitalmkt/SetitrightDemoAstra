@@ -1,4 +1,7 @@
 ---
+import Marquee from '../Marquee.astro';
+import { heroAnimation } from '../../data/heroAnimation';
+
 type Area = {
   id: string;
   tag: string;
@@ -11,6 +14,11 @@ type Area = {
   voci: { titolo: string; testo: string }[];
   altro: string;
 };
+
+// Le stesse parole dell'animazione dell'hero, riusate come fascia scorrevole.
+const parole = [...heroAnimation.words.marketing, ...heroAnimation.words.it]
+  .filter((p) => p !== 'marketing' && p !== 'it')
+  .map((p) => p.toUpperCase());
 
 const aree: Area[] = [
   {
@@ -83,7 +91,9 @@ const aree: Area[] = [
 ---
 
 <section class="sir-payoff-section" aria-labelledby="payoff-title">
-  <div class="sir-container sir-stack sir-stack--xs sir-center sir-payoff-section__intro">
+  <Marquee voci={parole} />
+
+  <div class="sir-container sir-stack sir-stack--xs sir-center sir-payoff-section__intro sir-reveal">
     <p class="sir-eyebrow">Cosa gestiamo</p>
     <h2 id="payoff-title">Due mondi, un unico ecosistema</h2>
     <p>Marketing e IT, coordinati in un unico sistema operativo per la tua azienda.</p>
@@ -180,9 +190,12 @@ const aree: Area[] = [
   .sir-payoff-section {
     background: var(--sir-black);
     color: var(--sir-white);
-    padding: var(--sir-space-xl) var(--sir-space-sm);
+    padding: 0 0 var(--sir-space-xl);
   }
-  .sir-payoff-section__intro { margin-bottom: var(--sir-space-md); }
+  .sir-payoff-section > :global(:not(.sir-marquee)) {
+    padding-inline: var(--sir-space-sm);
+  }
+  .sir-payoff-section__intro { margin: var(--sir-space-lg) auto var(--sir-space-md); }
 
   .sir-payoff { max-width: var(--sir-full); margin-inline: auto; }
 
