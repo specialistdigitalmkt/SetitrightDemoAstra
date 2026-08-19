@@ -1,0 +1,63 @@
+---
+interface Props {
+  voci: string[];
+  /** Secondi per un giro completo: più alto = più lento. */
+  durata?: number;
+  inverso?: boolean;
+}
+const { voci, durata = 40, inverso = false } = Astro.props;
+
+// La lista viene ripetuta due volte: il loop è continuo perché la traccia
+// scorre esattamente della metà della sua larghezza.
+const serie = [...voci, ...voci];
+---
+
+<div class="sir-marquee" style={`--sir-marquee-durata:${durata}s`} aria-hidden="true">
+  <div class:list={['sir-marquee__track', inverso && 'is-reverse']}>
+    {
+      serie.map((voce) => (
+        <span class="sir-marquee__voce">
+          {voce}
+          <span class="sir-marquee__sep">◆</span>
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .sir-marquee {
+    overflow: hidden;
+    padding: 14px 0;
+    border-block: 1px solid var(--sir-white-12);
+    user-select: none;
+  }
+  .sir-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: sir-marquee var(--sir-marquee-durata) linear infinite;
+  }
+  .sir-marquee__track.is-reverse { animation-direction: reverse; }
+
+  .sir-marquee__voce {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding-right: 24px;
+    font-size: var(--sir-fs-small);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sir-white-60);
+    white-space: nowrap;
+  }
+  .sir-marquee__sep { color: var(--sir-white); opacity: 0.35; font-size: 8px; }
+
+  @keyframes sir-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sir-marquee__track { animation: none; }
+  }
+</style>

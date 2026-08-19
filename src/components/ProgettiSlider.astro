@@ -1,0 +1,188 @@
+---
+import ProgettoCard from './ProgettoCard.astro';
+import type { Progetto } from '../data/progetti';
+
+interface Props {
+  progetti: Progetto[];
+  /** Avanzamento automatico, in pausa su hover, focus e con reduced-motion. */
+  autoplay?: number;
+}
+const { progetti, autoplay = 6000 } = Astro.props;
+---
+
+<div class="sir-slider" data-slider data-autoplay={autoplay}>
+  <div class="sir-slider__track" data-slider-track tabindex="0" role="group" aria-label="Progetti, scorri per vederli tutti">
+    {
+      progetti.map((progetto, i) => (
+        <div class="sir-slider__slide" data-slide>
+          <ProgettoCard progetto={progetto} loading={i === 0 ? 'eager' : 'lazy'} />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="sir-slider__nav">
+    <button class="sir-slider__arrow" type="button" data-slider-prev aria-label="Progetto precedente">←</button>
+
+    <div class="sir-slider__dots" data-slider-dots>
+      {
+        progetti.map((progetto, i) => (
+          <button
+            class:list={['sir-slider__dot', i === 0 && 'is-active']}
+            type="button"
+            data-slider-dot={i}
+            aria-label={`Vai a: ${progetto.titolo}`}
+          />
+        ))
+      }
+    </div>
+
+    <button class="sir-slider__arrow" type="button" data-slider-next aria-label="Progetto successivo">→</button>
+  </div>
+</div>
+
+<style>
+  .sir-slider { position: relative; }
+
+  .sir-slider__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 2 * var(--sir-space-sm)) / 3);
+    gap: var(--sir-space-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .sir-slider__track::-webkit-scrollbar { display: none; }
+  .sir-slider__track:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+  .sir-slider__slide { scroll-snap-align: start; display: flex; }
+  .sir-slider__slide > :global(*) { width: 100%; }
+
+  .sir-slider__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sir-space-sm);
+    margin-top: var(--sir-space-sm);
+  }
+
+  .sir-slider__arrow {
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 1px solid var(--sir-gray-300);
+    color: inherit;
+    font: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s var(--sir-ease), color 0.2s var(--sir-ease),
+      border-color 0.2s var(--sir-ease), transform 0.2s var(--sir-ease);
+  }
+  .sir-slider__arrow:hover:not(:disabled) {
+    background: var(--sir-black);
+    border-color: var(--sir-black);
+    color: var(--sir-white);
+    transform: translateY(-2px);
+  }
+  .sir-slider__arrow:disabled { opacity: 0.35; cursor: default; }
+
+  .sir-slider__dots { display: flex; gap: 8px; }
+  .sir-slider__dot {
+    width: 28px;
+    height: 4px;
+    padding: 0;
+    background: var(--sir-gray-300);
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s var(--sir-ease), width 0.3s var(--sir-ease);
+  }
+  .sir-slider__dot.is-active { width: 48px; background: var(--sir-black); }
+
+  @media (max-width: 1000px) {
+    .sir-slider__track { grid-auto-columns: calc((100% - var(--sir-space-sm)) / 2); }
+  }
+  @media (max-width: 700px) {
+    .sir-slider__track { grid-auto-columns: 85%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sir-slider__track { scroll-behavior: auto; }
+    .sir-slider__arrow:hover:not(:disabled) { transform: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((slider) => {
+    const track = slider.querySelector<HTMLElement>('[data-slider-track]');
+    const slides = Array.from(slider.querySelectorAll<HTMLElement>('[data-slide]'));
+    const punti = Array.from(slider.querySelectorAll<HTMLButtonElement>('[data-slider-dot]'));
+    const prev = slider.querySelector<HTMLButtonElement>('[data-slider-prev]');
+    const next = slider.querySelector<HTMLButtonElement>('[data-slider-next]');
+    if (!track || slides.length === 0) return;
+
+    const ridotto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let indice = 0;
+
+    const passo = () => slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+    const massimo = () => Math.max(0, Math.round(track.scrollWidth - track.clientWidth));
+
+    const vai = (i: number) => {
+      indice = Math.max(0, Math.min(i, slides.length - 1));
+      track.scrollTo({ left: Math.min(indice * passo(), massimo()), behavior: ridotto ? 'auto' : 'smooth' });
+    };
+
+    const aggiorna = () => {
+      indice = Math.round(track.scrollLeft / passo());
+      punti.forEach((p, i) => p.classList.toggle('is-active', i === indice));
+      if (prev) prev.disabled = track.scrollLeft <= 1;
+      if (next) next.disabled = track.scrollLeft >= massimo() - 1;
+    };
+
+    prev?.addEventListener('click', () => vai(indice - 1));
+    next?.addEventListener('click', () => vai(indice + 1));
+    punti.forEach((p, i) => p.addEventListener('click', () => vai(i)));
+    track.addEventListener('scroll', () => requestAnimationFrame(aggiorna), { passive: true });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); vai(indice + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); vai(indice - 1); }
+    });
+
+    aggiorna();
+
+    // Avanzamento automatico: solo se la sezione è visibile e l'utente non interagisce.
+    const attesa = Number(slider.dataset.autoplay ?? 0);
+    if (!ridotto && attesa > 0) {
+      let timer: number | undefined;
+      let visibile = false;
+      let fermo = false;
+
+      const tick = () => {
+        if (!visibile || fermo) return;
+        vai(track.scrollLeft >= massimo() - 1 ? 0 : indice + 1);
+      };
+      const avvia = () => {
+        clearInterval(timer);
+        timer = window.setInterval(tick, attesa);
+      };
+
+      new IntersectionObserver(
+        ([entry]) => {
+          visibile = entry.isIntersecting;
+          if (visibile) avvia();
+          else clearInterval(timer);
+        },
+        { threshold: 0.3 }
+      ).observe(slider);
+
+      ['pointerenter', 'focusin', 'pointerdown'].forEach((ev) =>
+        slider.addEventListener(ev, () => { fermo = true; clearInterval(timer); })
+      );
+      ['pointerleave', 'focusout'].forEach((ev) =>
+        slider.addEventListener(ev, () => { fermo = false; if (visibile) avvia(); })
+      );
+    }
+  });
+</script>

@@ -36,20 +36,25 @@ npm run build
 SetitrightAstro/         export dei blocchi Gutenberg delle pagine originali (materiale di partenza)
 public/img/              asset scaricati dal sito WordPress (logo, icone, immagini progetti)
 public/img/progetti/     immagini e loghi cliente delle schede progetto
+public/img/team/         foto del team
 src/icons/               icone SVG estratte dai blocchi stackable/icon, colorate con currentColor
 src/data/site.ts         nome, payoff, email, LinkedIn, voci di menu
+src/data/heroAnimation.ts  configurazione dell'animazione dell'hero (era un JSON del tema)
 src/data/progetti.ts     i 5 progetti con categoria, tecnologie, sfide, soluzione, risultati
+src/data/team.ts         persone, settori serviti e principi della pagina Chi siamo
 src/styles/tokens.css    colori e font presi 1:1 dai preset di theme.json, più la scala di spaziature
 src/styles/base.css      reset, layout helper, card, tag, bottoni, animazioni di reveal
 src/layouts/Base.astro   <head>, SEO/OG, header, footer, observer per le animazioni
-src/components/          Header, Footer, Cta, Icon, ProgettoCard
-src/components/home/     Hero, Problema, Metodo, PayoffTabs, ChiSiamo, Progetti
-src/pages/               index, come-lavoriamo, i-nostri-progetti, contatti, manutenzione,
-                         404, progetto/[slug]
+src/components/          Header, Footer, Cta, Icon, Marquee, ProgettiSlider, ProgettoCard
+src/components/home/     Hero, HeroBackground, Problema, Metodo, PayoffTabs, ChiSiamo, Progetti
+src/pages/               index, chi-siamo, come-lavoriamo, i-nostri-progetti, contatti,
+                         manutenzione, 404, progetto/[slug]
 ```
 
-Le 11 pagine generate: home, come lavoriamo, portfolio, contatti, manutenzione, 404, le 5 schede
-progetto e il redirect dal vecchio slug del progetto Moioli.
+Le 12 pagine generate: home, chi siamo, come lavoriamo, portfolio, contatti, manutenzione, 404, le
+5 schede progetto e il redirect dal vecchio slug del progetto Moioli. Il menu ha le stesse voci del
+sito originale: Home, Chi siamo, Metodologia, Progetti, Contatti (dove "Metodologia" punta a
+`/come-lavoriamo/`, come su `setitright.it`).
 
 ## Come modificare i contenuti
 
@@ -81,6 +86,8 @@ progetto e il redirect dal vecchio slug del progetto Moioli.
 | `setitrighttheme/portfolio-cta` | `pages/i-nostri-progetti.astro` e `pages/progetto/[slug].astro` |
 | `[projects_filters]` + `core/query-grid-posts` | filtro client-side in `pages/i-nostri-progetti.astro` |
 | `[fluentform id="1"]` | form in `pages/contatti.astro` (vedi sotto) |
+| `assets/js/hero-concept-animation.js` + `.css` + `hero-concept-config.json` | `components/home/HeroBackground.astro` |
+| `assets/js/header-scroll.js` | script in `components/Header.astro` |
 
 Note sul porting:
 
@@ -96,8 +103,36 @@ Note sul porting:
 - I contenuti delle schede progetto (panoramica, sfide, soluzione, tecnologie, risultati) e i
   termini delle tassonomie `categoria_progetto` / `tecnologia_progetto` sono stati presi dalle
   pagine pubblicate su `setitright.it`, perché l'export dei blocchi conteneva solo la query loop.
+- Stessa cosa per `/chi-siamo/`: nell'export il file era un duplicato di `Come lavoriamo.txt`, quindi
+  team, settori e principi arrivano dalla pagina pubblicata (`src/data/team.ts`).
 - Il progetto Moioli è stato rinominato su WordPress: il vecchio slug risponde 301 sul sito live e
   lo stesso redirect è configurato in `astro.config.mjs`.
+
+## Animazioni
+
+**Hero.** L'animazione dietro al logo e' il porting di `hero-concept-animation` del tema: griglia
+pulsante, onde laterali, parole che affiorano, due orbite di particelle e il punto di fusione al
+centro con gli anelli che si espandono. Nel tema il DOM veniva costruito da JavaScript dopo un
+`fetch` del file di configurazione; qui viene generato a build time da
+`src/data/heroAnimation.ts`, quindi **l'hero non spedisce JavaScript**: e' tutto CSS. Le posizioni
+delle parole vengono da un generatore pseudo-casuale con seed fisso, cosi' la build e' riproducibile:
+per cambiare disposizione basta cambiare il seed in `HeroBackground.astro`.
+
+**Header.** Sopra l'hero resta trasparente e diventa solido dopo lo scroll, come
+`assets/js/header-scroll.js`.
+
+**Aggiunte rispetto al sito attuale**, per renderlo meno statico:
+
+- entrata scaglionata degli elementi dell'hero al caricamento, piu' l'indicatore "Scopri";
+- fascia scorrevole (`Marquee`) con le parole di marketing e IT, sopra la sezione "Due mondi";
+- i progetti in home sono uno slider con scroll-snap, frecce, indicatori, tastiera e avanzamento
+  automatico che si ferma su hover, focus e quando la sezione non e' visibile;
+- i numeri dei risultati nelle schede progetto salgono da zero quando entrano in vista;
+- piu' varianti di reveal (`sir-reveal-up`, `-left`, `-right`, `-tilt`, `-soft`) con ritardi
+  scaglionati, applicate anche a titoli e blocchi prima statici.
+
+Tutto rispetta `prefers-reduced-motion`: con le animazioni ridotte la scena dell'hero resta ferma,
+marquee e autoplay si fermano, i contatori mostrano il valore finale e i reveal sono gia' visibili.
 
 ## Form contatti
 
@@ -118,9 +153,8 @@ Build command: `npm run build` — publish directory: `dist`.
 ## Cosa manca rispetto al sito attuale
 
 - Privacy e cookie policy, e ogni altra pagina legale.
-- La pagina "Chi siamo": nell'export `SetitrightAstro/Chi siamo.txt` è identica a
-  `Come lavoriamo.txt` (stesso md5), quindi il contenuto vero non è disponibile. In home la sezione
-  "Chi siamo" c'è già come blocco.
+- Le foto del team sono le miniature 150x150 servite da WordPress: per una resa migliore vanno
+  riesportate a risoluzione maggiore dalla libreria media.
 - P.IVA e dati legali nel footer (`src/components/Footer.astro`).
 - Le immagini dei progetti sono le versioni a 1024px servite da WordPress: se servono più nitide,
   vanno riesportate dalla libreria media.

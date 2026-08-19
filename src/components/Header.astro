@@ -2,12 +2,13 @@
 import { nav, site } from '../data/site';
 
 const current = Astro.url.pathname;
+const attiva = (href: string) => (href === '/' ? current === '/' : current.startsWith(href));
 ---
 
-<header class="sir-header">
+<header class="sir-header" data-header>
   <div class="sir-header__inner">
     <a class="sir-header__logo" href="/" aria-label={`${site.name} — home`}>
-      <img src={site.logo} alt={site.name} width="220" height="28" />
+      <img src={site.logoHeader} alt={site.name} width="220" height="28" />
     </a>
 
     <input class="sir-header__toggle" type="checkbox" id="sir-nav-toggle" hidden />
@@ -20,8 +21,8 @@ const current = Astro.url.pathname;
         nav.map((item) => (
           <a
             href={item.href}
-            class:list={['sir-header__link', current.startsWith(item.href) && 'is-current']}
-            aria-current={current.startsWith(item.href) ? 'page' : undefined}
+            class:list={['sir-header__link', attiva(item.href) && 'is-current']}
+            aria-current={attiva(item.href) ? 'page' : undefined}
           >
             {item.label}
           </a>
@@ -40,7 +41,23 @@ const current = Astro.url.pathname;
     background: var(--sir-black);
     color: var(--sir-white);
     border-bottom: 1px solid var(--sir-white-12);
+    transition: background-color 0.4s var(--sir-ease), border-color 0.4s var(--sir-ease),
+      padding 0.3s var(--sir-ease);
   }
+
+  /* Sopra un hero a tutta altezza l'header resta trasparente e diventa solido
+     dopo lo scroll: è il comportamento di assets/js/header-scroll.js del tema. */
+  .sir-header[data-overlay] {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+  .sir-header[data-overlay]:not(.is-solid) {
+    background: transparent;
+    border-bottom-color: transparent;
+  }
+  .sir-header[data-overlay]:not(.is-solid) .sir-header__inner { padding-block: 22px; }
   .sir-header__inner {
     display: flex;
     align-items: center;
@@ -112,3 +129,30 @@ const current = Astro.url.pathname;
     .sir-header__cta { margin: 16px var(--sir-space-sm) 24px; }
   }
 </style>
+
+<script>
+  // Porting di assets/js/header-scroll.js: la classe cambia quando si supera l'hero.
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const hero = document.querySelector<HTMLElement>('.sir-hero');
+
+  if (header && hero) {
+    header.dataset.overlay = '';
+
+    let inCoda = false;
+    const aggiorna = () => {
+      inCoda = false;
+      const soglia = hero.offsetHeight - 100;
+      header.classList.toggle('is-solid', window.scrollY > soglia);
+    };
+
+    const suScroll = () => {
+      if (inCoda) return;
+      inCoda = true;
+      requestAnimationFrame(aggiorna);
+    };
+
+    aggiorna();
+    window.addEventListener('scroll', suScroll, { passive: true });
+    window.addEventListener('resize', suScroll, { passive: true });
+  }
+</script>

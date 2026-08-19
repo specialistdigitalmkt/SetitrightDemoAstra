@@ -1,9 +1,10 @@
 ---
+import HeroBackground from './HeroBackground.astro';
 import { site } from '../../data/site';
 ---
 
 <section class="sir-hero">
-  <div class="sir-hero__bg" aria-hidden="true"></div>
+  <HeroBackground />
 
   <div class="sir-hero__content">
     <!-- Nel tema WordPress questo testo era reso invisibile (colore trasparente):
@@ -11,7 +12,7 @@ import { site } from '../../data/site';
     <h1 class="sir-hero__h1">Supporto IT e marketing per aziende</h1>
 
     <img
-      class="sir-hero__logo"
+      class="sir-hero__logo sir-enter"
       src={site.logo}
       alt={site.name}
       width="775"
@@ -19,20 +20,25 @@ import { site } from '../../data/site';
       fetchpriority="high"
     />
 
-    <p class="sir-hero__tagline">{site.tagline}</p>
+    <p class="sir-hero__tagline sir-enter sir-enter--1">{site.tagline}</p>
 
-    <p class="sir-hero__payoff sir-reveal-tilt">{site.payoff}</p>
+    <p class="sir-hero__payoff sir-enter sir-enter--2">{site.payoff}</p>
 
-    <p class="sir-hero__text">
+    <p class="sir-hero__text sir-enter sir-enter--3">
       Quando IT e marketing non parlano tra loro, la tua azienda paga il conto.
       Noi siamo il punto di regia che mancava.
     </p>
 
-    <div class="sir-btns sir-hero__actions">
+    <div class="sir-btns sir-hero__actions sir-enter sir-enter--4">
       <a class="sir-btn sir-btn--fill" href="/i-nostri-progetti/">Portfolio</a>
       <a class="sir-btn sir-btn--outline" href="/contatti/">Contattaci</a>
     </div>
   </div>
+
+  <a class="sir-hero__scroll" href="#problema-title">
+    <span>Scopri</span>
+    <span aria-hidden="true">↓</span>
+  </a>
 </section>
 
 <style>
@@ -41,22 +47,16 @@ import { site } from '../../data/site';
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: min(78vh, 760px);
+    min-height: 100vh;
+    min-height: 100svh;
     padding: var(--sir-space-lg) var(--sir-space-md);
     background: var(--sir-black);
     color: var(--sir-white);
     overflow: hidden;
   }
-  .sir-hero__bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(60% 55% at 50% 12%, rgba(255, 255, 255, 0.1), transparent 70%),
-      linear-gradient(180deg, transparent 60%, rgba(255, 255, 255, 0.05));
-    pointer-events: none;
-  }
   .sir-hero__content {
     position: relative;
+    z-index: 2;
     width: 100%;
     max-width: var(--sir-content);
     text-align: center;
@@ -93,7 +93,55 @@ import { site } from '../../data/site';
   }
   .sir-hero__actions { margin-top: 32px; }
 
+  /* Entrata in scena al caricamento: l'hero si compone invece di apparire fatto. */
+  .sir-enter {
+    opacity: 0;
+    animation: sir-enter 0.9s var(--sir-ease) forwards;
+    animation-delay: var(--sir-enter-delay, 0.15s);
+  }
+  .sir-enter--1 { --sir-enter-delay: 0.35s; }
+  .sir-enter--2 { --sir-enter-delay: 0.55s; }
+  .sir-enter--3 { --sir-enter-delay: 0.7s; }
+  .sir-enter--4 { --sir-enter-delay: 0.85s; }
+
+  @keyframes sir-enter {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* Indicatore di scroll in fondo all'hero. */
+  .sir-hero__scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--sir-white-60);
+    font-size: var(--sir-fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    animation: sir-enter 0.9s var(--sir-ease) 1.1s backwards;
+  }
+  .sir-hero__scroll:hover { color: var(--sir-white); }
+  .sir-hero__scroll span:last-child { animation: sir-scroll-bob 1.8s ease-in-out infinite; }
+
+  @keyframes sir-scroll-bob {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(5px); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sir-enter { opacity: 1; animation: none; }
+    .sir-hero__scroll { animation: none; }
+    .sir-hero__scroll span:last-child { animation: none; }
+  }
+
   @media (max-width: 700px) {
-    .sir-hero { padding: var(--sir-space-md) var(--sir-space-sm); min-height: auto; }
+    .sir-hero { padding: var(--sir-space-md) var(--sir-space-sm); }
   }
 </style>

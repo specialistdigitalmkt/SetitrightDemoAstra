@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { team, settori, principi } from '../data/team';
+---
+
+<Base
+  title="Chi siamo"
+  description="Non siamo un’agenzia, non siamo un fornitore: siamo il punto di coordinamento tra marketing e IT per le aziende. Le persone dietro il sistema."
+>
+  <section class="sir-section sir-on-dark">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
+      <h1 class="sir-enter">Le persone dietro il sistema</h1>
+      <p class="sir-lead sir-enter sir-enter--1">
+        Lavoriamo con aziende che cercano un unico punto di riferimento per marketing e IT, per avere
+        controllo, coerenza e risultati.
+      </p>
+    </div>
+  </section>
+
+  <section class="sir-section" aria-labelledby="chi-siamo-title">
+    <div class="sir-container--narrow sir-container sir-stack sir-stack--sm sir-center">
+      <h2 id="chi-siamo-title">Chi siamo</h2>
+      <p class="sir-negazione sir-reveal-left">Non siamo un’agenzia</p>
+      <p class="sir-negazione sir-reveal-left sir-delay-2">Non siamo un fornitore.</p>
+      <p class="sir-affermazione sir-reveal-up sir-delay-3">
+        Siamo il punto di coordinamento tra marketing e IT per aziende
+      </p>
+    </div>
+  </section>
+
+  <section class="sir-section sir-on-gray" aria-labelledby="team-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <div class="sir-container--narrow sir-stack sir-stack--xs sir-center sir-reveal">
+        <h2 id="team-title">Il Team</h2>
+        <p class="sir-muted">
+          Non un’agenzia, non un fornitore. Un team core di professionisti specializzati, con una
+          rete selezionata di collaboratori che attiviamo in base al progetto.
+        </p>
+      </div>
+
+      <div class="sir-grid sir-grid--2">
+        {
+          team.map((persona, i) => (
+            <article class:list={['sir-persona', 'sir-reveal-up', `sir-delay-${(i % 2) + 1}`]}>
+              <img
+                class="sir-persona__foto"
+                src={persona.foto}
+                alt={persona.nome}
+                width="150"
+                height="150"
+                loading={i < 2 ? 'eager' : 'lazy'}
+              />
+              <div class="sir-persona__testo">
+                <h3>{persona.nome}</h3>
+                <p class="sir-persona__ruolo">{persona.ruolo}</p>
+                <p class="sir-card__text">{persona.bio}</p>
+                <a class="sir-persona__link" href={persona.linkedin} rel="noopener noreferrer" target="_blank">
+                  LinkedIn →
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="sir-rete sir-reveal-up">
+        <h3>Un team core, una rete selezionata</h3>
+        <p>
+          Siamo un team di professionisti con competenze complementari su IT e comunicazione. Quando
+          un progetto richiede specializzazioni aggiuntive — sviluppatori, designer, esperti SEO,
+          consulenti legali — attiviamo una rete di collaboratori selezionati e già rodati. Niente
+          outsourcing anonimo: persone che conosciamo, di cui rispondiamo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sir-section" aria-labelledby="settori-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <div class="sir-container--narrow sir-stack sir-stack--xs sir-center sir-reveal">
+        <p class="sir-eyebrow">Con chi lavoriamo</p>
+        <h2 id="settori-title">
+          Aziende che stanno crescendo, evolvendo, ma hanno perso il controllo del proprio ecosistema
+          digitale.
+        </h2>
+      </div>
+
+      <div class="sir-grid sir-grid--4">
+        {
+          settori.map((settore, i) => (
+            <article class:list={['sir-card', 'sir-reveal-left', `sir-delay-${i + 1}`]}>
+              <p class="sir-card__title">{settore.titolo}</p>
+              <p class="sir-card__text">{settore.testo}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="sir-section sir-on-gray" aria-labelledby="principi-title">
+    <div class="sir-container sir-stack sir-stack--md">
+      <div class="sir-container--narrow sir-stack sir-stack--xs sir-center sir-reveal">
+        <img class="sir-principi__icona" src="/img/AboutPage.svg" alt="" width="48" height="48" />
+        <h2 id="principi-title">I nostri principi</h2>
+      </div>
+
+      <div class="sir-grid sir-grid--2">
+        {
+          principi.map((principio, i) => (
+            <article class:list={['sir-card', 'sir-card--strong', 'sir-reveal-right', `sir-delay-${(i % 2) + 1}`]}>
+              <p class="sir-card__title">{principio.titolo}</p>
+              <p class="sir-card__text">{principio.testo}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Cta testo="Se il vostro ecosistema digitale è frammentato e volete rimettere ordine, contattateci. Un primo incontro non costa nulla." />
+</Base>
+
+<style>
+  h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); }
+
+  .sir-enter {
+    opacity: 0;
+    animation: sir-enter-cs 0.8s var(--sir-ease) forwards;
+    animation-delay: var(--sir-enter-delay, 0.1s);
+  }
+  .sir-enter--1 { --sir-enter-delay: 0.3s; }
+  @keyframes sir-enter-cs {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .sir-negazione {
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    color: var(--sir-gray-500);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+  .sir-affermazione {
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .sir-persona {
+    display: flex;
+    gap: var(--sir-space-sm);
+    padding: var(--sir-space-sm);
+    background: var(--sir-white);
+    border-left: var(--sir-rule) solid var(--sir-black);
+  }
+  .sir-persona__foto {
+    flex: none;
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: grayscale(1);
+    transition: filter 0.4s var(--sir-ease);
+  }
+  .sir-persona:hover .sir-persona__foto { filter: grayscale(0); }
+  .sir-persona__testo { display: flex; flex-direction: column; gap: 8px; }
+  .sir-persona__testo h3 { font-size: 1.1rem; }
+  .sir-persona__ruolo {
+    font-size: var(--sir-fs-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sir-gray-500);
+  }
+  .sir-persona__link {
+    margin-top: auto;
+    font-size: var(--sir-fs-small);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .sir-persona__link:hover { text-decoration: underline; }
+
+  .sir-rete {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: var(--sir-space-md) var(--sir-space-sm);
+    background: var(--sir-black);
+    color: var(--sir-white);
+    text-align: center;
+  }
+  .sir-rete p { max-width: 760px; margin-inline: auto; color: var(--sir-white-60); line-height: 1.7; }
+
+  #settori-title { font-size: clamp(1.2rem, 2.4vw, 1.7rem); font-weight: 500; line-height: 1.35; }
+  .sir-principi__icona { width: 48px; margin-inline: auto; }
+
+  @media (max-width: 560px) {
+    .sir-persona { flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sir-enter { opacity: 1; animation: none; }
+    .sir-persona__foto { filter: grayscale(1); }
+  }
+</style>
