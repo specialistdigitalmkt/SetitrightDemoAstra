@@ -407,6 +407,14 @@ const stile = [
     .floating-word { font-size: 11px; }
   }
 
+  /* Sul telefono il testo dell'hero va su più righe e il centro della scena
+     finisce sopra il paragrafo: linee, punto di fusione e orbite sembrerebbero
+     sottolineature. Restano griglia e parole. */
+  @media (max-width: 600px) {
+    .intersection-container,
+    .orbit { display: none; }
+  }
+
   /* Aggiunta rispetto al tema: chi ha ridotto le animazioni vede la scena ferma. */
   @media (prefers-reduced-motion: reduce) {
     .hero-animated-bg *,

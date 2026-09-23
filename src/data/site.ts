@@ -8,7 +8,13 @@ export const site = {
   logo: '/img/LOGO-SET-IT-RIGHT-IT-semplicifcata-per-svg.svg',
   /** Variante usata nell'header del sito originale (con il segno di spunta). */
   logoHeader: '/img/LOGO-SET-IT-RIGHT-IT-semplicifcata-per-header-con-flag.svg',
+  /** Testo sotto il logo nel footer di setitright.it. */
+  footerText:
+    'Comunicazione, Marketing e IT Management per aziende che vogliono un unico referente e meno frammentazione.',
   email: 'info@setitright.it',
+  piva: '14473110964',
+  /** Tag Google (GA4) del sito WordPress, inserito da Site Kit: stessa proprietà. */
+  gaId: 'GT-NCH9SBMC',
   linkedin: 'https://www.linkedin.com/company/setitright',
   locale: 'it_IT',
 };
@@ -20,4 +26,10 @@ export const nav = [
   { label: 'Metodologia', href: '/come-lavoriamo/' },
   { label: 'Progetti', href: '/i-nostri-progetti/' },
   { label: 'Contatti', href: '/contatti/' },
+];
+
+/** Pagine legali, linkate nel footer. */
+export const legal = [
+  { label: 'Privacy Policy', href: '/privacy-policy/' },
+  { label: 'Cookie Policy (UE)', href: '/cookie-policy-ue/' },
 ];

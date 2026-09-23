@@ -30,6 +30,7 @@
   --sir-fs-small: 0.9375rem;
   --sir-fs-base: 1rem;
   --sir-fs-lead: 1.25rem;
+  --sir-fs-h1: clamp(1.9rem, 4.5vw, 3rem);
   --sir-fs-h3: clamp(1.35rem, 2.2vw, 1.75rem);
   --sir-fs-h2: clamp(1.75rem, 3.4vw, 2.6rem);
 

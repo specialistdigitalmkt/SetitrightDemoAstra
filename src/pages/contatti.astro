@@ -51,15 +51,16 @@ import { site } from '../data/site';
         <label class="sir-check">
           <input type="checkbox" name="privacy" required />
           <span class="sir-small sir-muted">
-            Ho letto l’informativa privacy e acconsento al trattamento dei dati.
+            Ho letto l’<a href="/privacy-policy/" target="_blank">informativa privacy</a> e acconsento al trattamento dei dati.
           </span>
         </label>
 
         <button class="sir-btn sir-btn--dark" type="submit">Invia richiesta</button>
 
-        <p class="sir-small sir-muted sir-form__note" data-form-note>
-          Di default il form apre il tuo client di posta. Per l’invio via server (Formspree, API
-          route, SMTP) vedi il README.
+        {/* Il form apre il client di posta (mailto): per l'invio via server vedi il README. */}
+        <p class="sir-small sir-muted sir-form__note">
+          Premendo “Invia richiesta” si apre il tuo programma di posta con il messaggio già
+          compilato: ti basta inviarlo.
         </p>
       </form>
 

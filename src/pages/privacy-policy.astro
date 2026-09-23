@@ -1,0 +1,120 @@
+---
+import Legale from '../layouts/Legale.astro';
+
+// Testo della pagina "Privacy Policy" di setitright.it (export WordPress del 23/09/2026).
+const email = 'lpazzi@setitright.it';
+---
+
+<Legale
+  title="Privacy Policy"
+  description="Informativa sul trattamento dei dati personali degli utenti del sito Set It Right, ai sensi dell’art. 13 del Regolamento (UE) 2016/679."
+  aggiornamento="7 aprile 2026"
+>
+  <p>
+    SET IT RIGHT rispetta la privacy degli utenti e si impegna a proteggere i dati personali in
+    conformità al Regolamento (UE) 2016/679 (GDPR) e alla normativa vigente applicabile.
+  </p>
+  <p>
+    La presente informativa è resa ai sensi dell’art. 13 del GDPR a tutti coloro che interagiscono
+    con il sito web.
+  </p>
+
+  <h2>Titolare del Trattamento</h2>
+  <p>Il Titolare del trattamento è:</p>
+  <p>
+    <strong>SET IT RIGHT</strong><br />
+    (di Luca Pazzi)<br />
+    Email: <a href={`mailto:${email}`}>{email}</a>
+  </p>
+
+  <h2>Tipologia di Dati Raccolti</h2>
+  <h3>1. Dati forniti volontariamente dall’utente</h3>
+  <p>Tramite il modulo di contatto possono essere raccolti:</p>
+  <ul>
+    <li>Nome e cognome</li>
+    <li>Indirizzo email</li>
+    <li>Azienda (facoltativo)</li>
+    <li>Contenuto del messaggio</li>
+  </ul>
+  <p>Il conferimento dei dati è facoltativo, ma necessario per poter rispondere alle richieste.</p>
+
+  <h3>2. Dati di navigazione</h3>
+  <p>Durante la navigazione possono essere raccolti dati tecnici quali:</p>
+  <ul>
+    <li>Indirizzo IP</li>
+    <li>Tipo di browser</li>
+    <li>Sistema operativo</li>
+    <li>Orario della visita</li>
+    <li>Pagine visitate</li>
+  </ul>
+  <p>
+    Tali dati vengono trattati tramite strumenti di analisi statistica (es. Google Analytics 4) in
+    forma pseudonimizzata e per finalità di analisi e miglioramento del sito.
+  </p>
+
+  <h2>Servizi di Terze Parti Utilizzati</h2>
+  <p>Il sito utilizza o può utilizzare i seguenti servizi:</p>
+  <ul>
+    <li>Google Analytics 4 – analisi del traffico</li>
+    <li>Google reCAPTCHA – protezione dei moduli da spam</li>
+  </ul>
+  <p>Tali servizi possono comportare la raccolta di dati tecnici e l’installazione di cookie.</p>
+
+  <h2>Finalità del Trattamento</h2>
+  <p>I dati personali sono trattati per:</p>
+  <ul>
+    <li>Rispondere alle richieste inviate tramite modulo di contatto</li>
+    <li>Gestire eventuali rapporti precontrattuali</li>
+    <li>Analisi statistiche e miglioramento del sito</li>
+    <li>Garantire la sicurezza del sito (es. prevenzione spam)</li>
+  </ul>
+
+  <h2>Base Giuridica del Trattamento</h2>
+  <p>Il trattamento si fonda su:</p>
+  <ul>
+    <li>Art. 6, par. 1, lett. b GDPR – esecuzione di misure precontrattuali</li>
+    <li>Art. 6, par. 1, lett. f GDPR – legittimo interesse (sicurezza e analisi)</li>
+    <li>Art. 6, par. 1, lett. a GDPR – consenso (cookie e strumenti non tecnici)</li>
+  </ul>
+
+  <h2>Modalità del Trattamento</h2>
+  <p>
+    I dati sono trattati con strumenti informatici e telematici, adottando adeguate misure di
+    sicurezza ai sensi dell’art. 32 GDPR.
+  </p>
+  <p>Non vengono effettuati processi decisionali automatizzati.</p>
+
+  <h2>Conservazione dei Dati</h2>
+  <p>I dati sono conservati:</p>
+  <ul>
+    <li>Dati da form: fino a 12 mesi</li>
+    <li>Dati statistici: secondo le impostazioni del servizio (es. Google Analytics)</li>
+  </ul>
+
+  <h2>Trasferimento dei Dati</h2>
+  <p>
+    Alcuni servizi utilizzati (es. Google Analytics, reCAPTCHA) possono comportare il trasferimento
+    di dati verso Paesi extra UE (es. Stati Uniti).
+  </p>
+  <p>
+    Tali trasferimenti avvengono nel rispetto delle garanzie previste dal GDPR (Clausole
+    Contrattuali Standard o Data Privacy Framework).
+  </p>
+
+  <h2>Diritti dell’Interessato</h2>
+  <p>Gli utenti possono esercitare i diritti previsti dagli artt. 15-22 GDPR:</p>
+  <ul>
+    <li>Accesso</li>
+    <li>Rettifica</li>
+    <li>Cancellazione</li>
+    <li>Limitazione</li>
+    <li>Opposizione</li>
+    <li>Portabilità</li>
+  </ul>
+  <p>Le richieste possono essere inviate a:</p>
+  <p><a href={`mailto:${email}`}>{email}</a></p>
+  <p>
+    È possibile proporre reclamo al Garante per la Protezione dei Dati Personali
+    (<a href="https://www.garanteprivacy.it" rel="noopener noreferrer" target="_blank">www.garanteprivacy.it</a>).
+  </p>
+</Legale>

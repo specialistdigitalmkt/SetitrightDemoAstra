@@ -42,7 +42,7 @@ import { filtri, progetti } from '../data/progetti';
         {progetti.length} progetti
       </p>
 
-      <div class="sir-grid sir-grid--3" data-griglia>
+      <div class="sir-portfolio-griglia" data-griglia>
         {progetti.map((progetto, i) => <ProgettoCard progetto={progetto} loading={i < 3 ? 'eager' : 'lazy'} />)}
       </div>
     </div>
@@ -89,6 +89,21 @@ import { filtri, progetti } from '../data/progetti';
   }
 
   [data-conteggio] { text-align: center; }
+
+  /* Flex invece di grid: l'ultima riga incompleta (e i risultati filtrati)
+     resta centrata invece di allinearsi a sinistra. */
+  .sir-portfolio-griglia {
+    --colonne: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sir-space-sm);
+  }
+  .sir-portfolio-griglia > :global(*) {
+    flex: 0 1 calc((100% - (var(--colonne) - 1) * var(--sir-space-sm)) / var(--colonne));
+  }
+  @media (max-width: 900px) { .sir-portfolio-griglia { --colonne: 2; } }
+  @media (max-width: 600px) { .sir-portfolio-griglia { --colonne: 1; } }
 
   .sir-portfolio-cta { padding-top: 32px; }
   .sir-portfolio-cta__box {

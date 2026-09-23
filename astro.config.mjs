@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,10 +9,11 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
-  // Il progetto Moioli è stato rinominato su WordPress: il vecchio slug risponde
-  // 301 sul sito live, quindi lo conserviamo anche qui.
-  redirects: {
-    '/progetto/una-direzione-marketing-esterna-non-un-semplice-intervento/':
-      '/progetto/una-direzione-marketing-esterna-prefabbricati-moioli/',
-  },
+  // I redirect dai vecchi URL di WordPress sono 301 veri in public/.htaccess
+  // (l'hosting è Aruba, Apache): qui genererebbero solo pagine HTML di rimando.
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/manutenzione/'),
+    }),
+  ],
 });

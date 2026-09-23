@@ -27,7 +27,7 @@ npm run dev
 npm run build
 ```
 
-`npm run build` genera il sito statico in `dist/` (7 pagine, ~350 KB inclusi gli asset).
+`npm run build` genera il sito statico in `dist/`.
 `npm run preview` serve la build in locale.
 
 ## Struttura
@@ -44,15 +44,17 @@ src/data/progetti.ts     i 5 progetti con categoria, tecnologie, sfide, soluzion
 src/data/team.ts         persone, settori serviti e principi della pagina Chi siamo
 src/styles/tokens.css    colori e font presi 1:1 dai preset di theme.json, più la scala di spaziature
 src/styles/base.css      reset, layout helper, card, tag, bottoni, animazioni di reveal
-src/layouts/Base.astro   <head>, SEO/OG, header, footer, observer per le animazioni
+src/layouts/Base.astro   <head>, SEO/OG, font, header, footer, observer per le animazioni
+src/layouts/Legale.astro impaginazione di privacy e cookie policy
 src/components/          Header, Footer, Cta, Icon, Marquee, ProgettiSlider, ProgettoCard
 src/components/home/     Hero, HeroBackground, Problema, Metodo, PayoffTabs, ChiSiamo, Progetti
 src/pages/               index, chi-siamo, come-lavoriamo, i-nostri-progetti, contatti,
-                         manutenzione, 404, progetto/[slug]
+                         privacy-policy, cookie-policy-ue, manutenzione, 404, progetto/[slug]
 ```
 
-Le 12 pagine generate: home, chi siamo, come lavoriamo, portfolio, contatti, manutenzione, 404, le
-5 schede progetto e il redirect dal vecchio slug del progetto Moioli. Il menu ha le stesse voci del
+Le pagine generate: home, chi siamo, come lavoriamo, portfolio, contatti, privacy policy, cookie
+policy, manutenzione, 404, le 5 schede progetto e i redirect dai vecchi URL di WordPress (vedi
+`astro.config.mjs`). Il menu ha le stesse voci del
 sito originale: Home, Chi siamo, Metodologia, Progetti, Contatti (dove "Metodologia" punta a
 `/come-lavoriamo/`, come su `setitright.it`).
 
@@ -62,7 +64,7 @@ sito originale: Home, Chi siamo, Metodologia, Progetti, Contatti (dove "Metodolo
   (es. le quattro card del "problema" sono l'array `silos` in `Problema.astro`).
 - **Progetti**: aggiungi un oggetto a `src/data/progetti.ts`; la pagina di dettaglio
   `/progetto/<slug>/` viene generata da sola e la scheda compare in home e in portfolio.
-- **Menu, email, payoff**: `src/data/site.ts`.
+- **Menu, email, payoff, P.IVA, link legali del footer**: `src/data/site.ts`.
 - **Colori**: `src/styles/tokens.css` — sono gli stessi valori che il tema WordPress esponeva come
   `var(--wp--preset--color--*)`: nero `#000000`, bianco `#ffffff`, `white-60` `rgba(255,255,255,.6)`,
   `gray-50` `#f9fafb`, `gray-300` `#d1d5dc`, `gray-500` `#6f6f6f`.
@@ -106,7 +108,15 @@ Note sul porting:
 - Stessa cosa per `/chi-siamo/`: nell'export il file era un duplicato di `Come lavoriamo.txt`, quindi
   team, settori e principi arrivano dalla pagina pubblicata (`src/data/team.ts`).
 - Il progetto Moioli è stato rinominato su WordPress: il vecchio slug risponde 301 sul sito live e
-  lo stesso redirect è configurato in `astro.config.mjs`.
+  lo stesso redirect è configurato in `astro.config.mjs`, insieme a `/scadenziario-app/` (un
+  vecchio articolo), `/come-lavoriamo-2/` (lo slug che il menu WP usava per "Metodologia") e
+  `/homepage/`.
+- Footer, privacy policy e i dati delle schede progetto (sottotitolo, durata, servizi, anno) sono
+  stati allineati all'export completo `WordPress.2026-09-23.xml`.
+- **Cookie policy**: su WordPress la generava Complianz. Qui è scritta a mano e descrive solo quello
+  che il sito usa davvero: il banner di consenso e Google Analytics 4. Il font IBM Plex Sans è
+  servito in locale con `@fontsource`, senza Google Fonts. **Se si aggiunge un servizio esterno, va
+  elencato in cookie policy e privacy policy.**
 
 ## Animazioni
 
@@ -144,17 +154,32 @@ qualsiasi hosting statico). Per l'invio via server, sostituisci l'handler in
 - **Endpoint proprio**: aggiungi un adapter (`npx astro add node` oppure `netlify` / `vercel`) e
   crea `src/pages/api/contatti.ts` con un handler `POST`.
 
-## Deploy
+## Deploy su Aruba
 
-Essendo output statico va su qualsiasi hosting: Netlify, Vercel, Cloudflare Pages, GitHub Pages o
-un normale spazio web (carica il contenuto di `dist/`).
-Build command: `npm run build` — publish directory: `dist`.
+L'hosting è Aruba (Apache): il sito si carica come file statici, senza Node sul server.
+
+1. `npm run build` e comprimi il **contenuto** di `dist/` (incluso il file nascosto `.htaccess`)
+   in `setitright-sito-aruba.zip`, con i file alla radice dello zip.
+2. Nel File Manager di Aruba carica lo zip nella root del sito ed estrailo, oppure carica i file
+   via FTP (FileZilla).
+
+`public/.htaccess` contiene i redirect 301 dai vecchi URL di WordPress, https/www, la pagina 404
+e la cache. Per aggiornare il sito basta rifare build e caricamento: i file in `_astro/` cambiano
+nome a ogni build, quindi quelli vecchi si possono cancellare.
+
+## Google Analytics e consenso
+
+GA4 usa lo stesso tag del WordPress (`GT-NCH9SBMC`, in `src/data/site.ts`) e parte **solo dopo il
+consenso** dato nel banner di `src/components/CookieConsent.astro`, che sostituisce Complianz:
+Accetta e Rifiuta hanno lo stesso peso, la X vale come rifiuto, un rifiuto non viene richiesto
+per 6 mesi e la scelta si cambia da "Preferenze cookie" nel footer o dalla cookie policy.
 
 ## Cosa manca rispetto al sito attuale
 
-- Privacy e cookie policy, e ogni altra pagina legale.
+- La privacy policy è il testo pubblicato su WordPress e cita anche Google reCAPTCHA ("utilizza o
+  può utilizzare"), che il sito statico non usa.
+- "Termini e Condizioni" era linkato nel footer WP ma puntava a `#`: la pagina non esiste.
 - Le foto del team sono le miniature 150x150 servite da WordPress: per una resa migliore vanno
   riesportate a risoluzione maggiore dalla libreria media.
-- P.IVA e dati legali nel footer (`src/components/Footer.astro`).
 - Le immagini dei progetti sono le versioni a 1024px servite da WordPress: se servono più nitide,
   vanno riesportate dalla libreria media.

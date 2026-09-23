@@ -24,11 +24,17 @@ const {
 </section>
 
 <style>
+  /* Stacca dalla sezione precedente con una fascia bianca, ma non prima del
+     footer; dopo una sezione grigia il box diventa bianco invece di fondersi. */
   .sir-cta {
-    margin: var(--sir-space-md) 0;
+    margin: var(--sir-space-md) 0 0;
     padding: var(--sir-space-md) var(--sir-space-sm);
     background: var(--sir-gray-50);
     color: var(--sir-black);
+  }
+  :global(.sir-on-gray) + .sir-cta {
+    margin-top: 0;
+    background: var(--sir-white);
   }
   .sir-cta__text {
     max-width: 680px;

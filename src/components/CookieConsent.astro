@@ -1,0 +1,190 @@
+---
+import { site } from '../data/site';
+---
+
+<!--
+  Banner di consenso per Google Analytics (sostituisce Complianz).
+  GA non viene caricato finché l'utente non accetta; la scelta resta nel browser
+  (localStorage, strumento tecnico) e si può cambiare dal link "Preferenze cookie"
+  nel footer o dalla cookie policy. Un rifiuto non viene richiesto per 6 mesi,
+  come indicano le linee guida del Garante (giugno 2021).
+-->
+<div
+  class="sir-consenso"
+  data-consenso
+  data-ga-id={site.gaId}
+  role="dialog"
+  aria-labelledby="consenso-titolo"
+  aria-describedby="consenso-testo"
+  hidden
+>
+  <button class="sir-consenso__chiudi" type="button" data-consenso-scelta="denied" aria-label="Chiudi e rifiuta">
+    ×
+  </button>
+  <p id="consenso-titolo" class="sir-consenso__titolo">Cookie statistici</p>
+  <p id="consenso-testo" class="sir-consenso__testo">
+    Usiamo Google Analytics per capire come viene visitato il sito, solo se ci dai il consenso.
+    Senza consenso il sito funziona allo stesso modo. Dettagli nella
+    <a href="/cookie-policy-ue/">cookie policy</a>.
+  </p>
+  <div class="sir-consenso__azioni">
+    <button class="sir-consenso__btn" type="button" data-consenso-scelta="denied">Rifiuta</button>
+    <button class="sir-consenso__btn" type="button" data-consenso-scelta="granted">Accetta</button>
+  </div>
+</div>
+
+<script>
+  const CHIAVE = 'sir-consenso-v1';
+  const SEI_MESI = 1000 * 60 * 60 * 24 * 182;
+  const UN_ANNO = 1000 * 60 * 60 * 24 * 365;
+
+  type Scelta = 'granted' | 'denied';
+  type Consenso = { scelta: Scelta; data: number };
+
+  const banner = document.querySelector<HTMLElement>('[data-consenso]');
+  const gaId = banner?.dataset.gaId;
+
+  const leggi = (): Consenso | null => {
+    try {
+      const valore = JSON.parse(localStorage.getItem(CHIAVE) ?? 'null');
+      return valore && (valore.scelta === 'granted' || valore.scelta === 'denied') ? valore : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const salva = (scelta: Scelta) => {
+    try {
+      localStorage.setItem(CHIAVE, JSON.stringify({ scelta, data: Date.now() }));
+    } catch {
+      // Storage non disponibile: la scelta vale solo per questa pagina.
+    }
+  };
+
+  let gaCaricato = false;
+  const caricaGa = () => {
+    if (gaCaricato || !gaId) return;
+    gaCaricato = true;
+    const w = window as unknown as { dataLayer: unknown[]; gtag: (...args: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () {
+      // gtag vuole l'oggetto arguments, non un array.
+      // eslint-disable-next-line prefer-rest-params
+      w.dataLayer.push(arguments);
+    };
+    w.gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+    w.gtag('js', new Date());
+    w.gtag('config', gaId);
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    document.head.append(script);
+  };
+
+  // Alla revoca cancella i cookie _ga già scritti e ricarica senza GA.
+  const cancellaCookieGa = () => {
+    const host = location.hostname;
+    const domini = ['', host, `.${host}`, `.${host.replace(/^www\./, '')}`];
+    document.cookie.split(';').forEach((c) => {
+      const nome = c.split('=')[0].trim();
+      if (!nome.startsWith('_ga')) return;
+      domini.forEach((d) => {
+        document.cookie = `${nome}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d ? `; domain=${d}` : ''}`;
+      });
+    });
+  };
+
+  const mostra = () => {
+    if (!banner) return;
+    banner.hidden = false;
+    banner.querySelector<HTMLButtonElement>('[data-consenso-scelta="granted"]')?.focus({ preventScroll: true });
+  };
+
+  const scegli = (scelta: Scelta) => {
+    const precedente = leggi()?.scelta;
+    salva(scelta);
+    if (banner) banner.hidden = true;
+    if (scelta === 'granted') caricaGa();
+    else if (precedente === 'granted' || gaCaricato) {
+      // Prima si ferma gtag, altrimenti riscrive _ga_* appena cancellati.
+      (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag?.('consent', 'update', {
+        analytics_storage: 'denied',
+      });
+      cancellaCookieGa();
+      location.reload();
+    }
+  };
+
+  banner?.querySelectorAll<HTMLButtonElement>('[data-consenso-scelta]').forEach((btn) =>
+    btn.addEventListener('click', () => scegli(btn.dataset.consensoScelta as Scelta))
+  );
+  banner?.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') scegli('denied');
+  });
+  document.querySelectorAll('[data-apri-consenso]').forEach((el) =>
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      mostra();
+    })
+  );
+
+  const consenso = leggi();
+  const eta = consenso ? Date.now() - consenso.data : Infinity;
+  if (consenso?.scelta === 'granted' && eta < UN_ANNO) caricaGa();
+  else if (consenso?.scelta === 'denied' && eta < SEI_MESI) {
+    // Rifiuto recente: non richiedere.
+  } else mostra();
+</script>
+
+<style>
+  .sir-consenso {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+    width: min(420px, calc(100vw - 32px));
+    padding: 24px;
+    background: var(--sir-black);
+    color: var(--sir-white);
+    border: 1px solid var(--sir-white-12);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+  .sir-consenso[hidden] { display: none; }
+  .sir-consenso__titolo { margin: 0 32px 8px 0; font-weight: 600; }
+  .sir-consenso__testo { margin: 0 0 20px; font-size: 14px; line-height: 1.6; color: var(--sir-white-60); }
+  .sir-consenso__testo a { color: var(--sir-white); }
+  .sir-consenso__azioni { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* Rifiuta e Accetta hanno lo stesso peso visivo, come chiede il Garante. */
+  .sir-consenso__btn {
+    padding: 12px 16px;
+    border: 1px solid var(--sir-white);
+    background: transparent;
+    color: var(--sir-white);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s var(--sir-ease), color 0.2s var(--sir-ease);
+  }
+  .sir-consenso__btn:hover,
+  .sir-consenso__btn:focus-visible { background: var(--sir-white); color: var(--sir-black); }
+  .sir-consenso__chiudi {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: transparent;
+    color: var(--sir-white-60);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .sir-consenso__chiudi:hover { color: var(--sir-white); }
+</style>

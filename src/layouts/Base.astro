@@ -1,7 +1,13 @@
 ---
+// Font servito dal sito stesso: nessuna richiesta a Google Fonts (vedi /cookie-policy-ue/).
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-sans/latin-700.css';
 import '../styles/base.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -38,12 +44,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).toString()
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-    />
   </head>
   <body>
     {chrome && <a class="sir-skip" href="#main">Vai al contenuto</a>}
@@ -52,6 +52,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).toString()
       <slot />
     </main>
     {chrome && <Footer />}
+    <CookieConsent />
 
     <script>
       // Reveal on scroll: sostituisce le animazioni del tema WordPress.

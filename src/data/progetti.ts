@@ -6,7 +6,11 @@ export type Risultato = { valore: string; etichetta: string; descrizione: string
 export type Progetto = {
   slug: string;
   titolo: string;
-  cliente: { nome: string; url?: string };
+  /** Nome corto usato nel breadcrumb della scheda. */
+  nomeBreve: string;
+  /** Sottotitolo dell'hero della scheda (uno o più paragrafi). */
+  intro: string[];
+  cliente: { nome: string; url?: string; descrizione?: string };
   categoria: Categoria;
   categoriaLabel: string;
   tecnologie: string[];
@@ -14,6 +18,9 @@ export type Progetto = {
   logo: string;
   abstract: string;
   panoramica: string[];
+  durata: string;
+  servizi: string;
+  anno: string;
   sfide: Blocco[];
   soluzione: Blocco[];
   risultati: Risultato[];
@@ -31,6 +38,10 @@ export const progetti: Progetto[] = [
   {
     slug: 'una-direzione-marketing-esterna-prefabbricati-moioli',
     titolo: 'Una direzione marketing esterna – Prefabbricati Moioli',
+    nomeBreve: 'Direzione MKT esterna – Prefabbricati Moioli',
+    intro: [
+      'Questo progetto nasce dall’esigenza di introdurre una direzione marketing esterna per un’azienda B2B senza identità e senza strategia digitale.',
+    ],
     cliente: { nome: 'Prefabbricati Moioli', url: 'https://prefabbricatimoioli.it/' },
     categoria: 'hybrid',
     categoriaLabel: 'Marketing + IT',
@@ -49,8 +60,10 @@ export const progetti: Progetto[] = [
       'Il progetto nasce dall’esigenza di costruire una comunicazione aziendale completamente assente e non strutturata.',
       'Prefabbricati Moioli operava senza un’identità definita, senza una presenza digitale attiva e senza una strategia di posizionamento, con una percezione limitata rispetto al reale valore tecnico dell’azienda.',
       'L’intervento ha portato alla definizione di una brand strategy completa, allo sviluppo di una nuova identità visiva e all’attivazione dei canali di comunicazione, con l’obiettivo di costruire una presenza coerente, riconoscibile e scalabile nel tempo.',
-      'Brand Strategy, Rebranding, LinkedIn Strategy, Content Strategy',
     ],
+    durata: 'In corso',
+    servizi: 'Brand Strategy, Rebranding, LinkedIn Strategy, Content Strategy',
+    anno: '2026',
     sfide: [
       { titolo: 'Assenza di identità strutturata', testo: 'Nessuna linea visiva o narrativa chiara, con comunicazione non coerente e poco riconoscibile.' },
       { titolo: 'Presenza digitale inesistente', testo: 'Assenza di canali attivi e mancanza totale di una strategia di comunicazione online.' },
@@ -71,6 +84,11 @@ export const progetti: Progetto[] = [
   {
     slug: 'riposizionamento-strategico-e-crescita-digitale-brianteo-self-service',
     titolo: 'Riposizionamento strategico e crescita digitale — Brianteo Ristorante Self Service',
+    nomeBreve: 'Brianteo Ristorante Self Service',
+    intro: [
+      'Questo progetto nasce dall’esigenza di riposizionare il marketing di un ristorante locale, trasformando un’attività invisibile in un brand riconoscibile e strutturato.',
+      'Un ecosistema strutturato, misurabile e costruito per crescere nel tempo.',
+    ],
     cliente: { nome: 'Brianteo Ristorante Self Service' },
     categoria: 'marketing',
     categoriaLabel: 'Marketing',
@@ -87,8 +105,10 @@ export const progetti: Progetto[] = [
       'Il progetto nasce con l’obiettivo di trasformare un’attività locale in un brand riconoscibile e strutturato.',
       'La situazione iniziale presentava identità debole, comunicazione frammentata e assenza di strategia digitale.',
       'L’intervento ha portato a un rebranding completo e alla costruzione di un ecosistema digitale integrato, capace di generare visibilità e crescita nel tempo.',
-      'Rebranding, Web Design, Social Strategy, SEO',
     ],
+    durata: '10 mesi',
+    servizi: 'Rebranding, Web Design, Social Strategy, SEO',
+    anno: '2025',
     sfide: [
       { titolo: 'Comunicazione frammentata', testo: 'Presenza digitale discontinua, senza una linea chiara né una strategia di crescita.' },
       { titolo: 'Identità poco riconoscibile', testo: 'Brand privo di elementi distintivi, con logo e comunicazione poco efficaci.' },
@@ -109,7 +129,15 @@ export const progetti: Progetto[] = [
   {
     slug: 'zigoli-tosato-website',
     titolo: 'Zigoli & Tosato — Website & Digital Recovery',
-    cliente: { nome: 'Zigoli & Tosato', url: 'https://www.zigolietosato.it/' },
+    nomeBreve: 'Zigoli & Tosato website',
+    intro: [
+      'Bonifica della piattaforma, ripristino della reputazione e sviluppo di un nuovo sito orientato al posizionamento e alla conversione.',
+    ],
+    cliente: {
+      nome: 'Zigoli & Tosato',
+      url: 'https://www.zigolietosato.it/',
+      descrizione: 'Vendita registratori di cassa e assistenza tecnica per le attività',
+    },
     categoria: 'hybrid',
     categoriaLabel: 'Marketing + IT',
     tecnologie: [
@@ -133,9 +161,10 @@ export const progetti: Progetto[] = [
       'Il progetto ha incluso anche la bonifica completa della piattaforma, la rimozione delle criticità di sicurezza e il ripristino della corretta reputazione del dominio.',
       'Parallelamente, è stata gestita la migrazione degli strumenti digitali aziendali, trasferendo 7 caselle email da Aruba a Microsoft 365 e centralizzando oltre 300 GB di dati da Dropbox in un ambiente più sicuro, organizzato e condiviso(Sharepoint).',
       'Il risultato è un’infrastruttura digitale solida, affidabile e pronta a supportare la crescita operativa e commerciale dell’azienda.',
-      'Zigoli e Tosato – Vendita registratori di cassa e assistenza tecnica per le attività',
-      'Web design, sviluppo WordPress, SEO on-page, migrazione email e dati aziendali',
     ],
+    durata: '4 mesi',
+    servizi: 'Web design, sviluppo WordPress, SEO on-page, migrazione email e dati aziendali',
+    anno: '2025',
     sfide: [
       { titolo: 'Sicurezza e reputazione compromesse', testo: 'Il sito risultava vulnerabile e già compromesso, con contenuti non autorizzati e segnalazioni da parte di alcuni provider, compromettendo l’affidabilità del dominio.' },
       { titolo: 'Struttura inefficace e poco chiara', testo: 'L’architettura del sito non permetteva di comprendere facilmente servizi e soluzioni, rendendo difficile orientare l’utente e generare contatti.' },
@@ -156,6 +185,10 @@ export const progetti: Progetto[] = [
   {
     slug: 'e-learning-web-app',
     titolo: 'Piattaforma e-learning custom per la formazione interna',
+    nomeBreve: 'E-learning web app',
+    intro: [
+      'Centralizzazione dei contenuti, gestione dei ruoli e tracciamento dei progressi in un unico sistema progettato per migliorare efficienza e controllo operativo.',
+    ],
     cliente: { nome: 'inLogico' },
     categoria: 'it',
     categoriaLabel: 'IT',
@@ -174,8 +207,10 @@ export const progetti: Progetto[] = [
       'Il progetto nasce dall’esigenza di strutturare e centralizzare la formazione interna di team operativi nel settore fundraising.',
       'I contenuti erano distribuiti tra file, chat e documenti condivisi, senza un percorso definito né strumenti per monitorare l’avanzamento degli utenti.',
       'L’intervento ha portato allo sviluppo di una web app custom, progettata per organizzare i contenuti, gestire ruoli e responsabilità e tracciare in tempo reale il progresso degli utenti, ottendo una riduzione del tempo di onboarding degli operatori.',
-      'Web app development, UX/UI, Database design',
     ],
+    durata: '1 mese',
+    servizi: 'Web app development, UX/UI, Database design',
+    anno: '2025',
     sfide: [
       { titolo: 'Formazione dispersa', testo: 'I contenuti erano distribuiti su più strumenti, senza una struttura chiara né un percorso definito.' },
       { titolo: 'Nessuna visibilità', testo: 'Impossibilità di monitorare i progressi degli utenti e identificare criticità o necessità di supporto.' },
@@ -196,7 +231,16 @@ export const progetti: Progetto[] = [
   {
     slug: 'scadenziario-app',
     titolo: 'Sistema di gestione scadenze per dispositivi fiscali – Zigoli & Tosato',
-    cliente: { nome: 'Zigoli & Tosato', url: 'https://www.zigolietosato.it/' },
+    nomeBreve: 'Scadenziario App',
+    intro: [
+      'Gestione intelligente delle scadenze per oltre 1.100 dispositivi fiscali.',
+      'Sviluppo di un’applicazione web interna per la gestione completa delle scadenze di manutenzione dei registratori telematici (RT) di oltre 1.100 dispositivi fiscali distribuiti sul territorio.',
+    ],
+    cliente: {
+      nome: 'Zigoli & Tosato',
+      url: 'https://www.zigolietosato.it/',
+      descrizione: 'Vendita registratori di cassa e assistenza tecnica per le attività',
+    },
     categoria: 'it',
     categoriaLabel: 'IT',
     tecnologie: [
@@ -212,9 +256,10 @@ export const progetti: Progetto[] = [
     panoramica: [
       'Il progetto nasce dall’esigenza di digitalizzare e centralizzare la gestione delle scadenze di manutenzione di oltre 1.100 registratori telematici distribuiti sul territorio. Il cliente operava con processi manuali, senza visibilità in tempo reale sullo stato del parco macchine e con il rischio concreto di perdere verifiche periodiche obbligatorie per legge.',
       'L’intervento ha portato alla creazione di un’applicazione web interna completa, integrando gestione dispositivi, clienti, manutenzioni, QR code dell’Agenzia delle Entrate e reportistica automatica — adattando ogni funzionalità al flusso operativo reale del cliente.',
-      'Zigoli e Tosato – Vendita registratori di cassa e assistenza tecnica per le attività',
-      'Sviluppo applicazione web custom, WordPress REST API, UI/UX React',
     ],
+    durata: '2 mesi',
+    servizi: 'Sviluppo applicazione web custom, WordPress REST API, UI/UX React',
+    anno: '2026',
     sfide: [
       { titolo: 'Gestione manuale e rischio errori', testo: 'Centinaia di scadenze gestite manualmente, senza alert automatici e con elevato rischio di verifiche mancate.' },
       { titolo: 'Nessuna visione centralizzata', testo: 'Dati distribuiti tra strumenti diversi, senza collegamento tra dispositivi, clienti e storico interventi.' },

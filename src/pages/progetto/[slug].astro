@@ -17,19 +17,13 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
   <section class="sir-hero-progetto">
     <div class="sir-container sir-hero-progetto__inner">
       <div class="sir-stack sir-stack--xs">
+        <nav class="sir-breadcrumb sir-small" aria-label="Percorso">
+          <a href="/">Home</a> / <a href="/i-nostri-progetti/">Progetti</a> /{' '}
+          <span aria-current="page">{progetto.nomeBreve}</span>
+        </nav>
         <span class="sir-eyebrow">{progetto.categoriaLabel}</span>
         <h1>{progetto.titolo}</h1>
-        <p class="sir-lead">
-          {
-            progetto.cliente.url ? (
-              <a href={progetto.cliente.url} rel="noopener noreferrer" target="_blank">
-                {progetto.cliente.nome}
-              </a>
-            ) : (
-              progetto.cliente.nome
-            )
-          }
-        </p>
+        {progetto.intro.map((par) => <p class="sir-lead">{par}</p>)}
       </div>
       <img class="sir-hero-progetto__logo" src={progetto.logo} alt={progetto.cliente.nome} loading="eager" />
     </div>
@@ -40,9 +34,43 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
   </figure>
 
   <section class="sir-section" aria-labelledby="panoramica-title">
-    <div class="sir-container--narrow sir-container sir-stack sir-stack--sm">
-      <h2 id="panoramica-title">Panoramica progetto</h2>
-      {progetto.panoramica.map((par) => <p class="sir-muted sir-testo">{par}</p>)}
+    <div class="sir-container sir-panoramica">
+      <div class="sir-stack sir-stack--sm">
+        <h2 id="panoramica-title">Panoramica progetto</h2>
+        {progetto.panoramica.map((par) => <p class="sir-muted sir-testo">{par}</p>)}
+      </div>
+
+      <dl class="sir-scheda sir-reveal-right">
+        <div class="sir-scheda__item sir-scheda__item--wide">
+          <dt>Cliente</dt>
+          <dd>
+            {
+              progetto.cliente.url ? (
+                <a href={progetto.cliente.url} rel="noopener noreferrer" target="_blank">
+                  {progetto.cliente.nome}
+                </a>
+              ) : (
+                progetto.cliente.nome
+              )
+            }
+            {progetto.cliente.descrizione && (
+              <span class="sir-scheda__nota">{progetto.cliente.descrizione}</span>
+            )}
+          </dd>
+        </div>
+        <div class="sir-scheda__item">
+          <dt>Durata</dt>
+          <dd>{progetto.durata}</dd>
+        </div>
+        <div class="sir-scheda__item">
+          <dt>Anno</dt>
+          <dd>{progetto.anno}</dd>
+        </div>
+        <div class="sir-scheda__item sir-scheda__item--wide">
+          <dt>Servizi</dt>
+          <dd>{progetto.servizi}</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -210,6 +238,11 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
   }
   .sir-hero-progetto .sir-eyebrow,
   .sir-hero-progetto .sir-lead { color: var(--sir-white-60); }
+  .sir-hero-progetto .sir-lead { max-width: 62ch; }
+  .sir-breadcrumb { margin-bottom: 8px; color: var(--sir-white-60); }
+  .sir-breadcrumb a { color: inherit; text-decoration: none; }
+  .sir-breadcrumb a:hover { color: var(--sir-white); }
+  .sir-breadcrumb [aria-current] { color: var(--sir-white); }
   .sir-hero-progetto__logo {
     flex: none;
     width: clamp(80px, 12vw, 120px);
@@ -222,6 +255,32 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
   .sir-progetto-figura img { width: 100%; max-height: 620px; object-fit: cover; }
 
   .sir-testo { line-height: 1.75; }
+
+  .sir-panoramica {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--sir-space-md);
+    align-items: start;
+  }
+  .sir-scheda {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 24px;
+    margin: 0;
+  }
+  .sir-scheda__item { padding-top: 18px; border-top: 1.5px solid var(--sir-ink); }
+  .sir-scheda__item--wide { grid-column: 1 / -1; }
+  .sir-scheda dt {
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sir-gray-500);
+  }
+  .sir-scheda dd { margin: 0; font-size: 18px; font-weight: 500; line-height: 1.4; }
+  .sir-scheda dd a { color: inherit; }
+  .sir-scheda__nota { display: block; margin-top: 4px; font-size: 14px; font-weight: 400; color: var(--sir-gray-500); }
 
   .sir-tecnologie { margin-top: var(--sir-space-sm); }
   .sir-tecnologie__lista { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
@@ -274,6 +333,10 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
     color: rgba(255, 255, 255, 0.72);
     font-size: 18px;
     line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .sir-panoramica { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 700px) {

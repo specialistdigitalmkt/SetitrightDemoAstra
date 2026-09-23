@@ -1,0 +1,119 @@
+---
+import Legale from '../layouts/Legale.astro';
+import { site } from '../data/site';
+
+// Su WordPress questa pagina era generata da Complianz. Il sito statico usa un
+// solo servizio che scrive cookie, Google Analytics 4, e solo dopo il consenso
+// raccolto da components/CookieConsent.astro. Se si aggiunge un altro servizio
+// esterno, va elencato qui e nella privacy policy.
+---
+
+<Legale
+  title="Cookie Policy (UE)"
+  description="Come il sito Set It Right usa cookie e tecnologie simili: nessun cookie di profilazione, Google Analytics solo con il consenso."
+  aggiornamento="23 settembre 2026"
+>
+  <p>
+    La presente Cookie Policy si applica ai cittadini e ai residenti permanenti legali dello Spazio
+    Economico Europeo e della Svizzera che visitano il sito
+    <a href={site.url}>{site.url.replace('https://', '')}</a> (di seguito: “il sito web”).
+  </p>
+
+  <h2>1. Cosa sono i cookie</h2>
+  <p>
+    I cookie sono piccoli file di testo che un sito web salva sul dispositivo dell’utente tramite
+    il browser, per essere riletti nelle visite successive dallo stesso sito o da terze parti. Nel
+    seguito, per comodità, chiamiamo “cookie” anche le tecnologie simili, come la memoria locale
+    del browser, gli script di tracciamento e i web beacon (pixel).
+  </p>
+
+  <h2>2. Cookie utilizzati da questo sito</h2>
+  <p>
+    Il sito non usa cookie di marketing o di profilazione. Il font è servito direttamente dal
+    sito, senza richieste a Google Fonts.
+  </p>
+
+  <h3>2.1 Strumenti tecnici</h3>
+  <p>
+    Per ricordare la tua scelta sui cookie statistici salviamo nella memoria del browser
+    (<code>localStorage</code>) la voce <code>sir-consenso-v1</code>, con la scelta fatta e la
+    data. Non contiene dati personali, non viene inviata a nessun server e non richiede consenso.
+  </p>
+
+  <h3>2.2 Cookie statistici: Google Analytics 4</h3>
+  <p>
+    Solo se accetti, usiamo Google Analytics 4 (fornito da Google Ireland Ltd.) per sapere in forma
+    aggregata quante persone visitano il sito e quali pagine consultano. Google Analytics 4 non
+    memorizza l’indirizzo IP completo. Finché non accetti, lo script di Google non viene caricato.
+  </p>
+  <ul>
+    <li><strong>_ga</strong> — distingue i visitatori; scadenza 2 anni.</li>
+    <li><strong>_ga_*</strong> — mantiene lo stato della sessione; scadenza 2 anni.</li>
+  </ul>
+  <p>
+    Per maggiori informazioni:
+    <a href="https://policies.google.com/privacy?hl=it" rel="noopener noreferrer" target="_blank">informativa privacy di Google</a>.
+  </p>
+
+  <h3>2.3 Consenso</h3>
+  <p>
+    Alla prima visita un banner ti chiede se accetti i cookie statistici: puoi accettare o
+    rifiutare con la stessa facilità, e chiudere il banner equivale a rifiutare. Se rifiuti non te
+    lo chiediamo di nuovo per sei mesi; il consenso dato dura al massimo un anno. Puoi cambiare
+    idea in qualsiasi momento:
+  </p>
+  <p>
+    <button class="sir-btn sir-btn--outline" type="button" data-apri-consenso>Gestisci le preferenze cookie</button>
+  </p>
+
+  <h2>3. Link a siti esterni</h2>
+  <p>
+    Il sito contiene link verso siti di terzi (ad esempio LinkedIn o i siti dei clienti presentati
+    nei progetti). Seguendo questi link si lascia il sito web: il trattamento dei dati e l’uso dei
+    cookie su quei siti sono regolati dalle rispettive informative, sulle quali non abbiamo
+    controllo.
+  </p>
+
+  <h2>4. Modulo di contatto</h2>
+  <p>
+    Il modulo della pagina <a href="/contatti/">Contatti</a> non invia dati a un server: prepara
+    un messaggio nel programma di posta dell’utente, che decide se e quando inviarlo. Il
+    trattamento dei dati contenuti nelle email ricevute è descritto nella
+    <a href="/privacy-policy/">Privacy Policy</a>.
+  </p>
+
+  <h2>5. Gestire i cookie dal browser</h2>
+  <p>
+    Puoi usare il tuo browser per cancellare automaticamente o manualmente i cookie, per impedire
+    che determinati cookie vengano salvati o per ricevere un avviso ogni volta che un sito prova a
+    salvarne uno. Per ulteriori informazioni su queste opzioni, consulta la sezione Guida del tuo
+    browser.
+  </p>
+
+  <h2>6. I tuoi diritti</h2>
+  <p>In relazione ai tuoi dati personali hai il diritto di:</p>
+  <ul>
+    <li>sapere quali dati sono trattati, per quale scopo e per quanto tempo vengono conservati;</li>
+    <li>accedere ai dati personali che ti riguardano;</li>
+    <li>chiederne la rettifica, l’integrazione, la cancellazione o la limitazione;</li>
+    <li>revocare in qualsiasi momento il consenso eventualmente prestato;</li>
+    <li>ricevere i tuoi dati e trasferirli a un altro titolare (portabilità);</li>
+    <li>opporti al trattamento.</li>
+  </ul>
+  <p>
+    Per esercitare questi diritti puoi usare i dati di contatto qui sotto. Hai inoltre il diritto
+    di presentare reclamo al Garante per la Protezione dei Dati Personali
+    (<a href="https://www.garanteprivacy.it" rel="noopener noreferrer" target="_blank">www.garanteprivacy.it</a>).
+  </p>
+
+  <h2>7. Dettagli di contatto</h2>
+  <p>Per domande o commenti su questa Cookie Policy puoi contattarci a:</p>
+  <p>
+    <strong>Luca Pazzi</strong> — SET IT RIGHT<br />
+    Via Mosè Bianchi 3, 20852<br />
+    Italia<br />
+    P.IVA {site.piva}<br />
+    Email: <a href={`mailto:${site.email}`}>{site.email}</a><br />
+    Telefono: <a href="tel:+393343254121">334 325 4121</a>
+  </p>
+</Legale>

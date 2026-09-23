@@ -1,0 +1,52 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  aggiornamento: string;
+}
+const { title, description, aggiornamento } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <section class="sir-legale-hero">
+    <div class="sir-container sir-container--narrow sir-stack sir-stack--xs">
+      <span class="sir-eyebrow">Note legali</span>
+      <h1>{title}</h1>
+      <p class="sir-small">Ultimo aggiornamento: {aggiornamento}</p>
+    </div>
+  </section>
+
+  <section class="sir-section">
+    <div class="sir-container sir-container--narrow sir-legale">
+      <slot />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sir-legale-hero {
+    padding: var(--sir-space-lg) var(--sir-space-sm) var(--sir-space-md);
+    background: var(--sir-black);
+    color: var(--sir-white);
+  }
+  .sir-legale-hero .sir-eyebrow,
+  .sir-legale-hero .sir-small { color: var(--sir-white-60); }
+
+  .sir-legale :global(h2) {
+    margin: var(--sir-space-md) 0 16px;
+    padding-top: var(--sir-space-sm);
+    border-top: 1px solid var(--sir-gray-300);
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  }
+  .sir-legale :global(h2:first-child) { margin-top: 0; padding-top: 0; border-top: 0; }
+  .sir-legale :global(h3) { margin: 24px 0 8px; font-size: 1.1rem; }
+  .sir-legale :global(p),
+  .sir-legale :global(li) { line-height: 1.75; color: var(--sir-gray-500); }
+  .sir-legale :global(p + p) { margin-top: 12px; }
+  .sir-legale :global(ul),
+  .sir-legale :global(ol) { margin: 12px 0; padding-left: 1.25em; }
+  .sir-legale :global(strong) { color: var(--sir-black); }
+  .sir-legale :global(a) { color: var(--sir-black); }
+</style>

@@ -94,10 +94,10 @@ const continuita = [
   <section class="sir-section">
     <div class="sir-container--narrow sir-container sir-stack sir-stack--xs sir-center">
       <h1>Come lavoriamo: il nostro metodo</h1>
-      <h3 class="sir-intro">
+      <p class="sir-lead sir-intro">
         Il nostro metodo nasce per offrire una <strong>gestione integrata di marketing e IT per
-        aziende</strong>, eliminando la frammentazione tra fornitori
-      </h3>
+        aziende</strong>, eliminando la frammentazione tra fornitori.
+      </p>
       <p class="sir-reveal-soft">Un unico metodo, un unico referente, una sola direzione.</p>
     </div>
   </section>
@@ -196,16 +196,14 @@ const continuita = [
 </Base>
 
 <style>
-  .sir-intro {
-    font-weight: 400;
-    line-height: 1.35;
-  }
-  .sir-intro strong { font-weight: 600; }
+  .sir-intro { line-height: 1.5; }
+  .sir-intro strong { font-weight: 600; color: var(--sir-black); }
 
   .sir-statement {
     padding: var(--sir-space-md) var(--sir-space-sm);
   }
-  .sir-statement__icon { margin-inline: auto; }
+  /* La classe finisce sullo span del componente Icon: serve :global. */
+  .sir-statement :global(.sir-statement__icon) { align-self: center; }
 
   .sir-card__numero {
     font-size: 1.75rem;
@@ -215,11 +213,7 @@ const continuita = [
   }
 
   .sir-collab { padding-top: 0; }
-  .sir-collab__title {
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--sir-ink);
-  }
+  .sir-collab__title { color: var(--sir-ink); }
 
   .sir-steps {
     display: flex;

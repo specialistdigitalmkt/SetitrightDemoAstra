@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /manutenzione/
+
+Sitemap: https://www.setitright.it/sitemap-index.xml

@@ -1,5 +1,5 @@
 ---
-import { nav, site } from '../data/site';
+import { legal, nav, site } from '../data/site';
 const anno = new Date().getFullYear();
 ---
 
@@ -7,7 +7,7 @@ const anno = new Date().getFullYear();
   <div class="sir-footer__inner">
     <div class="sir-footer__brand">
       <img src={site.logo} alt={site.name} width="200" height="26" />
-      <p class="sir-small">{site.tagline}</p>
+      <p class="sir-small">{site.footerText}</p>
       <p class="sir-small sir-footer__payoff">{site.payoff}</p>
     </div>
 
@@ -26,7 +26,11 @@ const anno = new Date().getFullYear();
 
   <div class="sir-footer__legal">
     <p class="sir-small">© {anno} {site.name}. Tutti i diritti riservati.</p>
-    <p class="sir-small">P.IVA — da completare</p>
+    <p class="sir-small">P.IVA {site.piva}</p>
+    <nav class="sir-footer__legal-nav" aria-label="Note legali">
+      {legal.map((item) => <a href={item.href}>{item.label}</a>)}
+      <button type="button" data-apri-consenso>Preferenze cookie</button>
+    </nav>
   </div>
 </footer>
 
@@ -63,7 +67,12 @@ const anno = new Date().getFullYear();
   }
   .sir-footer__nav a:hover,
   .sir-footer__contact a:hover { color: var(--sir-white); }
-  .sir-footer__cta { margin-top: 8px; color: var(--sir-white); }
+  .sir-footer__contact .sir-footer__cta { margin-top: 8px; color: var(--sir-white); }
+  .sir-footer__contact .sir-footer__cta:hover {
+    background: var(--sir-white);
+    color: var(--sir-black);
+    border-color: var(--sir-white);
+  }
 
   .sir-footer__legal {
     display: flex;
@@ -76,6 +85,24 @@ const anno = new Date().getFullYear();
     border-top: 1px solid var(--sir-white-12);
     color: var(--sir-white-60);
   }
+
+  .sir-footer__legal-nav { display: flex; flex-wrap: wrap; gap: 16px; }
+  .sir-footer__legal-nav button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+  }
+  .sir-footer__legal-nav a,
+  .sir-footer__legal-nav button {
+    color: var(--sir-white-60);
+    font-size: var(--sir-fs-small);
+    text-decoration: none;
+    transition: color 0.2s var(--sir-ease);
+  }
+  .sir-footer__legal-nav a:hover,
+  .sir-footer__legal-nav button:hover { color: var(--sir-white); }
 
   @media (max-width: 800px) {
     .sir-footer__inner { grid-template-columns: 1fr; gap: var(--sir-space-sm); }
