@@ -15,6 +15,8 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
 
 <Base title={progetto.titolo} description={progetto.abstract}>
   <section class="sir-hero-progetto">
+    {/* Come il blocco cover del tema WP: immagine del progetto con velatura nera all'80%. */}
+    <img class="sir-hero-progetto__bg" src={progetto.immagine} alt="" loading="eager" fetchpriority="high" />
     <div class="sir-container sir-hero-progetto__inner">
       <div class="sir-stack sir-stack--xs">
         <nav class="sir-breadcrumb sir-small" aria-label="Percorso">
@@ -28,10 +30,6 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
       <img class="sir-hero-progetto__logo" src={progetto.logo} alt={progetto.cliente.nome} loading="eager" />
     </div>
   </section>
-
-  <figure class="sir-progetto-figura">
-    <img src={progetto.immagine} alt={`Progetto ${progetto.titolo}`} width="1024" height="576" />
-  </figure>
 
   <section class="sir-section" aria-labelledby="panoramica-title">
     <div class="sir-container sir-panoramica">
@@ -226,9 +224,36 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
 
 <style>
   .sir-hero-progetto {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: min(78vh, 760px);
     padding: var(--sir-space-lg) var(--sir-space-sm);
+    overflow: hidden;
     background: var(--sir-black);
     color: var(--sir-white);
+  }
+  .sir-hero-progetto__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transform: scale(1.04);
+    animation: sir-hero-zoom 14s ease-out forwards;
+  }
+  .sir-hero-progetto::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.86) 55%, rgba(0, 0, 0, 0.8) 100%);
+  }
+  .sir-hero-progetto__inner { position: relative; z-index: 1; }
+  .sir-hero-progetto h1 { max-width: 20ch; }
+  @keyframes sir-hero-zoom { to { transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    .sir-hero-progetto__bg { animation: none; transform: none; }
   }
   .sir-hero-progetto__inner {
     display: flex;
@@ -237,7 +262,7 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
     gap: var(--sir-space-md);
   }
   .sir-hero-progetto .sir-eyebrow,
-  .sir-hero-progetto .sir-lead { color: var(--sir-white-60); }
+  .sir-hero-progetto .sir-lead { color: rgba(255, 255, 255, 0.78); }
   .sir-hero-progetto .sir-lead { max-width: 62ch; }
   .sir-breadcrumb { margin-bottom: 8px; color: var(--sir-white-60); }
   .sir-breadcrumb a { color: inherit; text-decoration: none; }
@@ -251,8 +276,6 @@ const altri = progetti.filter((p) => p.slug !== progetto.slug).slice(0, 3);
     padding: 12px;
   }
 
-  .sir-progetto-figura { margin: 0; }
-  .sir-progetto-figura img { width: 100%; max-height: 620px; object-fit: cover; }
 
   .sir-testo { line-height: 1.75; }
 
